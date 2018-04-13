@@ -1,0 +1,15 @@
+export { default as caffe } from "./caffe.png";
+export { default as caffe2 } from "./caffe2.png";
+export { default as keras } from "./keras.jpg";
+export { default as mxnet } from "./mxnet.png";
+export { default as tensorflow } from "./tensorflow.png";
+export { default as theano } from "./theano.png";
+export { default as torch } from "./torch.png";
+export { default as tensorrt } from "./tensorrt.png";
+export { default as intel } from "./intel.png";
+export { default as nvidia } from "./nvidia.png";
+export { default as powerpc } from "./powerpc.png";
+export { default as opencl } from "./opencl.png";
+export { default as arm } from "./arm.png";
+export { default as cntk } from "./cntk.png";
+export { default as pytorch } from "./pytorch.png";

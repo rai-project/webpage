@@ -1,0 +1,11 @@
+@import '~antd/dist/antd.css';
+.GlobalFooter-img {
+  width: 50%;
+  height: 50%;
+  padding: 5px;
+}
+
+.GlobalFooter-text {
+  font-size: 1.5em;
+  padding: 15px;
+}

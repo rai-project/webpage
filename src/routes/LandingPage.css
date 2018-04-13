@@ -1,0 +1,6 @@
+@import '~antd/dist/antd.css';
+
+.page-title {
+  text-align: center;
+  font-size: 2.5em;
+}
