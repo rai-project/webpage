@@ -1,7 +1,7 @@
 import SelectableCard from './SelectableCard/SelectableCard'
 import './ExperimentSteps.css';
 import React, { Component } from 'react';
-import { Card, Col, Row } from 'antd';
+import { Col, Row } from 'antd';
 
 export default class ModelSelect extends Component {
   render() {
@@ -10,7 +10,7 @@ export default class ModelSelect extends Component {
         <Row gutter={16}>
           {
             this.props.frameworks.map(
-              item => 
+              (item, index) => 
               <Col span={6} style={{padding: '10px'}}>
 
                 <SelectableCard
@@ -19,6 +19,8 @@ export default class ModelSelect extends Component {
                     style={{height: '60%', width: '60%'}}
                   />}
                   item={item}
+                  onClick={() => this.props.onSelect('frameworks', index)}
+                  selected={this.props.selected[index]}
                 />
               </Col>
             )

@@ -1,15 +1,13 @@
 import './ExperimentSteps.css';
 import React, { Component } from 'react';
-import { Button, message, Icon } from 'antd';
-import { Card, Col, Row, Select, Input } from 'antd';
+import { Card, Col, Row, Select, Input, Icon } from 'antd';
+import { filter } from 'lodash';
+
 import SelectDataSet from '../ExperimentSteps/SelectDataSet'
 import SelectModel from '../ExperimentSteps/SelectModel'
 import SelectFramework from '../ExperimentSteps/SelectFramework'
 import models from '../Models/Models'
 import frameworks from '../Frameworks/Frameworks'
-
-const Option = Select.Option;
-const Search = Input.Search;
 
 const datasetOptions = [
   { key: 0, name: "ilsvrc2012", description: "vision/ilsvrc2012" },
@@ -32,21 +30,70 @@ export default class ExperimentSteps extends Component {
         'data': Array(datasetOptions.length).fill(false),
         'models': Array(models.length).fill(false),
         'frameworks': Array(frameworks.length).fill(false),
+        'machines': [false],
       },
     };
   }
 
   handleSelect(key, i) {
-    // var selections = this.state.selections;
-    // selections[key][i] = !selections[key][i];
-    // this.setState({selections: selections});
+    var selections = this.state.selections;
+    selections[key][i] = !selections[key][i];
+    this.setState({selections: selections});
+    var counts = this.state.counts;
+    counts[1] = this.availableModels(selections).length;
+    this.setState({counts: counts});
   }
 
-  
+  availableModels(selections) {
+    var temp = [];
+    if (selections['frameworks'].every(x => x == false)) {
+      temp = temp.concat(models);
+    } else {
+      selections['frameworks'].map(
+        function (v, i) {
+          if (v) {
+            temp = temp.concat(filter(models, {'framework': frameworks[i]}));
+          }
+        }
+      )
+    }
+    return temp;
+  }
+
+  cardContent(item) {
+    if (this.state.selections[item.id].every(x => x==false)) {
+      return(
+        <div style={{textAlign: 'center'}}>
+          <div> {item.icon} </div>
+          <div> {item.content} </div>
+        </div>
+      );
+    } else {
+      return(
+        <div>
+          {
+            this.state.selections[item.id].map(
+              function(v, i) {
+                if (v) {
+                  return(
+                    <Card.Grid style={{textAlign: 'center', width: '100%'}}>
+                      {item.data[i].name}
+                    </Card.Grid>
+                  )
+                }
+              }
+            )
+          }
+        </div>
+      )
+    }
+  }
 
   render() {
     const steps = [{
+      id: 'data',
       title: 'Data',
+      data: datasetOptions,
       icon: <Icon type="folder" style={{ fontSize: 30 }}/>,
       select: <SelectDataSet
                 datasetOptions={datasetOptions}
@@ -55,20 +102,32 @@ export default class ExperimentSteps extends Component {
               />,
       content: 'Choose a data set from the data sets available for your inference selections.',
     }, {
+      id: 'models',
       title: 'Model',
+      data: models,
       icon: <Icon type="line-chart" style={{ fontSize: 30 }}/>,
-      select: <SelectModel models={models} onSelect={this.handleSelect}/>,
+      select: <SelectModel
+                models={this.availableModels(this.state.selections)}
+                onSelect={this.handleSelect}
+                selected={this.state.selections['models']}
+              />,
       content: 'Choose a model that supports your inference selections.',
     }, {
+      id: 'frameworks',
       title: 'Framework',
-      select: <SelectFramework frameworks={frameworks} onSelect={this.handleSelect}/>,
+      data: frameworks,
+      select: <SelectFramework
+                frameworks={frameworks}
+                onSelect={this.handleSelect}
+                selected={this.state.selections['frameworks']}
+              />,
       content: 'Choose a framework that supports your inference selections.',
     }, {
+      id: 'machines',
       title: 'Machine',
       icon: <Icon type="database" style={{ fontSize: 30 }}/>,
       content: 'Choose a machine to run your inference.',
     }];
-    const { current } = this.state;
 
     return (
       <div>
@@ -82,14 +141,9 @@ export default class ExperimentSteps extends Component {
                   title={item.title + '(' + this.state.counts[index] + ')'}
                   hoverable
                   onClick={() => this.setState({ current: index })}
-                  style={{height: '200px'}}
+                  style={{height: 'auto', minHeight: '200px' }}
                 >
-                  <div style={{textAlign: 'center'}}>
-                    {item.icon}
-                  </div>
-                  <div style={{textAlign: 'center'}}>
-                    {item.content}
-                  </div>
+                 {this.cardContent(item)}
                 </Card>
               </Col>
             )

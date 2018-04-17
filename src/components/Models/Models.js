@@ -8,5 +8,9 @@ const json = require('../../docs/models.json');
 //     this.models = json.manifests.map(m => { Model(m) })
 //   }
 // }
+var models = json.manifests;
+models.map(
+  (item, index) => item['id'] = index
+);
 
-export default json.manifests;
+export default models;

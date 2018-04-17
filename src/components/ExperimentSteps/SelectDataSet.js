@@ -40,7 +40,7 @@ export default class SelectDataSet extends Component {
                     item={item}
                     content={item.description}
                     height='150px'
-                    onClick={this.props.onSelect('data', index)}
+                    onClick={() => this.props.onSelect('data', index)}
                     selected={this.props.selected[index]}
                   />
                 </Col>

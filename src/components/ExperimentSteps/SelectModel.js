@@ -1,16 +1,11 @@
 import './ExperimentSteps.css';
 import SelectableCard from './SelectableCard/SelectableCard'
 import React, { Component } from 'react';
-import { Card, Col, Row, Select, Input, Button, Icon, Tooltip } from 'antd';
+import { Col, Row, Select, Input, Button, Icon } from 'antd';
 const Option = Select.Option;
 const Search = Input.Search;
 
 export default class SelectModel extends Component {
-  handleClick(index) {
-    // this.setState({selected: !this.state.selected});
-    this.props.onClick(1, index);
-  }
-
   render() {
     return(
       <div>
@@ -45,7 +40,8 @@ export default class SelectModel extends Component {
                     item={item}
                     content={item.description.split(" ").slice(0,10).join(" ") + " ..."}
                     tooltip={true}
-                    onClick={() => this.handleClick(index)}
+                    onClick={() => this.props.onSelect('models', item.id)}
+                    selected={this.props.selected[item.id]}
                   />
                 </Col>
               )

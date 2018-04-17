@@ -1,18 +1,18 @@
 import '../ExperimentSteps.css';
 import React, { Component } from 'react';
-import { Card, Col, Row, Tooltip } from 'antd';
+import { Card, Row, Tooltip } from 'antd';
 
 export default class SelectableCard extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      selected: false,
+      selected: this.props.selected || false,
     };
   }
 
   handleClick() {
     this.setState({selected: !this.state.selected});
-    // this.props.onClick();
+    this.props.onClick();
   }
 
   render() {
@@ -24,7 +24,7 @@ export default class SelectableCard extends Component {
           <Card
             title={item.name}
             hoverable
-            onClick={() => this.handleClick()}
+            onClick={this.handleClick.bind(this)}
             bordered={this.state.selected}
             style={{height: this.props.height || '200px', borderColor: '#707070'}}
           >
@@ -39,7 +39,7 @@ export default class SelectableCard extends Component {
         <Card
           title={item.name}
           hoverable
-          onClick={() => this.handleClick()}
+          onClick={this.handleClick.bind(this)}
           bordered={this.state.selected}
           style={{height: this.props.height || '200px', borderColor: '#707070'}}
         >
