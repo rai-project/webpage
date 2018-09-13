@@ -1,0 +1,198 @@
+@import '~antd/dist/antd.css';
+
+
+
+.button2 {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 12px 59px;
+  border: 1px solid #1e89fa;
+  border-radius: 0px;
+  background: #1e89fa;
+  background: -webkit-gradient(linear, left top, left bottom, from(#1e89fa), to(#1e89fa));
+  background: -moz-linear-gradient(top, #1e89fa, #1e89fa);
+  background: linear-gradient(to bottom, #1e89fa, #1e89fa);
+  font: normal normal bold 15px arial;
+  color: #ffffff;
+  text-decoration: none;
+}
+.button2:hover,
+.button2:focus {
+  border: 1px solid #27b2ff;
+  background: #24a4ff;
+  background: -webkit-gradient(linear, left top, left bottom, from(#24a4ff), to(#24a4ff));
+  background: -moz-linear-gradient(top, #24a4ff, #24a4ff);
+  background: linear-gradient(to bottom, #24a4ff, #24a4ff);
+  color: #ffffff;
+  text-decoration: none;
+}
+.button2:active {
+  background: #125296;
+  background: -webkit-gradient(linear, left top, left bottom, from(#125296), to(#1e89fa));
+  background: -moz-linear-gradient(top, #125296, #1e89fa);
+  background: linear-gradient(to bottom, #125296, #1e89fa);
+} 
+
+.LandingPage-introduction {
+  background: url(../../resources/img/background.jpg);
+  height: 475px;
+  width: 100%;
+  color: white;
+  background-size: 100%;
+  
+}
+.LandingPage-section5 {
+  background-color: white;
+  padding: 0;
+  height: 200px;
+  min-width: 100%;
+  color: white;
+  
+}
+.LandingPage-section10 {
+  background-color: #1A263A;
+  padding: 0;
+  height: 200px;
+  min-width: 100%;
+  color: white;
+  
+}
+.LandingPage-section2 {
+  background-color: white;
+  padding: 0;
+  min-height: 300px;
+  min-width: 100%;
+  color: white;
+  
+}
+
+.buttonSmall {
+  display: inline-block;
+  text-align: center;
+  vertical-align: middle;
+  padding: 8px 16px;
+  background-color: rgba(65, 65, 65, 0.178);
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  outline:none;
+  border-radius: 28px;
+  font: normal normal bold 11px arial;
+  color: #000000;
+  text-decoration: none;
+  text-transform: uppercase
+}
+.buttonSmall:hover {
+  border: 1px solid #d9d9d9;
+  color: #00000088;
+  text-decoration: none;
+  
+}  
+
+.buttonSmall:focus {
+  text-transform: uppercase
+}
+
+.LandingPage-section3{
+  background-color: white;
+  padding: 0;
+  min-height: 575px;
+ 
+  
+}
+.LandingPage-section4{
+  background-color: blue;
+  padding: 0;
+  min-height: 84px;
+}
+.buttonsec6 {
+  display: inline-block;
+  text-align: left;
+  vertical-align: center;
+  padding: 15px 15px;
+  border: 1px solid #006ce0;
+  border-radius: 0px;
+  background: #006ce0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#006ce0), to(#006ce0));
+  background: -moz-linear-gradient(top, #006ce0, #006ce0);
+  background: linear-gradient(to bottom, #006ce0, #006ce0);
+  font: normal normal bold 14px arial;
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase
+}
+.buttonsec6:hover {
+  border: 1px solid #006ce0;
+  background: #006ce0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#006ce0), to(#006ada));
+  background: -moz-linear-gradient(top, #006ce0, #006ada);
+  background: linear-gradient(to bottom, #006ce0, #006ada);
+  color: #ffffff;
+  text-decoration: none;
+  text-transform: uppercase
+}
+.buttonsec6:active {
+  background: #006ce0;
+  background: -webkit-gradient(linear, left top, left bottom, from(#006ce0), to(#006ce0));
+  background: -moz-linear-gradient(top, #006ce0, #006ce0);
+  background: linear-gradient(to bottom, #006ce0, #006ce0);
+  text-transform: uppercase
+}
+.buttonsec6:focus {
+  text-transform: uppercase
+}
+
+.LandingPage-section6 {
+  background-color: #25282f;
+  padding: 0;
+  min-height: 610px;
+  margin: 0px 0px;
+}
+
+.LandingPage-section7 {
+  background-color: #ffffff;
+  padding: 0;
+  min-height: 610px;
+  margin: 0px 0px;
+}
+
+.LandingPage-img {
+  height: 50%;
+  width: 50%;
+  margin: 0px 0px;
+}
+
+.LandingPage-title {
+  padding: 1%;
+  margin: 1%;
+  text-align: center;
+  /* font-family: 'Libre Baskerville', serif; */
+  /* font-size: 20px; */
+   color: white;
+   margin: 0px 0px;
+}
+
+.LandingPage-content {
+  margin: 0px 0px;
+ 
+  margin: 0px 0px;
+}
+
+.LandingPage-left {
+  text-align: center;
+  margin: 0px 0px;
+}
+
+.LandingPage-text {
+  /* font-family: 'Bree Serif', serif; */
+  /* font-size: 16px; */
+  margin: 0px 0px;
+}
+
+.LandingPage-button {
+  text-align: center;
+  font-size: 18px;
+  
+}

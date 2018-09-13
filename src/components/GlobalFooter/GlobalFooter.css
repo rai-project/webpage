@@ -1,8 +1,26 @@
 @import '~antd/dist/antd.css';
-.GlobalFooter-img {
-  width: 50%;
-  height: 50%;
-  padding: 5px;
+.GlobalFooter-block {
+  display: inline;
+  margin-left: 40px;
+  color: white;
+}
+
+.GlobalFooter-block-right {
+  display: inline;
+  margin-right: 40px;
+  color: white;
+}
+
+.C3SR-logo {
+  height: 60px;
+}
+
+.IBM-logo {
+  height: 20px;
+}
+
+.UIUC-logo {
+  height: 20px;
 }
 
 .GlobalFooter-text {

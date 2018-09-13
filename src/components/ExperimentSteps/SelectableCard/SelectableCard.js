@@ -1,6 +1,6 @@
 import '../ExperimentSteps.css';
 import React, { Component } from 'react';
-import { Card, Row, Tooltip } from 'antd';
+import { Card, Row, Tooltip, Icon } from 'antd';
 
 export default class SelectableCard extends Component {
   constructor(props) {
@@ -18,36 +18,39 @@ export default class SelectableCard extends Component {
   render() {
     var item = this.props.item;
 
-    if (this.props.tooltip) {
-      return(
-        <Tooltip placement="right" title={item.description}>
-          <Card
-            title={item.name}
-            hoverable
-            onClick={this.handleClick.bind(this)}
-            bordered={this.state.selected}
-            style={{height: this.props.height || '200px', borderColor: '#707070'}}
-          >
-            <div style={{textAlign: 'center'}}>
-              {this.props.content}
-            </div>
-          </Card>
-        </Tooltip>
-      )
-    } else {
-      return(
-        <Card
-          title={item.name}
-          hoverable
-          onClick={this.handleClick.bind(this)}
-          bordered={this.state.selected}
-          style={{height: this.props.height || '200px', borderColor: '#707070'}}
-        >
-          <div style={{textAlign: 'center'}}>
+    return(
+      <Card
+        hoverable
+        onClick={this.handleClick.bind(this)}
+        bordered={this.state.selected}
+        style={{height: this.props.height || '200px', borderColor: '#707070'}}
+      >
+        <div style={{paddingTop: "40px", paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px"}}>
+          <div style={{display: "inline-block"}}>
+            <h1>{item.name}</h1>
+          </div>
+          <div style={{display: "inline-block", float: "right"}}>
+            <Tooltip placement="right" title={item.description}>
+              <Icon type="info-circle" theme="outlined" />
+            </Tooltip>
+          </div>
+          <div>
             {this.props.content}
           </div>
-        </Card>
-      );
-    }
+
+          {/* <div style={{marginTop: "20px"}}>
+            Instances: 
+          </div>
+
+          <div style={{marginTop: "22px"}}>
+            Format: 
+          </div>
+
+          <div style={{marginTop: "22px"}}>
+            Default Task: 
+          </div> */}
+        </div>
+      </Card>
+    );
   }
 }

@@ -1,25 +1,27 @@
 import React from 'react';
-import LandingPage from '../routes/LandingPage'
+// import LandingPage from '../routes/LandingPage'
+import LandingPage from '../routes/LandingPage_1'
 import ExperimentPage from '../routes/ExperimentPage'
-import DeploymentPage from '../routes/DeploymentPage'
-import EvaluationPage from '../components/FunctionalOverview/Evaluation'
+import LogInPage from '../routes/LogInPage'
+import InitialSetupPage from '../routes/InitialSetupPage'
+
 
 const routes = [
   {
     "path": "/",
-    "compoment": LandingPage
+    "component": LandingPage
   },
   {
     "path": "/experiment",
-    "compoment": ExperimentPage
+    "component": ExperimentPage
   },
   {
-    "path": "/deployment",
-    "compoment": DeploymentPage
+    "path": "/login",
+    "component": LogInPage
   },
   {
-    "path": "/evaluation",
-    "compoment": EvaluationPage
+    "path": "/initsetup",
+    "component": InitialSetupPage
   }
 ]
 

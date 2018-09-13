@@ -1,12 +1,18 @@
 @import '~antd/dist/antd.css';
 .GlobalHeader-header {
-  background-color: #0db7c4;
-  height: 160px;
-  padding: 20px;
+  background-color: white/*#E8E9EB*/;
+  height: 60px;
+  padding-top: 20px;
 }
 
-.GlobalHeader-title {
-  text-align: center;
-  font-size: 4em;
-  color: white;
+.GlobalHeader-left-block {
+  float: left;
+  margin-left: 40px;
+  display: inline-block;
+}
+
+.GlobalHeader-right-block {
+  float: right;
+  margin-right: 40px;
+  display: inline-block;
 }

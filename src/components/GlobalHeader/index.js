@@ -2,56 +2,44 @@ import React, { Component } from 'react';
 import './GlobalHeader.css';
 import carmlImage from "../../resources/logo/carml_small.png";
 import { Layout, Menu, Dropdown, Icon, Row, Col } from 'antd';
-import {
-  BrowserRouter as ReactRouter,
-  Route,
-  Link
-} from 'react-router-dom'
+import { Link } from 'react-router-dom';
+import UserContext from '../../context/UserContext';
+import Section1BG from '../../resources/landingpage/assets/section1-background.jpg';
 const { Header } = Layout;
 
 
 export default class GlobalHeader extends Component {
+	renderUser(username) {
+		if (username == null) {
+			return(
+				<Link to="/login" style={{color: 'white'}}><Icon type="user" />Log In</Link>
+			);
+		} else {
+			return(
+				<Link to="/login" style={{color: 'white'}}><Icon type="user" />{username}</Link>
+			);
+		}
+	}
+
   render() {
 		return (
-			<Header style={{height: '160px', background: '#0db7c4'}}>
-			<div>
-				<div>
-					<header>
-						<h1 className="GlobalHeader-title">
-							<img src={carmlImage} style={{width: '5%', height: '5%'}}/>
-							MLModelScope
-						</h1>
-					</header>
-					<div>
-					<Row>
-						<Col span={14} />
-						<Col span={10}>
-							<Menu mode="horizontal" style={{ background: '#0db7c4', color: 'white' }}>
-								<Menu.Item key="home">
-									<Link to={"/"} style={{color: 'white'}}> <Icon type="home" /> Home </Link>
-								</Menu.Item>
-								<Menu.Item key="docs">
-									<Icon type="book" /> Docs
-								</Menu.Item>
-								<Menu.SubMenu title={<span><Icon type="bars" />Get Started</span>}>
-									<Menu.Item key="experiment">
-										<Link to="/experiment">Experiment</Link>
-									</Menu.Item>
-									<Menu.Item key="deployment">
-										<Link to="/deployment">Deployment</Link>
-									</Menu.Item>
-									<Menu.Item key="evaluation">
-										<Link to="/evaluation">Evaluation</Link>
-									</Menu.Item>
-								</Menu.SubMenu>
-								<Menu.Item key="login">
-									<Icon type="user" /> Log In
-								</Menu.Item>
-							</Menu>
-						</Col>
-						</Row>
-					</div>
-				</div>
+			<Header className="GlobalHeader-header">
+			<div className="GlobalHeader-left-block">
+				<Link to={"/"}>
+				<h2>ML <b>ModelScope</b></h2>
+				</Link>
+			</div>
+			<div className="GlobalHeader-left-block">
+				<Link to={"/Experiment"}><h3>Experiment Setup</h3></Link>
+			</div>
+			<div className="GlobalHeader-left-block">
+				<h3>About</h3>
+			</div>
+			<div className="GlobalHeader-right-block">
+				<h3>SIGN UP</h3>
+			</div>
+			<div className="GlobalHeader-right-block">
+				<h3>Login</h3>
 			</div>
       </Header>
 		);
