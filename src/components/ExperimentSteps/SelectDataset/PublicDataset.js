@@ -64,7 +64,7 @@ export default class PublicDataset extends Component {
           <Tag style={{marginLeft: "20px"}} closable>IMAGE CLASSIFICATION</Tag>
         </div>
 
-        <div style={{padding: '0' }}>
+        <div>
           <Row gutter={1}>
             {
               this.props.datasetOptions.map(

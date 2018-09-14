@@ -1,4 +1,4 @@
-import '../ExperimentSteps.css';
+import './SelectableCard';
 import React, { Component } from 'react';
 import { Card, Row, Tooltip, Icon } from 'antd';
 
@@ -25,17 +25,19 @@ export default class SelectableCard extends Component {
         bordered={this.state.selected}
         style={{height: this.props.height || '200px', borderColor: '#707070'}}
       >
-        <div style={{paddingTop: "40px", paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px"}}>
-          <div style={{display: "inline-block"}}>
-            <h1>{item.name}</h1>
-          </div>
-          <div style={{display: "inline-block", float: "right"}}>
-            <Tooltip placement="right" title={item.description}>
-              <Icon type="info-circle" theme="outlined" />
-            </Tooltip>
-          </div>
+        <div style={{position: "relative", paddingTop: "40px", paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px"}}>
           <div>
-            {this.props.content}
+            <div style={{position: "absolute", top: "0px", right: "0px"}}>
+              <Tooltip placement="right" title={item.description}>
+                <Icon type="info-circle" theme="outlined" />
+              </Tooltip>
+            </div>
+            <div>
+              <h1>{item.name}</h1>
+            </div>
+            <div>
+              {this.props.content}
+            </div>
           </div>
 
           {/* <div style={{marginTop: "20px"}}>

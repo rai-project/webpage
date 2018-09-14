@@ -2,29 +2,21 @@ import './ExperimentSetupSider.css';
 import React, { Component } from 'react';
 import { Layout, Menu, Icon, InputNumber } from 'antd';
 import PrimaryButton from '../../Buttons/PrimaryButton';
+
 const { Content, Sider } = Layout;
 
-const siderMenuNextStep = {
-  "dataset": "model",
-  "model": "framwork",
-  "framework": "machine",
-  "machine": "predict"
-};
+// const siderMenuNextStep = {
+//   "dataset": "model",
+//   "model": "framwork",
+//   "framework": "machine",
+//   "machine": "predict"
+// };
 
 export default class ExperimentSetupSider extends Component {
   constructor(props) {
     super(props);
     // this.handleClick = this.handleClick.bind(this);
-    this.state = {
-      current: "dataset"
-    };
   }
-
-  handleClick = (e) => {
-    this.setState({current: e.key});
-    // console.log(this.state);
-  }
-
 
   render() {
     return (
@@ -35,12 +27,12 @@ export default class ExperimentSetupSider extends Component {
 
         <Menu
           mode="inline"
-          defaultSelectedKeys="dataset"
+          selectedKeys={[this.props.current]}
           style={{ border: 1, backgroundColor: "#E8E9EB"}}
-          onClick={this.handleClick.bind(this)}
+          onClick={(e) => this.props.onPageChange(e.key)}
         >
           {
-            Object.keys(siderMenuNextStep).map(
+            Object.keys(this.props.siderMenuNextStep).map(
               (item) =>
               <Menu.Item key={item}
                 style={{ paddingTop: "30px", paddingBottom: "30px", paddingleft: "40px", height: "auto"}}> 
@@ -66,7 +58,10 @@ export default class ExperimentSetupSider extends Component {
         </div>
 
         <div style={{marginTop: "30px"}}>
-          <PrimaryButton style={{width: "100%"}} text={"Next Step: " + siderMenuNextStep[this.state.current].toUpperCase()}/>
+          <PrimaryButton
+            style={{width: "100%"}}
+            text={"Next Step: " + this.props.future.toUpperCase()}
+            onClick={() => this.props.onPageChange(this.props.future)}/>
         </div>
       </Sider>
     );
