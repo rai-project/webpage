@@ -2,6 +2,7 @@ import SelectableCard from '../SelectableCard/SelectableCard'
 import React, { Component } from 'react';
 import { Layout, Col, Row } from 'antd';
 import frameworks from '../../Frameworks/Frameworks';
+import { ExperimentContext } from '../../../context/ExperimentContext';
 const { Content } = Layout;
 
 export default class SelectFramework extends Component {
@@ -19,13 +20,18 @@ export default class SelectFramework extends Component {
                 frameworks.map(
                   (item, index) => 
                   <Col span={8} style={{padding: '10px'}}>
-                    <SelectableCard
-                      item={item}
-                      content={ "Descriptions" }
-                      tooltip={true}
-                      // onClick={() => this.props.onSelect('models', item.id)}
-                      // selected={this.props.selected[item.id]}
-                    />
+                    <ExperimentContext.Consumer>
+                      {
+                        (context) =>
+                          <SelectableCard
+                            item={item}
+                            content={ "Descriptions" }
+                            tooltip={true}
+                            onClick={() => context.addFramework(item.name, item.version)}
+                            // selected={this.props.selected[item.id]}
+                          />
+                      }
+                    </ExperimentContext.Consumer>
                   </Col>
                 )
               }

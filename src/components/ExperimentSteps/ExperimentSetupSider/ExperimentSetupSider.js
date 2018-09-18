@@ -1,16 +1,20 @@
 import './ExperimentSetupSider.css';
 import React, { Component } from 'react';
-import { Layout, Menu, Icon, InputNumber } from 'antd';
+import { Layout, Menu, Icon, InputNumber, Select } from 'antd';
 import PrimaryButton from '../../Buttons/PrimaryButton';
+import { ExperimentContext } from '../../../context/ExperimentContext';
 
 const { Content, Sider } = Layout;
+const Option = Select.Option;
 
-// const siderMenuNextStep = {
-//   "dataset": "model",
-//   "model": "framwork",
-//   "framework": "machine",
-//   "machine": "predict"
-// };
+const trace_options = [
+  { key: 0, text: "None", value: "NO_TRACE" },
+  { key: 1, text: "Step", value: "STEP_TRACE" },
+  { key: 2, text: "Framework", value: "FRAMEWORK_TRACE" },
+  { key: 3, text: "CPU", value: "CPU_ONLY_TRACE" },
+  { key: 4, text: "Hardware", value: "HARDWARE_TRACE" },
+  { key: 5, text: "Full", value: "FULL_TRACE" }
+];
 
 export default class ExperimentSetupSider extends Component {
   constructor(props) {
@@ -53,10 +57,28 @@ export default class ExperimentSetupSider extends Component {
         <div style={{paddingLeft: "24px", marginTop: "30px"}}>
           <div style={{display: "inline-block"}}>Trace Level: </div>
           <div style={{marginLeft: "40px", display: "inline-block"}}>
-            <InputNumber min={1} max={10} defaultValue={3}/>
+            <ExperimentContext.Consumer>
+              {(context) =>
+                <Select
+                  showSearch
+                  style={{ width: 100 }}
+                  defaultValue={trace_options[0].value}
+                  optionFilterProp="children"
+                  onChange={(value) => context.changeTraceLevel(value)}
+                  filterOption={(input, option) => option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0}
+                >
+                  {
+                    trace_options.map(
+                      (option) =>
+                        <Option value={option.value}>{option.text}</Option>
+                    )
+                  }
+                </Select>
+              }
+            </ExperimentContext.Consumer>
           </div>
         </div>
-
+ 
         <div style={{marginTop: "30px"}}>
           <PrimaryButton
             style={{width: "100%"}}

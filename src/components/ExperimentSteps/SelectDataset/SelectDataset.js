@@ -24,7 +24,7 @@ export default class ExperimentPage extends Component {
     super(props);
     this.handleSelect = this.handleSelect.bind(this);
     this.state = {
-      dataSource: 0,
+      dataSource: 1,
       current: null,
       displayInfo: false,
       predict: false,

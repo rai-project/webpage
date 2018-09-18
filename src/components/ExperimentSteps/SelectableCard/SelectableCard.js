@@ -28,7 +28,7 @@ export default class SelectableCard extends Component {
         <div style={{position: "relative", paddingTop: "40px", paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px"}}>
           <div>
             <div style={{position: "absolute", top: "0px", right: "0px"}}>
-              <Tooltip placement="right" title={item.description}>
+              <Tooltip placement="right" title={this.props.description}>
                 <Icon type="info-circle" theme="outlined" />
               </Tooltip>
             </div>

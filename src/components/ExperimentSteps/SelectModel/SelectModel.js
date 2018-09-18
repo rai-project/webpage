@@ -1,13 +1,19 @@
 import SelectableCard from '../SelectableCard/SelectableCard'
 import React, { Component } from 'react';
 import { Col, Row, Select, Input, Button, Icon, Layout } from 'antd';
-import models from '../../Models/Models';
+import models, { modelsKey } from '../../Models/Models';
+import { ExperimentContext } from '../../../context/ExperimentContext';
 const Option = Select.Option;
 const Search = Input.Search;
 const { Content } = Layout;
 
 
 export default class SelectModel extends Component {
+  handleSelect(context, item) {
+    context.addModel(item.model.name, item.model.version);
+    console.log(context);
+  }
+
   render() {
     return(
       <Layout style={{background: "#E8E9EB", margin: '0px 20px 120px 20px' }}>
@@ -19,17 +25,22 @@ export default class SelectModel extends Component {
           <div>
             <Row gutter={16}>
               {
-                models.map(
-                  (item, index) => 
+                modelsKey.map(
+                  (key) => 
                   <Col span={8} style={{padding: '10px'}}>
-                    <SelectableCard
-                      item={item}
-                      content={item.description.split(" ").slice(0,10).join(" ") + " ..."}
-                      height="250px"
-                      tooltip={true}
-                      // onClick={() => this.props.onSelect('models', item.id)}
-                      // selected={this.props.selected[item.id]}
-                    />
+                    <ExperimentContext.Consumer>
+                      {(context) =>
+                        <SelectableCard
+                          item={models[key].model}
+                          content={models[key].description.split(" ").slice(0,10).join(" ") + " ..."}
+                          description={models[key].description}
+                          height="300px"
+                          tooltip={true}
+                          onClick={() => this.handleSelect(context, models[key])}
+                          // selected={this.props.selected[item.id]}
+                        />
+                      }
+                    </ExperimentContext.Consumer>
                   </Col>
                 )
               }

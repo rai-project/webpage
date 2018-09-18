@@ -12,4 +12,4 @@ var response = sortBy(json['responses'][0]['features'], ['probability']).reverse
 response.forEach(function(item, index) {
   item['name'] = processName(item['name']);
 });
-export default response.slice(0, 5);
+export default response.slice(0, 10);

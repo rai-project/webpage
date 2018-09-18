@@ -4,6 +4,8 @@ import SelectDataset from '../components/ExperimentSteps/SelectDataset/SelectDat
 import ExperimentSetupSider from '../components/ExperimentSteps/ExperimentSetupSider/ExperimentSetupSider';
 import SelectModel from '../components/ExperimentSteps/SelectModel/SelectModel';
 import SelectFramework from '../components/ExperimentSteps/SelectFramework/SelectFramework';
+import InferenceResult from '../components/InferenceResult/InferenceResult';
+import ExperimentProvider, { ExperimentContext } from '../context/ExperimentContext';
 
 const { SubMenu } = Menu;
 const { Content, Sider } = Layout;
@@ -29,7 +31,8 @@ export default class ExperimentPage extends Component {
     if (s !== "predict") {
       this.setState({current: s});
       this.setState({future: siderMenuNextStep[s]})
-      console.log(this.state);
+    } else {
+      this.setState({current: s});
     }
   }
 
@@ -45,18 +48,23 @@ export default class ExperimentPage extends Component {
       case "framework":
         currentPage = <SelectFramework />;
         break;
+      case "predict":
+        currentPage = <InferenceResult />;
+        break;
     }
 
     return (
       <Layout style={{background: "#E8E9EB"}}>
-        <ExperimentSetupSider
-          onPageChange={this.handleChangePage}
-          current={this.state.current}
-          future={this.state.future}
-          siderMenuNextStep={siderMenuNextStep}
-        />
+        <ExperimentProvider>
+          <ExperimentSetupSider
+            onPageChange={this.handleChangePage}
+            current={this.state.current}
+            future={this.state.future}
+            siderMenuNextStep={siderMenuNextStep}
+          />
 
-        {currentPage}
+          {currentPage}
+        </ExperimentProvider>
       </Layout>
     );
   }

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Card, Col, Row, Select, Input, Button, Icon, Dropdown, Menu, Tag } from 'antd';
+import { Card, Col, Row, Select, Input, Button, Icon, Dropdown, Menu, Tag, Spin } from 'antd';
 import SelectableCard from '../SelectableCard/SelectableCard'
 const { SubMenu } = Menu;
 const Option = Select.Option;
@@ -64,6 +64,7 @@ export default class PublicDataset extends Component {
           <Tag style={{marginLeft: "20px"}} closable>IMAGE CLASSIFICATION</Tag>
         </div>
 
+        <Spin tip="Comming Soon...">
         <div>
           <Row gutter={1}>
             {
@@ -82,6 +83,7 @@ export default class PublicDataset extends Component {
             }
           </Row>
         </div>
+        </Spin>
       </div>
     );
   }
