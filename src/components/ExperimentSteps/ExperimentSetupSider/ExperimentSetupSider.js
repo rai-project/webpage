@@ -1,6 +1,6 @@
 import './ExperimentSetupSider.css';
 import React, { Component } from 'react';
-import { Layout, Menu, Icon, InputNumber, Select } from 'antd';
+import { Layout, Menu, Icon, InputNumber, Select, Tag } from 'antd';
 import PrimaryButton from '../../Buttons/PrimaryButton';
 import { ExperimentContext } from '../../../context/ExperimentContext';
 
@@ -22,6 +22,11 @@ export default class ExperimentSetupSider extends Component {
     // this.handleClick = this.handleClick.bind(this);
   }
 
+  handleClose(context, index) {
+    context.removeModel(index);
+    console.log(context);
+  }
+
   render() {
     return (
       <Sider width="300" style={{ width: '30%', background: '#E8E9EB' }}>
@@ -29,23 +34,56 @@ export default class ExperimentSetupSider extends Component {
           <h3 style={{color: "white"}}>EXPERIMENT SETUP</h3>
         </div>
 
-        <Menu
-          mode="inline"
-          selectedKeys={[this.props.current]}
-          style={{ border: 1, backgroundColor: "#E8E9EB"}}
-          onClick={(e) => this.props.onPageChange(e.key)}
-        >
-          {
-            Object.keys(this.props.siderMenuNextStep).map(
-              (item) =>
-              <Menu.Item key={item}
-                style={{ paddingTop: "30px", paddingBottom: "30px", paddingleft: "40px", height: "auto"}}> 
-                <div>{item.toUpperCase()}</div>
-                <div># {item} available</div>
+        <ExperimentContext.Consumer>
+          {(context) => 
+            <Menu
+              mode="inline"
+              selectedKeys={[this.props.current]}
+              style={{ border: 1, backgroundColor: "#E8E9EB"}}
+              onClick={(e) => this.props.onPageChange(e.key)}
+            >
+              <Menu.Item key="dataset"
+                style={{ paddingTop: "30px", paddingBottom: "30px", paddingleft: "40px", minHeight: "60px", height: "auto"}}>
+                <div>DATASETS</div>
+                {/* <div># {item} available</div> */}
+                {context.imageUrls.length != 0 && <Tag closable>Import from URLs</Tag>}
               </Menu.Item>
-            )
+
+              <Menu.Item key="model"
+                style={{ paddingTop: "30px", paddingBottom: "30px", paddingleft: "40px", minHeight: "60px", height: "auto"}}>
+                <div>MODELS</div>
+                {/* <div># {item} available</div> */}
+                {context.models.map((model, index) => 
+                  <div><Tag closable style={{zIndex: 1}} onClose={() => this.handleClose(context, index)}>{model.name + " V" + model.version}</Tag></div>
+                )}
+              </Menu.Item>
+
+              <Menu.Item key="framework"
+                style={{ paddingTop: "30px", paddingBottom: "30px", paddingleft: "40px", minHeight: "60px", height: "auto"}}>
+                <div>FRAMEWORKS</div>
+                {context.frameworks.map((framework, index) =>
+                  <div><Tag closable style={{zIndex: 1}} onClose={() => context.removeFramework(index)}>{framework.name + " V" + framework.version}</Tag></div>
+                )}
+                {/* <div># {item} available</div> */}
+              </Menu.Item>
+
+              <Menu.Item key="machine"
+                style={{ paddingTop: "30px", paddingBottom: "30px", paddingleft: "40px", minHeight: "60px", height: "auto"}}>
+                <div>MACHINES</div>
+                {/* <div># {item} available</div> */}
+              </Menu.Item>
+              {/* {
+                Object.keys(this.props.siderMenuNextStep).map(
+                  (item) =>
+                  <Menu.Item key={item} className="Experiment-setup-sider-bar">
+                    <div>{item.toUpperCase()}</div>
+                    <div># {item} available</div>
+                  </Menu.Item>
+                )
+              } */}
+            </Menu>
           }
-        </Menu>
+        </ExperimentContext.Consumer>
 
         <div style={{paddingLeft: "24px"}}>
           <div style={{display: "inline-block"}}>Batch Size: </div>
