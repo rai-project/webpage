@@ -1,13 +1,8 @@
 import { Component } from 'react';
-import axios from "axios";
-
-const instance = axios.create({
-  baseURL: 'http://mlmodelscope.org:80/api/',
-})
-instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlencoded';
+import Client from './Client';
 
 export function getModels() {
-  axios.get('http://mlmodelscope.org:80/api/registry/models/manifest')
+  Client.get('registry/models/manifest')
   .then(function (response) {
     console.log(response);
     return(response.data);
@@ -19,7 +14,7 @@ export function getModels() {
 }
 
 export function open(params) {
-  instance.post('http://mlmodelscope.org/api/predict/open', params)
+  Client.post('predict/open', params)
   .then(function (response) {
     console.log(response);
     return(response.data);
