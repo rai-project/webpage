@@ -70,7 +70,7 @@ export function Close(params) {
     throw new Error("Missing required  parameter: body");
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -127,7 +127,7 @@ export function Dataset(params) {
     throw new Error("Missing required  parameter: body");
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -184,7 +184,7 @@ export function Images(params) {
     throw new Error("Missing required  parameter: body");
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -243,7 +243,7 @@ export function Open(params) {
     throw new Error("Missing required  parameter: body");
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -300,7 +300,7 @@ export function Reset(params) {
     throw new Error("Missing required  parameter: body");
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -357,7 +357,7 @@ export function DatasetStream(params) {
     throw new Error("Missing required  parameter: body");
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -414,7 +414,7 @@ export function ImagesStream(params) {
     throw new Error("Missing required  parameter: body");
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -471,7 +471,7 @@ export function URLsStream(params) {
     throw new Error("Missing required  parameter: body");
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -528,7 +528,7 @@ export function URLs(params) {
     throw new Error("Missing required  parameter: body");
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -586,7 +586,7 @@ export function FrameworkAgents(params) {
     queryParameters["framework_version"] = parameters["frameworkVersion"];
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -644,7 +644,7 @@ export function FrameworkManifests(params) {
     queryParameters["framework_version"] = parameters["frameworkVersion"];
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -712,7 +712,7 @@ export function ModelAgents(params) {
     queryParameters["model_version"] = parameters["modelVersion"];
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
@@ -780,7 +780,7 @@ export function ModelManifests(params) {
     queryParameters["model_version"] = parameters["modelVersion"];
   }
 
-  // queryParameters = mergeQueryParams(parameters, queryParameters);
+  queryParameters = mergeQueryParams(parameters, queryParameters);
 
   const queryParams =
     queryParameters && Object.keys(queryParameters).length
