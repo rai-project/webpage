@@ -7,10 +7,12 @@ export default class ExperimentProvider extends Component {
     super(props);
     this.state = {
       traceLevel: "NO_TRACE",
+      isPredicting: true,
       imageUrls: [],
       models: [],
       frameworks: [],
       machines: [],
+      result: null,
       addUrl: (url) => this.setState({
         imageUrls: this.state.imageUrls.concat(url)
       }),
@@ -31,6 +33,15 @@ export default class ExperimentProvider extends Component {
       changeTraceLevel: (newLevel) => this.setState({
         traceLevel: newLevel
       }),
+      startPredicting: () => this.setState({
+        isPredicting: true
+      }),
+      finishPredicting: () => this.setState({
+        isPredicting: false
+      }),
+      setPredictResult: (result) => this.setState({
+        result: result
+      })
     }
   }
 

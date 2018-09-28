@@ -3,6 +3,7 @@ import React, { Component } from 'react';
 import { Layout, Menu, Icon, InputNumber, Select, Tag } from 'antd';
 import PrimaryButton from '../../Buttons/PrimaryButton';
 import { ExperimentContext } from '../../../context/ExperimentContext';
+import predict from '../../../helpers/predict';
 
 const { Content, Sider } = Layout;
 const Option = Select.Option;
@@ -27,6 +28,15 @@ export default class ExperimentSetupSider extends Component {
     console.log(context);
   }
 
+  handleClick(context, key) {
+    if (key == 'predict') {
+      predict(context.imageUrls, context.models, context.frameworks)
+      .then((result) => context.setPredictResult(result));
+      console.log(context);
+    }
+    this.props.onPageChange(key);
+  }
+
   render() {
     return (
       <Sider width="300" style={{ width: '30%', background: '#E8E9EB' }}>
@@ -40,7 +50,7 @@ export default class ExperimentSetupSider extends Component {
               mode="inline"
               selectedKeys={[this.props.current]}
               style={{ border: 1, backgroundColor: "#E8E9EB"}}
-              onClick={(e) => this.props.onPageChange(e.key)}
+              onClick={(e) => this.handleClick(context, e.key)}
             >
               <Menu.Item key="dataset"
                 style={{ paddingTop: "30px", paddingBottom: "30px", paddingleft: "40px", minHeight: "60px", height: "auto"}}>
@@ -118,10 +128,14 @@ export default class ExperimentSetupSider extends Component {
         </div>
  
         <div style={{marginTop: "30px"}}>
-          <PrimaryButton
-            style={{width: "100%"}}
-            text={"Next Step: " + this.props.future.toUpperCase()}
-            onClick={() => this.props.onPageChange(this.props.future)}/>
+        <ExperimentContext.Consumer>
+          {(context) => 
+            <PrimaryButton
+              style={{width: "100%"}}
+              text={"Next Step: " + this.props.future.toUpperCase()}
+              onClick={() => this.handleClick(context, this.props.future)}/>
+          }
+        </ExperimentContext.Consumer>
         </div>
       </Sider>
     );
