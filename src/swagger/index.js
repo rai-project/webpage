@@ -13,8 +13,6 @@ import {
 
 const baseURL = process.env.REACT_APP_NETLIFY_API_URL || ""
 
-console.log(baseURL)
-
 function serializeQueryParams(parameters) {
     let str = [];
     for (let p in parameters) {
