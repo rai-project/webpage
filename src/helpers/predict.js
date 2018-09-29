@@ -70,8 +70,9 @@ export default function predict(imageUrls, models, frameworks) {
           console.log("URLs");
           console.log({ urls: imageUrls });
           predictor = response;
-          // spanHeaders = makeSpanHeaders(headers);
+          spanHeaders = predictor.headers;
           return URLs({
+            headers: spanHeaders,
             body: {
               predictor,
               urls: imageUrls.map(url => {
@@ -87,6 +88,7 @@ export default function predict(imageUrls, models, frameworks) {
           return {
             model: model,
             framework: framework,
+            traceId: spanHeaders["x-b3-traceid"],
             response: response.responses
           };
         }),

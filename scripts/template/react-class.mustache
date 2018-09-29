@@ -4,7 +4,7 @@
 "use strict"
 
 import uuid from "uuid/v4";
-import { has } from "lodash";
+import { has, includes, assign } from "lodash";
 
 function serializeQueryParams(parameters) {
   let str = [];
@@ -25,6 +25,26 @@ function mergeQueryParams(parameters, queryParameters) {
       });
   }
   return queryParameters;
+}
+
+const propagationHeaders = [
+    "x-request-id",
+    "x-powered-by",
+    "x-b3-flags",
+    "x-b3-traceid",
+    "x-b3-spanid",
+    "x-b3-sampled"
+]
+
+
+function processHeaders(headers) {
+    let res = {};
+    for(let key of headers.keys()) {
+        if (includes(propagationHeaders, key)) {
+            res[key] = headers.get(key)
+        }
+    }
+    return {headers: res};
 }
 
 {{#isSecure}}

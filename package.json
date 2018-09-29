@@ -7,6 +7,7 @@
     "axios": "^0.18.0",
     "babel-plugin-import": "^1.9.1",
     "bizcharts": "^3.2.2",
+    "idx": "^2.4.0",
     "json-loader": "^0.5.7",
     "lodash": "^4.17.11",
     "react": "^16.5.2",

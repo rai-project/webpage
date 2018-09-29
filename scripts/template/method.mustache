@@ -116,6 +116,13 @@ export function {{&methodName}}(params){
         method: '{{method}}',
         headers,
         body: JSON.stringify(body),
-      }).then(response => response.json());
+     }
+    ).then(response => 
+        response.json().then(json =>
+            assign(
+                processHeaders(response.headers),
+                json
+            )
+        ));
  };
 
