@@ -2,3 +2,4 @@
 /*
   X-Frame-Options: allow-from https://carml.org
   X-XSS-Protection: 1; mode=block
+  Referrer-Policy: origin-when-cross-origin
