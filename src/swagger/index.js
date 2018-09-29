@@ -86,13 +86,6 @@ export function Close(params) {
         headers["Content-Type"] = "application/json; charset=utf-8";
     }
 
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
-    }
-
     let parameters = params;
 
     if (parameters === undefined) {
@@ -167,13 +160,6 @@ export function Dataset(params) {
         headers["Content-Type"] = "application/json; charset=utf-8";
     }
 
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
-    }
-
     let parameters = params;
 
     if (parameters === undefined) {
@@ -246,13 +232,6 @@ export function Images(params) {
 
     if (!has(headers, "Content-Type")) {
         headers["Content-Type"] = "application/json; charset=utf-8";
-    }
-
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
     }
 
     let parameters = params;
@@ -331,13 +310,6 @@ export function Open(params) {
         headers["Content-Type"] = "application/json; charset=utf-8";
     }
 
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
-    }
-
     let parameters = params;
 
     if (parameters === undefined) {
@@ -410,13 +382,6 @@ export function Reset(params) {
 
     if (!has(headers, "Content-Type")) {
         headers["Content-Type"] = "application/json; charset=utf-8";
-    }
-
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
     }
 
     let parameters = params;
@@ -493,13 +458,6 @@ export function DatasetStream(params) {
         headers["Content-Type"] = "application/json; charset=utf-8";
     }
 
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
-    }
-
     let parameters = params;
 
     if (parameters === undefined) {
@@ -572,13 +530,6 @@ export function ImagesStream(params) {
 
     if (!has(headers, "Content-Type")) {
         headers["Content-Type"] = "application/json; charset=utf-8";
-    }
-
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
     }
 
     let parameters = params;
@@ -655,13 +606,6 @@ export function URLsStream(params) {
         headers["Content-Type"] = "application/json; charset=utf-8";
     }
 
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
-    }
-
     let parameters = params;
 
     if (parameters === undefined) {
@@ -734,13 +678,6 @@ export function URLs(params) {
 
     if (!has(headers, "Content-Type")) {
         headers["Content-Type"] = "application/json; charset=utf-8";
-    }
-
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
     }
 
     let parameters = params;
@@ -818,13 +755,6 @@ export function FrameworkAgents(params) {
         headers["Content-Type"] = "application/json; charset=utf-8";
     }
 
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
-    }
-
     let parameters = params;
 
     if (parameters === undefined) {
@@ -898,13 +828,6 @@ export function FrameworkManifests(params) {
 
     if (!has(headers, "Content-Type")) {
         headers["Content-Type"] = "application/json; charset=utf-8";
-    }
-
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
     }
 
     let parameters = params;
@@ -982,13 +905,6 @@ export function ModelAgents(params) {
 
     if (!has(headers, "Content-Type")) {
         headers["Content-Type"] = "application/json; charset=utf-8";
-    }
-
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
     }
 
     let parameters = params;
@@ -1074,13 +990,6 @@ export function ModelManifests(params) {
 
     if (!has(headers, "Content-Type")) {
         headers["Content-Type"] = "application/json; charset=utf-8";
-    }
-
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
     }
 
     let parameters = params;

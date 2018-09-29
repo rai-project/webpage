@@ -30,13 +30,6 @@ export function {{&methodName}}(params){
         headers["Content-Type"] =  "application/json; charset=utf-8";
     }
 
-    //headers['Access-Control-Allow-Credentials']  = true;
-    //headers['Access-Control-Allow-Origin'] = true
-
-    if (baseURL != "") {
-        headers["Access-Control-Allow-Origin"] = baseURL
-    }
-
 
     let parameters = params;
 
