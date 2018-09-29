@@ -1,0 +1,4 @@
+# see https://www.netlify.com/docs/headers-and-basic-auth/
+/*
+  X-Frame-Options: allow-from https://carml.org
+  X-XSS-Protection: 1; mode=block
