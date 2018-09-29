@@ -11,6 +11,8 @@ import {
     assign
 } from "lodash";
 
+const baseURL = process.env.REACT_APP_NETLIFY_PUBLIC_URL || ""
+
 function serializeQueryParams(parameters) {
     let str = [];
     for (let p in parameters) {
@@ -61,7 +63,7 @@ function processHeaders(headers) {
  * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function Close(params) {
-    let urlPath = '/api/predict/close';
+    let urlPath = baseURL + '/api/predict/close';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -124,7 +126,7 @@ export function Close(params) {
  * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function Dataset(params) {
-    let urlPath = '/api/predict/dataset';
+    let urlPath = baseURL + '/api/predict/dataset';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -187,7 +189,7 @@ export function Dataset(params) {
  * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function Images(params) {
-    let urlPath = '/api/predict/images';
+    let urlPath = baseURL + '/api/predict/images';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -252,7 +254,7 @@ requests.
      * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function Open(params) {
-    let urlPath = '/api/predict/open';
+    let urlPath = baseURL + '/api/predict/open';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -315,7 +317,7 @@ export function Open(params) {
  * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function Reset(params) {
-    let urlPath = '/api/predict/reset';
+    let urlPath = baseURL + '/api/predict/reset';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -378,7 +380,7 @@ export function Reset(params) {
  * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function DatasetStream(params) {
-    let urlPath = '/api/predict/stream/dataset';
+    let urlPath = baseURL + '/api/predict/stream/dataset';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -441,7 +443,7 @@ export function DatasetStream(params) {
  * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function ImagesStream(params) {
-    let urlPath = '/api/predict/stream/images';
+    let urlPath = baseURL + '/api/predict/stream/images';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -504,7 +506,7 @@ export function ImagesStream(params) {
  * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function URLsStream(params) {
-    let urlPath = '/api/predict/stream/urls';
+    let urlPath = baseURL + '/api/predict/stream/urls';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -567,7 +569,7 @@ export function URLsStream(params) {
  * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function URLs(params) {
-    let urlPath = '/api/predict/urls';
+    let urlPath = baseURL + '/api/predict/urls';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -631,7 +633,7 @@ export function URLs(params) {
  * @param {string} parameters.frameworkVersion - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function FrameworkAgents(params) {
-    let urlPath = '/api/registry/frameworks/agent';
+    let urlPath = baseURL + '/api/registry/frameworks/agent';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -695,7 +697,7 @@ export function FrameworkAgents(params) {
  * @param {string} parameters.frameworkVersion - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function FrameworkManifests(params) {
-    let urlPath = '/api/registry/frameworks/manifest';
+    let urlPath = baseURL + '/api/registry/frameworks/manifest';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -761,7 +763,7 @@ export function FrameworkManifests(params) {
  * @param {string} parameters.modelVersion - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function ModelAgents(params) {
-    let urlPath = '/api/registry/models/agent';
+    let urlPath = baseURL + '/api/registry/models/agent';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},
@@ -835,7 +837,7 @@ export function ModelAgents(params) {
  * @param {string} parameters.modelVersion - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
  */
 export function ModelManifests(params) {
-    let urlPath = '/api/registry/models/manifest';
+    let urlPath = baseURL + '/api/registry/models/manifest';
     let body = {},
         queryParameters = {},
         headers = params.headers || {},

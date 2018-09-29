@@ -72,6 +72,18 @@ class InferenceResult extends Component {
                           result.framework.version}
                       </Tag>
                     </h1>
+                    {result.traceId ? (
+                      <h1 style={{ textAlign: "center" }}>
+                        <a
+                          href={`http://trace.mlmodelscope.org:16686/trace/${
+                            result.traceId
+                          }`}
+                        >
+                          {" "}
+                          Trace{" "}
+                        </a>
+                      </h1>
+                    ) : null}
                     <Table
                       dataSource={this.processResponseFeatures(
                         result.response[index].features

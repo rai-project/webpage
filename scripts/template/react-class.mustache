@@ -6,6 +6,8 @@
 import uuid from "uuid/v4";
 import { has, includes, assign } from "lodash";
 
+const baseURL = process.env.REACT_APP_NETLIFY_PUBLIC_URL || ""
+
 function serializeQueryParams(parameters) {
   let str = [];
   for (let p in parameters) {
