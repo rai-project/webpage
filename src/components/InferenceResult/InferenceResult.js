@@ -1,6 +1,7 @@
 import "./InferenceResult.css";
 import React, { Component } from "react";
 import _ from "lodash";
+import Iframe from "react-iframe";
 import { Table, Layout, Tag, Spin } from "antd";
 import { ExperimentContext } from "../../context/ExperimentContext";
 
@@ -61,46 +62,49 @@ class InferenceResult extends Component {
                 src={url}
                 style={{ width: "60%", marginLeft: "20%", marginRight: "20%" }}
               />
-              {this.props.context.result.map(result => (
-                <div>
-                  <div style={{ marginTop: "40px" }}>
-                    <h1 style={{ textAlign: "center" }}>
-                      {result.model.name + " V" + result.model.version}
-                      <Tag style={{ marginLeft: "20px" }} color="#E84A27">
-                        {result.framework.name +
-                          " V" +
-                          result.framework.version}
-                      </Tag>
-                    </h1>
-                    {result.traceId ? (
+              {this.props.context.result.map(result => {
+                const traceURL = result.traceId
+                  ? `http://trace.mlmodelscope.org:16686/trace/${
+                      result.traceId
+                    }`
+                  : null;
+                return (
+                  <div>
+                    <div style={{ marginTop: "40px" }}>
                       <h1 style={{ textAlign: "center" }}>
-                        <a
-                          href={`http://trace.mlmodelscope.org:16686/trace/${
-                            result.traceId
-                          }`}
-                        >
-                          {" "}
-                          Trace{" "}
-                        </a>
+                        {result.model.name + " V" + result.model.version}
+                        <Tag style={{ marginLeft: "20px" }} color="#E84A27">
+                          {result.framework.name +
+                            " V" +
+                            result.framework.version}
+                        </Tag>
                       </h1>
-                    ) : null}
-                    <Table
-                      dataSource={this.processResponseFeatures(
-                        result.response[index].features
-                      )}
-                      columns={responseHeader}
-                      showHeader={true}
-                      pagination={false}
-                      style={{
-                        width: "60%",
-                        marginLeft: "20%",
-                        marginRight: "20%",
-                        marginTop: "20px"
-                      }}
-                    />
+                      <Table
+                        dataSource={this.processResponseFeatures(
+                          result.response[index].features
+                        )}
+                        columns={responseHeader}
+                        showHeader={true}
+                        pagination={false}
+                        style={{
+                          width: "60%",
+                          marginLeft: "20%",
+                          marginRight: "20%",
+                          marginTop: "20px"
+                        }}
+                      />
+                      {result.traceId ? (
+                        <div>
+                          <h1 style={{ textAlign: "center" }}>
+                            <a href={traceURL}> Trace </a>
+                          </h1>
+                          <Iframe url={traceURL} />
+                        </div>
+                      ) : null}
+                    </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           ))}
         </div>
