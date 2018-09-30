@@ -6,6 +6,7 @@ import SelectDataset from "../components/ExperimentSteps/SelectDataset/SelectDat
 import ExperimentSetupSider from "../components/ExperimentSteps/ExperimentSetupSider/ExperimentSetupSider";
 import SelectModel from "../components/ExperimentSteps/SelectModel/SelectModel";
 import SelectFramework from "../components/ExperimentSteps/SelectFramework/SelectFramework";
+import SelectMachine from "../components/ExperimentSteps/SelectMachine/SelectMachine";
 import InferenceResult from "../components/InferenceResult/InferenceResult";
 import ExperimentProvider from "../context/ExperimentContext";
 
@@ -46,6 +47,9 @@ export default class ExperimentPage extends Component {
         break;
       case "framework":
         currentPage = <SelectFramework />;
+        break;
+      case "machine":
+        currentPage = <SelectMachine />
         break;
       case "predict":
         currentPage = <InferenceResult />;

@@ -12,25 +12,31 @@ export default class ImportImgFromURL extends Component {
   }
 
   render() {
-    return(
-      <div style={{marginTop: "40px"}}>
+    return (
+      <div style={{ marginTop: "40px" }}>
 
         <ExperimentContext.Consumer>
           {(context) =>
             <Input
-              addonAfter={<Icon type="plus" />}
+              id="urlInput"
+              addonAfter={
+                <Icon
+                  type="plus"
+                  onClick={() => context.addUrl(document.getElementById("urlInput").value)}
+                />
+              }
               defaultValue="http://ww4.hdnux.com/photos/41/15/35/8705883/4/920x920.jpg"
               onPressEnter={e => context.addUrl(e.target.value)}
             />
           }
         </ExperimentContext.Consumer>
         <div>
-        <ExperimentContext.Consumer>
-          {(context) => context.imageUrls.map(
-            (url) =>
-            <div style={{width: "100%", textAlign: "center"}}><a>{url}</a></div>
-          )}
-        </ExperimentContext.Consumer>
+          <ExperimentContext.Consumer>
+            {(context) => context.imageUrls.map(
+              (url) =>
+                <div style={{ width: "100%", textAlign: "center" }}><a>{url}</a></div>
+            )}
+          </ExperimentContext.Consumer>
         </div>
       </div>
     );
