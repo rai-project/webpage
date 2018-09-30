@@ -51,60 +51,71 @@ class InferenceResult extends Component {
       predictContent = (
         <div>
           {this.props.context.imageUrls.map((url, index) => (
-            <div
-              style={{
-                marginTop: "40px",
-                marginLeft: "20%",
-                marginRight: "20%"
-              }}
-            >
-              <img
-                src={url}
-                style={{ width: "60%", marginLeft: "20%", marginRight: "20%" }}
-              />
-              {this.props.context.result.map(result => {
-                const traceURL = result.traceId
-                  ? `http://trace.mlmodelscope.org:16686/trace/${
-                      result.traceId
-                    }`
-                  : null;
-                return (
-                  <div>
-                    <div style={{ marginTop: "40px" }}>
-                      <h1 style={{ textAlign: "center" }}>
-                        {result.model.name + " V" + result.model.version}
-                        <Tag style={{ marginLeft: "20px" }} color="#E84A27">
-                          {result.framework.name +
-                            " V" +
-                            result.framework.version}
-                        </Tag>
-                      </h1>
-                      <Table
-                        dataSource={this.processResponseFeatures(
-                          result.response[index].features
-                        )}
-                        columns={responseHeader}
-                        showHeader={true}
-                        pagination={false}
+            <div>
+
+              <div
+                style={{
+                  marginTop: "40px",
+                  marginLeft: "20%",
+                  marginRight: "20%"
+                }}
+              >
+                <img
+                  src={url}
+                  style={{ width: "60%", marginLeft: "20%", marginRight: "20%" }}
+                />
+              </div>
+
+                {this.props.context.result.map(result => {
+                  const traceURL = result.traceId
+                    ? `http://trace.mlmodelscope.org:16686/trace/${
+                        result.traceId
+                      }`
+                    : null;
+                  return (
+                    <div>
+                      <div
                         style={{
-                          width: "60%",
+                          marginTop: "40px",
                           marginLeft: "20%",
-                          marginRight: "20%",
-                          marginTop: "20px"
+                          marginRight: "20%"
                         }}
-                      />
+                      >
+                        <h1 style={{ textAlign: "center" }}>
+                          {result.model.name + " V" + result.model.version}
+                          <Tag style={{ marginLeft: "20px" }} color="#E84A27">
+                            {result.framework.name +
+                              " V" +
+                              result.framework.version}
+                          </Tag>
+                        </h1>
+                        <Table
+                          dataSource={this.processResponseFeatures(
+                            result.response[index].features
+                          )}
+                          columns={responseHeader}
+                          showHeader={true}
+                          pagination={false}
+                          style={{
+                            width: "60%",
+                            marginLeft: "20%",
+                            marginRight: "20%",
+                            marginTop: "20px"
+                          }}
+                        />
+                      </div>
+
                       {result.traceId ? (
                         <div>
                           <h1 style={{ textAlign: "center" }}>
                             <a href={traceURL}> Trace </a>
                           </h1>
-                          <Iframe url={traceURL} />
+                          <Iframe position="relative" url={traceURL} width="100%" height="500px" />
                         </div>
                       ) : null}
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
             </div>
           ))}
         </div>
