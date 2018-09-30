@@ -15,11 +15,11 @@ function buildOpenParams(model, framework, batch_size, trace_level) {
         execution_options: {
           trace_level: trace_level,
           device_count: {
-            GPU: 0
-          }
-        }
-      }
-    }
+            GPU: 0,
+          },
+        },
+      },
+    },
   };
 }
 
@@ -78,10 +78,10 @@ export default function predict(imageUrls, models, frameworks) {
               urls: imageUrls.map(url => {
                 return {
                   id: yeast(),
-                  data: url
+                  data: url,
                 };
-              })
-            }
+              }),
+            },
           });
         })
         .then(response => {
@@ -89,11 +89,13 @@ export default function predict(imageUrls, models, frameworks) {
             model: model,
             framework: framework,
             traceId: spanHeaders["x-b3-traceid"],
-            response: response.responses
+            response: response.responses,
           };
         }),
       function() {
-        Close({ body: { id: predictor.id } }).catch(function(e) {});
+        if (predictor && predictor.id) {
+          Close({ body: { id: predictor.id } }).catch(function(e) {});
+        }
       }
     );
     console.log(res);
@@ -101,13 +103,11 @@ export default function predict(imageUrls, models, frameworks) {
   };
   let pairs = [];
   models.map(model =>
-    frameworks.map(framework =>
-      pairs.push({ model: model, framework: framework })
-    )
+    frameworks.map(framework => pairs.push({ model: model, framework: framework }))
   );
-  return Promise.all(
-    pairs.map(pair => run(imageUrls, pair.model, pair.framework))
-  ).then(function(features) {
+  return Promise.all(pairs.map(pair => run(imageUrls, pair.model, pair.framework))).then(function(
+    features
+  ) {
     console.log(features);
     return features;
   });
