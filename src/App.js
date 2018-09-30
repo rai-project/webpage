@@ -1,5 +1,6 @@
 import "./App.css";
 import "./share/style.css";
+import Helmet from "react-helmet";
 import React, { Component } from "react";
 import GlobalHeader from "./components/GlobalHeader";
 import GlobalFooter from "./components/GlobalFooter";
