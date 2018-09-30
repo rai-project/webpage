@@ -1,6 +1,5 @@
 import yeast from "yeast";
 import _ from "lodash";
-import uuid from "uuid/v4";
 import { Open, URLs, Close } from "../swagger/index";
 
 function buildOpenParams(model, framework, batch_size, trace_level) {

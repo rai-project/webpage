@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import { Layout, Input, Button } from "antd";
+import { Layout, Input } from "antd";
 import { Redirect } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import PrimaryButton from "../components/Buttons/PrimaryButton";

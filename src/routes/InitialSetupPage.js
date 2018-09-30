@@ -1,7 +1,7 @@
 import "./InitialSetupPage.css";
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import { Row, Col, Layout, Menu, Icon, Dropdown, Tag, Steps } from "antd";
+import { Row, Col, Layout, Steps } from "antd";
 import CardWithIcon from "../components/Card/CardWithIcon";
 import DisabledButton from "../components/Buttons/DisabledButton";
 import Section2Fig1 from "../resources/landingpage/assets/section2-figure-1.svg";

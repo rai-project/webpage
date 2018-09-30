@@ -1,16 +1,13 @@
 import React, { Component } from "react";
 import yeast from "yeast";
 import Helmet from "react-helmet";
-import { Layout, Menu, Icon, Dropdown, Tag, Input } from "antd";
+import { Layout } from "antd";
 import SelectDataset from "../components/ExperimentSteps/SelectDataset/SelectDataset";
 import ExperimentSetupSider from "../components/ExperimentSteps/ExperimentSetupSider/ExperimentSetupSider";
 import SelectModel from "../components/ExperimentSteps/SelectModel/SelectModel";
 import SelectFramework from "../components/ExperimentSteps/SelectFramework/SelectFramework";
 import InferenceResult from "../components/InferenceResult/InferenceResult";
-import ExperimentProvider, { ExperimentContext } from "../context/ExperimentContext";
-
-const { SubMenu } = Menu;
-const { Content, Sider } = Layout;
+import ExperimentProvider from "../context/ExperimentContext";
 
 const siderMenuNextStep = {
   dataset: "model",
@@ -54,7 +51,7 @@ export default class ExperimentPage extends Component {
         currentPage = <InferenceResult />;
         break;
       default:
-        throw { error: "route page not found" };
+        console.log({ error: "route page not found" });
         break;
     }
 

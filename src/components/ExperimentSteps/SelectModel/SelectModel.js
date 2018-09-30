@@ -1,12 +1,10 @@
 import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
-import { Col, Row, Select, Input, Button, Icon, Layout } from "antd";
+import { Col, Row, Layout } from "antd";
 import models, { modelsKey } from "../../Models/Models";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 import yeast from "yeast";
 
-const Option = Select.Option;
-const Search = Input.Search;
 const { Content } = Layout;
 
 export default class SelectModel extends Component {

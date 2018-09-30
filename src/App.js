@@ -5,7 +5,7 @@ import React, { Component } from "react";
 import GlobalHeader from "./components/GlobalHeader";
 import GlobalFooter from "./components/GlobalFooter";
 import Router from "./router/router";
-import { Layout, Row, Col } from "antd";
+import { Layout } from "antd";
 import { BrowserRouter as ReactRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
 
