@@ -5,7 +5,7 @@ import PrimaryButton from '../../Buttons/PrimaryButton';
 import { ExperimentContext } from '../../../context/ExperimentContext';
 import predict from '../../../helpers/predict';
 
-const { Content, Sider } = Layout;
+const { Sider } = Layout;
 const Option = Select.Option;
 
 const trace_options = [
@@ -98,7 +98,7 @@ export default class ExperimentSetupSider extends Component {
         <div style={{paddingLeft: "24px"}}>
           <div style={{display: "inline-block"}}>Batch Size: </div>
           <div style={{marginLeft: "40px", display: "inline-block"}}>
-            <InputNumber min={1} max={10} defaultValue={32}/>
+            <InputNumber min={1} max={10} defaultValue={1}/>
           </div>
         </div>
 
