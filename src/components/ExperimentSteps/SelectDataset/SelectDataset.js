@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
-import { Layout, Menu, Icon, Dropdown, Tag, Input } from 'antd';
-import PublicDataset from './PublicDataset';
-import ImportImgFromURL from './ImportImgFromURL';
-import models from '../../Models/Models';
-import frameworks from '../../Frameworks/Frameworks'
+import React, { Component } from "react";
+import { Layout, Menu, Icon, Dropdown, Tag, Input } from "antd";
+import PublicDataset from "./PublicDataset";
+import ImportImgFromURL from "./ImportImgFromURL";
+import models from "../../Models/Models";
+import frameworks from "../../Frameworks/Frameworks";
+import yeast from "yeast";
 
 const { SubMenu } = Menu;
 const { Content } = Layout;
@@ -30,49 +31,63 @@ export default class ExperimentPage extends Component {
       predict: false,
       counts: [datasetOptions.length, models.length, frameworks.length, 0],
       selections: {
-        'data': Array(datasetOptions.length).fill(false),
-        'models': Array(models.length).fill(false),
-        'frameworks': Array(frameworks.length).fill(false),
-        'machines': [false],
-      },
+        data: Array(datasetOptions.length).fill(false),
+        models: Array(models.length).fill(false),
+        frameworks: Array(frameworks.length).fill(false),
+        machines: [false]
+      }
     };
   }
 
   handleSelect(key, i) {
     var selections = this.state.selections;
     selections[key][i] = !selections[key][i];
-    this.setState({selections: selections});
+    this.setState({ selections: selections });
     var counts = this.state.counts;
     counts[1] = this.availableModels(selections).length;
-    this.setState({counts: counts});
+    this.setState({ counts: counts });
   }
 
   render() {
     let dataSourceComponent;
     if (this.state.dataSource == 0) {
-      dataSourceComponent = <PublicDataset datasetOptions={datasetOptions}/>;
+      dataSourceComponent = <PublicDataset datasetOptions={datasetOptions} />;
     } else if (this.state.dataSource == 1) {
       dataSourceComponent = <ImportImgFromURL />;
     }
     return (
-      <Layout style={{background: "#E8E9EB", margin: '0px 20px 120px 20px' }}>
+      <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
         <Content style={{}}>
-          <div style={{background: "#1A263A", color: "white", paddingTop: "30px", paddingBottom: "60px"}}>
+          <div
+            style={{
+              background: "#1A263A",
+              color: "white",
+              paddingTop: "30px",
+              paddingBottom: "60px"
+            }}
+          >
             <div>
-              {
-                dataSources.map(
-                  (source, index) =>
-                    <a>
-                    <div
-                      style={{display: "inline-block", marginLeft: "40px", color: this.state.dataSource == index ? "#E84A27" : "white"}}
-                      onClick={() => this.setState({dataSource: index})}>
-                      {source}
-                    </div>
-                    </a>
-                )
-              }
+              {dataSources.map((source, index) => (
+                <a key={yeast()}>
+                  <div
+                    style={{
+                      display: "inline-block",
+                      marginLeft: "40px",
+                      color:
+                        this.state.dataSource == index ? "#E84A27" : "white"
+                    }}
+                    onClick={() => this.setState({ dataSource: index })}
+                  >
+                    {source}
+                  </div>
+                </a>
+              ))}
             </div>
-            <h2 style={{marginTop: "60px", marginLeft: "40px", color: "white"}}>Select the dataset that is most similar to your own</h2>
+            <h2
+              style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}
+            >
+              Select the dataset that is most similar to your own
+            </h2>
           </div>
 
           {dataSourceComponent}
