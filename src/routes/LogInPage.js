@@ -1,31 +1,68 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
-import { Layout, Input } from "antd";
+import { Layout, Form, Icon, Input } from "antd";
 import { Redirect } from "react-router-dom";
 import UserContext from "../context/UserContext";
 import PrimaryButton from "../components/Buttons/PrimaryButton";
+
+const FormItem = Form.Item;
+
+class NormalLoginForm extends React.Component {
+  handleSubmit = (e, context) => {
+    e.preventDefault();
+    this.props.form.validateFields((err, values) => {
+      if (!err) {
+        console.log('Received values of form: ', values);
+        context.logIn(values.userName);
+        this.props.logIn();
+      }
+    });
+  }
+
+  render() {
+    const { getFieldDecorator } = this.props.form;
+
+    return (
+      <UserContext.Consumer>
+        {(context) => (
+          <Form onSubmit={(e) => this.handleSubmit(e, context)}>
+            <FormItem>
+              {getFieldDecorator('userName', {
+                rules: [{ required: true, message: 'Please input your username!' }],
+              })(
+                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+              )}
+            </FormItem>
+            <FormItem>
+              {getFieldDecorator('password', {
+                rules: [{ required: true, message: 'Please input your Password!' }],
+              })(
+                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+              )}
+            </FormItem>
+            <FormItem>
+              <PrimaryButton htmlType="submit" text="Log In" style={{ width: "100%" }} />
+            </FormItem>
+          </Form>
+        )}
+      </UserContext.Consumer>
+    );
+  }
+}
+
+const WrappedNormalLoginForm = Form.create()(NormalLoginForm);
 
 export default class ExperimentPage extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      username: null,
-      password: null,
       loggedIn: false,
     };
   }
 
-  handleClick = context => {
-    context.logIn(this.state.username);
+  logIn = () => {
     this.setState({ loggedIn: true });
-  };
-
-  onChange = e => {
-    const { id, value } = e.target;
-    var obj = {};
-    obj[id] = value;
-    this.setState(obj);
-  };
+  }
 
   render() {
     return this.state.loggedIn ? (
@@ -38,40 +75,11 @@ export default class ExperimentPage extends Component {
           <header className="DarkBlue">
             <div style={{ marginTop: "40px", marginBottom: "40px", textAlign: "center" }}>
               <h1 style={{ color: "white" }}> Log into ML ModelScope </h1>
-              {/* <p>Didn't have an account </p> */}
             </div>
           </header>
 
-          <div className="CenterBlock" style={{ width: "40%" }}>
-            <div style={{ marginTop: "40px" }}>
-              <p>User Name</p>
-              <Input
-                id="username"
-                placeholder="Username"
-                style={{ width: "100%" }}
-                onChange={this.onChange}
-              />
-            </div>
-            <div style={{ marginTop: "40px" }}>
-              <p>Password</p>
-              <Input
-                id="password"
-                placeholder="Password"
-                style={{ width: "100%" }}
-                onChange={this.onChange}
-              />
-            </div>
-            <div style={{ marginTop: "40px", textAlign: "center" }}>
-              <UserContext.Consumer>
-                {context => (
-                  <PrimaryButton
-                    text="LOGIN"
-                    onClick={() => this.handleClick(context)}
-                    style={{ width: "100%" }}
-                  />
-                )}
-              </UserContext.Consumer>
-            </div>
+          <div className="CenterBlock" style={{ marginTop: "40px", width: "40%" }}>
+            <WrappedNormalLoginForm logIn={this.logIn} />
           </div>
         </Layout>
       );
