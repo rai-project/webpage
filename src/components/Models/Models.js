@@ -1,6 +1,5 @@
-import React, { Component } from 'react';
-import _ from 'lodash';
-import * as models from './ModelLoader';
+import { keys } from "lodash";
+import * as models from "./ModelLoader";
 
-export const modelsKey = _.keys(models).sort();
+export const modelsKey = keys(models).sort();
 export default models;
