@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./GlobalHeader.css";
-import { Layout, Menu, Dropdown, Icon, Row, Col } from "antd";
+import { Layout, Icon } from "antd";
 import { Link } from "react-router-dom";
 import UserContext from "../../context/UserContext";
 

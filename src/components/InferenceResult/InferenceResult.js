@@ -20,7 +20,7 @@ function processName(str) {
 class InferenceResult extends Component {
   processResponseFeatures(response) {
     response = _.sortBy(response, ["probability"]).reverse();
-    response.forEach(function(item, index) {
+    response.forEach(function (item, index) {
       item["name"] = processName(item["name"]);
     });
     return response.slice(0, 10);
@@ -59,7 +59,7 @@ class InferenceResult extends Component {
                   marginRight: "20%",
                 }}
               >
-                <img src={url} style={{ width: "60%", marginLeft: "20%", marginRight: "20%" }} />
+                <img src={url} style={{ width: "60%", marginLeft: "20%", marginRight: "20%" }} alt="" />
               </div>
 
               {this.props.context.result.map(result => {

@@ -1,8 +1,7 @@
 import "./LandingPage.css";
-import { Row, Col, Button, Icon, Card } from "antd";
+import { Row, Col, Icon } from "antd";
 import React, { Component } from "react";
 import Image2 from "../../resources/img/2.jpg";
-import { Link } from "react-router-dom";
 
 export default class Section7 extends Component {
   render() {
@@ -13,6 +12,7 @@ export default class Section7 extends Component {
             <img
               style={{ position: "absolute", marginLeft: "125px", marginTop: "50px" }}
               src={Image2}
+              alt=""
             />
           </Col>
           <h3

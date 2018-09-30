@@ -1,6 +1,6 @@
 import './SelectableCard';
 import React, { Component } from 'react';
-import { Card, Row, Tooltip, Icon } from 'antd';
+import { Card, Tooltip, Icon } from 'antd';
 
 export default class SelectableCard extends Component {
   constructor(props) {
@@ -11,23 +11,23 @@ export default class SelectableCard extends Component {
   }
 
   handleClick() {
-    this.setState({selected: !this.state.selected});
+    this.setState({ selected: !this.state.selected });
     this.props.onClick();
   }
 
   render() {
     var item = this.props.item;
 
-    return(
+    return (
       <Card
         hoverable
         onClick={this.handleClick.bind(this)}
         bordered={this.state.selected}
-        style={{height: this.props.height || '200px', borderColor: '#707070'}}
+        style={{ height: this.props.height || '200px', borderColor: '#707070' }}
       >
-        <div style={{position: "relative", paddingTop: "40px", paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px"}}>
+        <div style={{ position: "relative", paddingTop: "40px", paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px" }}>
           <div>
-            <div style={{position: "absolute", top: "0px", right: "0px"}}>
+            <div style={{ position: "absolute", top: "0px", right: "0px" }}>
               <Tooltip placement="right" title={this.props.description}>
                 <Icon type="info-circle" theme="outlined" />
               </Tooltip>

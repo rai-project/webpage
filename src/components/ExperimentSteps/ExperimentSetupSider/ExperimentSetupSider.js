@@ -1,6 +1,6 @@
 import "./ExperimentSetupSider.css";
 import React, { Component } from "react";
-import { Layout, Menu, Icon, InputNumber, Select, Tag } from "antd";
+import { Layout, Menu, InputNumber, Select, Tag } from "antd";
 import PrimaryButton from "../../Buttons/PrimaryButton";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 import predict from "../../../helpers/predict";
@@ -19,11 +19,6 @@ const trace_options = [
 ];
 
 export default class ExperimentSetupSider extends Component {
-  constructor(props) {
-    super(props);
-    // this.handleClick = this.handleClick.bind(this);
-  }
-
   handleClose(context, index) {
     context.removeModel(index);
     console.log(context);

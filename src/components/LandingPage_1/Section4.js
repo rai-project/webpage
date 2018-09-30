@@ -110,7 +110,7 @@ export default class Section4 extends Component {
                     }}
                   >
                     EXPLORE MORE FEATURES
-                    <img style={{ marginLeft: "80px" }} src={arrow} />{" "}
+                    <img style={{ marginLeft: "80px" }} src={arrow} alt="" />{" "}
                   </p>{" "}
                 </a>
               </Col>

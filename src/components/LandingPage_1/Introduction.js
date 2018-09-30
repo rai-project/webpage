@@ -1,5 +1,5 @@
 import "./LandingPage.css";
-import { Row, Col, Card, Button } from "antd";
+import { Row } from "antd";
 import React, { Component } from "react";
 
 export default class Introduction extends Component {

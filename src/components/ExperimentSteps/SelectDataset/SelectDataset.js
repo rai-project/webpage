@@ -1,12 +1,11 @@
 import React, { Component } from "react";
-import { Layout, Menu, Icon, Dropdown, Tag, Input } from "antd";
+import { Layout } from "antd";
 import PublicDataset from "./PublicDataset";
 import ImportImgFromURL from "./ImportImgFromURL";
 import models from "../../Models/Models";
 import frameworks from "../../Frameworks/Frameworks";
 import yeast from "yeast";
 
-const { SubMenu } = Menu;
 const { Content } = Layout;
 
 const datasetOptions = [
@@ -50,9 +49,9 @@ export default class ExperimentPage extends Component {
 
   render() {
     let dataSourceComponent;
-    if (this.state.dataSource == 0) {
+    if (this.state.dataSource === 0) {
       dataSourceComponent = <PublicDataset datasetOptions={datasetOptions} />;
-    } else if (this.state.dataSource == 1) {
+    } else if (this.state.dataSource === 1) {
       dataSourceComponent = <ImportImgFromURL />;
     }
     return (
@@ -73,7 +72,7 @@ export default class ExperimentPage extends Component {
                     style={{
                       display: "inline-block",
                       marginLeft: "40px",
-                      color: this.state.dataSource == index ? "#E84A27" : "white",
+                      color: this.state.dataSource === index ? "#E84A27" : "white",
                     }}
                     onClick={() => this.setState({ dataSource: index })}
                   >

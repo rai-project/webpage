@@ -1,7 +1,6 @@
 import "./LandingPage.css";
-import { Row, Col, Button, Icon, Card } from "antd";
+import { Row, Col } from "antd";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import arrow from "../../resources/img/arrow.svg";
 import arrowblack from "../../resources/img/arrowblack.png";
 
@@ -105,7 +104,7 @@ export default class Section3 extends Component {
                 style={{ fontSize: "16pt", marginLeft: "50px", marginTop: "300px", color: "white" }}
               >
                 Test Your Models
-                <img style={{ marginLeft: "225px" }} src={arrow} />{" "}
+                <img style={{ marginLeft: "225px" }} src={arrow} alt="" />{" "}
               </p>{" "}
             </a>
           </Col>

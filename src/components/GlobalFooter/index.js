@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import "./GlobalFooter.css";
-import { Layout, Menu, Dropdown, Icon, Row, Col } from "antd";
+import { Layout } from "antd";
 import C3SRLogo from "../../resources/logo/logo-c3sr.png";
 import IBMLogo from "../../resources/logo/logo-ibm.svg";
 import UIUCLogo from "../../resources/logo/logo-uiuc.svg";
@@ -20,7 +20,7 @@ export default class GlobalFooter extends Component {
         <div style={{ display: "inline", float: "left", paddingTop: "20px" }}>
           <div className="GlobalFooter-block">
             <a href="https://c3sr.com">
-              <img src={C3SRLogo} className="C3SR-logo" />
+              <img src={C3SRLogo} className="C3SR-logo" alt="" />
             </a>
           </div>
           <div className="GlobalFooter-block">
@@ -36,12 +36,12 @@ export default class GlobalFooter extends Component {
           <div className="GlobalFooter-block-right">
             <a href="https://ibm.com">
               {" "}
-              <img src={IBMLogo} className="IBM-logo" />
+              <img src={IBMLogo} className="IBM-logo" alt="" />
             </a>
           </div>
           <div className="GlobalFooter-block-right">
             <a href="http://impact.crhc.illinois.edu">
-              <img src={UIUCLogo} className="UIUC-logo" />
+              <img src={UIUCLogo} className="UIUC-logo" alt="" />
             </a>
           </div>
         </div>

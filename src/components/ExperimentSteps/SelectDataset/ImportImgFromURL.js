@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import { Form, Icon, Input } from 'antd';
+import { Icon, Input } from 'antd';
 import { ExperimentContext } from '../../../context/ExperimentContext';
-const FormItem = Form.Item;
 
 export default class ImportImgFromURL extends Component {
   constructor(props) {

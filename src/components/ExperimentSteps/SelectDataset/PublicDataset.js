@@ -1,9 +1,6 @@
 import React, { Component } from "react";
-import { Card, Col, Row, Select, Input, Button, Icon, Dropdown, Menu, Tag, Spin } from "antd";
+import { Col, Row, Icon, Dropdown, Menu, Tag, Spin } from "antd";
 import SelectableCard from "../SelectableCard/SelectableCard";
-const { SubMenu } = Menu;
-const Option = Select.Option;
-const Search = Input.Search;
 
 const menu = (
   <Menu>

@@ -1,7 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Card } from "antd";
-import { Link } from "react-router-dom";
-import ExperimentImage from "../../resources/logo/experiment.jpg";
+import { Row, Col } from "antd";
 
 import "./LandingPage.css";
 
