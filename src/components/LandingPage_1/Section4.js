@@ -27,7 +27,6 @@ export default class Section4 extends Component {
               </a>
             </div>
             <div>
-              ßßß
               <Menu onClick={handleClick} style={{ width: "100%" }} mode="vertical">
                 <SubMenu
                   style={{
@@ -41,14 +40,14 @@ export default class Section4 extends Component {
                     <span>
                       <Icon type="right" />
                       <span style={{ textDecoration: "none", fontSize: "15pt" }}>
-                        FEATURE-1 &#8199;{" "}
+                        Choose or bring-your-own dataset &#8199;{" "}
                       </span>
                     </span>
                   }
                 />
                 <p style={{ position: "absolute", marginLeft: "50px", marginTop: "60px" }}>
-                  {" "}
-                  text{" "}
+                  A wide array of datasets, including public available ones, users contributed ones,
+                  or proprietary ones (only you see your own dataset).
                 </p>
                 <SubMenu
                   style={{
@@ -62,14 +61,14 @@ export default class Section4 extends Component {
                     <span>
                       <Icon type="right" />
                       <span style={{ textDecoration: "none", fontSize: "15pt" }}>
-                        FEATURE-2 &#8199;{" "}
+                        Select or deploy-your-own models &#8199;{" "}
                       </span>
                     </span>
                   }
                 />
                 <p style={{ position: "absolute", marginLeft: "50px", marginTop: "210px" }}>
-                  {" "}
-                  text{" "}
+                  A rich set of machine learning and deep learning models, built from literature or
+                  contributed by developers directly.
                 </p>
 
                 <SubMenu
@@ -84,14 +83,15 @@ export default class Section4 extends Component {
                     <span>
                       <Icon type="right" />
                       <span style={{ textDecoration: "none", fontSize: "15pt" }}>
-                        FEATURE-3 &#8199;{" "}
+                        Pick or integrate-your-own hardware &#8199;{" "}
                       </span>
                     </span>
                   }
                 />
                 <p style={{ position: "absolute", marginLeft: "50px", marginTop: "340px" }}>
-                  {" "}
-                  text{" "}
+                  A variety of hardware configurations from well-known X86, POWER and ARM systems to
+                  specialized accelerators such as GPUs and FPGAs to third-party proprietary
+                  accelerators.
                 </p>
               </Menu>
             </div>
