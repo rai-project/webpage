@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import yeast from "yeast";
+import Helmet from "react-helmet";
 import { Layout, Menu, Icon, Dropdown, Tag, Input } from "antd";
 import SelectDataset from "../components/ExperimentSteps/SelectDataset/SelectDataset";
 import ExperimentSetupSider from "../components/ExperimentSteps/ExperimentSetupSider/ExperimentSetupSider";
@@ -56,6 +57,7 @@ export default class ExperimentPage extends Component {
 
     return (
       <Layout style={{ background: "#E8E9EB" }}>
+        <Helmet title="Experiment" meta={[{ property: "og:title", content: "Experiment" }]} />
         <ExperimentProvider>
           <ExperimentSetupSider
             key={yeast()}
