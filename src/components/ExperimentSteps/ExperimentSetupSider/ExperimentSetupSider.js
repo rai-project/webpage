@@ -15,7 +15,7 @@ const trace_options = [
   { key: 2, text: "Framework", value: "FRAMEWORK_TRACE" },
   { key: 3, text: "CPU", value: "CPU_ONLY_TRACE" },
   { key: 4, text: "Hardware", value: "HARDWARE_TRACE" },
-  { key: 5, text: "Full", value: "FULL_TRACE" }
+  { key: 5, text: "Full", value: "FULL_TRACE" },
 ];
 
 export default class ExperimentSetupSider extends Component {
@@ -31,8 +31,8 @@ export default class ExperimentSetupSider extends Component {
 
   handleClick(context, key) {
     if (key == "predict") {
-      predict(context.imageUrls, context.models, context.frameworks).then(
-        result => context.setPredictResult(result)
+      predict(context.imageUrls, context.models, context.frameworks).then(result =>
+        context.setPredictResult(result)
       );
       console.log(context);
     }
@@ -61,14 +61,12 @@ export default class ExperimentSetupSider extends Component {
                   paddingBottom: "30px",
                   paddingleft: "40px",
                   minHeight: "60px",
-                  height: "auto"
+                  height: "auto",
                 }}
               >
                 <div>DATASETS</div>
                 {/* <div># {item} available</div> */}
-                {context.imageUrls.length != 0 && (
-                  <Tag closable>Import from URLs</Tag>
-                )}
+                {context.imageUrls.length != 0 && <Tag closable>Import from URLs</Tag>}
               </Menu.Item>
 
               <Menu.Item
@@ -78,7 +76,7 @@ export default class ExperimentSetupSider extends Component {
                   paddingBottom: "30px",
                   paddingleft: "40px",
                   minHeight: "60px",
-                  height: "auto"
+                  height: "auto",
                 }}
               >
                 <div>MODELS</div>
@@ -103,7 +101,7 @@ export default class ExperimentSetupSider extends Component {
                   paddingBottom: "30px",
                   paddingleft: "40px",
                   minHeight: "60px",
-                  height: "auto"
+                  height: "auto",
                 }}
               >
                 <div>FRAMEWORKS</div>
@@ -128,7 +126,7 @@ export default class ExperimentSetupSider extends Component {
                   paddingBottom: "30px",
                   paddingleft: "40px",
                   minHeight: "60px",
-                  height: "auto"
+                  height: "auto",
                 }}
               >
                 <div>MACHINES</div>
@@ -147,10 +145,10 @@ export default class ExperimentSetupSider extends Component {
           )}
         </ExperimentContext.Consumer>
 
-        <div style={{paddingLeft: "24px"}}>
-          <div style={{display: "inline-block"}}>Batch Size: </div>
-          <div style={{marginLeft: "40px", display: "inline-block"}}>
-            <InputNumber min={1} max={10} defaultValue={1}/>
+        <div style={{ paddingLeft: "24px" }}>
+          <div style={{ display: "inline-block" }}>Batch Size: </div>
+          <div style={{ marginLeft: "40px", display: "inline-block" }}>
+            <InputNumber min={1} max={10} defaultValue={1} />
           </div>
         </div>
 
@@ -166,9 +164,7 @@ export default class ExperimentSetupSider extends Component {
                   optionFilterProp="children"
                   onChange={value => context.changeTraceLevel(value)}
                   filterOption={(input, option) =>
-                    option.props.children
-                      .toLowerCase()
-                      .indexOf(input.toLowerCase()) >= 0
+                    option.props.children.toLowerCase().indexOf(input.toLowerCase()) >= 0
                   }
                 >
                   {trace_options.map(option => (
