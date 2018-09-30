@@ -30,7 +30,7 @@ export default class ExperimentSetupSider extends Component {
   }
 
   handleClick(context, key) {
-    if (key == "predict") {
+    if (key === "predict") {
       predict(context.imageUrls, context.models, context.frameworks).then(result =>
         context.setPredictResult(result)
       );
@@ -66,7 +66,7 @@ export default class ExperimentSetupSider extends Component {
               >
                 <div>DATASETS</div>
                 {/* <div># {item} available</div> */}
-                {context.imageUrls.length != 0 && <Tag closable>Import from URLs</Tag>}
+                {context.imageUrls.length !== 0 && <Tag closable>Import from URLs</Tag>}
               </Menu.Item>
 
               <Menu.Item
