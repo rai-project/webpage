@@ -13,10 +13,17 @@ class App extends Component {
     return (
       <UserProvider>
         <ReactRouter>
-          <Layout>
+          <Layout
+            style={{
+              display: "flex",
+              minHeight: "100vh",
+              flexDirection: "column",
+              backgroundColor: "#E8E9EB",
+            }}
+          >
             <GlobalHeader />
 
-            <Layout.Content>
+            <Layout.Content style={{ flex: 1 }}>
               <Router />
             </Layout.Content>
 
