@@ -12,6 +12,12 @@ class App extends Component {
   render() {
     return (
       <UserProvider>
+        <Helmet>
+          <meta charSet="utf-8" />
+          <title>MLModelScope</title>
+          <link rel="canonical" href="https://mlmodelscop.org" />
+        </Helmet>
+
         <ReactRouter>
           <Layout
             style={{
