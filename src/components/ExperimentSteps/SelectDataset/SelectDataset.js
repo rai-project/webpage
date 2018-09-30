@@ -15,7 +15,7 @@ const datasetOptions = [
   { key: 2, name: "cifar100", description: "vision/cifar100" },
   { key: 3, name: "caltech256", description: "vision/caltech256" },
   { key: 4, name: "mnist", description: "vision/mnist" },
-  { key: 5, name: "custom", description: "vision/custom" }
+  { key: 5, name: "custom", description: "vision/custom" },
 ];
 
 const dataSources = ["Public Dataset", "Import From URL", "Upload From Device"];
@@ -34,8 +34,8 @@ export default class ExperimentPage extends Component {
         data: Array(datasetOptions.length).fill(false),
         models: Array(models.length).fill(false),
         frameworks: Array(frameworks.length).fill(false),
-        machines: [false]
-      }
+        machines: [false],
+      },
     };
   }
 
@@ -63,7 +63,7 @@ export default class ExperimentPage extends Component {
               background: "#1A263A",
               color: "white",
               paddingTop: "30px",
-              paddingBottom: "60px"
+              paddingBottom: "60px",
             }}
           >
             <div>
@@ -73,8 +73,7 @@ export default class ExperimentPage extends Component {
                     style={{
                       display: "inline-block",
                       marginLeft: "40px",
-                      color:
-                        this.state.dataSource == index ? "#E84A27" : "white"
+                      color: this.state.dataSource == index ? "#E84A27" : "white",
                     }}
                     onClick={() => this.setState({ dataSource: index })}
                   >
@@ -83,9 +82,7 @@ export default class ExperimentPage extends Component {
                 </a>
               ))}
             </div>
-            <h2
-              style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}
-            >
+            <h2 style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}>
               Select the dataset that is most similar to your own
             </h2>
           </div>

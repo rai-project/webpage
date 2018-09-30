@@ -24,12 +24,10 @@ export default class SelectModel extends Component {
               background: "#1A263A",
               color: "white",
               paddingTop: "30px",
-              paddingBottom: "60px"
+              paddingBottom: "60px",
             }}
           >
-            <h2
-              style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}
-            >
+            <h2 style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}>
               Select the model
             </h2>
           </div>

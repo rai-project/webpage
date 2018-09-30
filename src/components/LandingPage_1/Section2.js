@@ -1,8 +1,9 @@
-import "./LandingPage.css";
-import { Row, Col, Button, Icon, Card } from "antd";
 import React, { Component } from "react";
+import { Row, Col, Card } from "antd";
 import { Link } from "react-router-dom";
 import ExperimentImage from "../../resources/logo/experiment.jpg";
+
+import "./LandingPage.css";
 
 export default class Section2 extends Component {
   render() {

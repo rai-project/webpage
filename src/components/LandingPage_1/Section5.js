@@ -1,7 +1,7 @@
-import "./LandingPage.css";
-import { Row, Col, Button, Icon, Card } from "antd";
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
+import { Row, Col } from "antd";
+
+import "./LandingPage.css";
 
 export default class Section5 extends Component {
   render() {

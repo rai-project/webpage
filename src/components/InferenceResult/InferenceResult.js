@@ -2,7 +2,7 @@ import "./InferenceResult.css";
 import React, { Component } from "react";
 import _ from "lodash";
 import Iframe from "react-iframe";
-import { Table, Layout, Tag, Spin } from "antd";
+import { Table, Layout, Tag, Spin, Divider } from "antd";
 import { ExperimentContext } from "../../context/ExperimentContext";
 
 const { Content } = Layout;
@@ -31,13 +31,13 @@ class InferenceResult extends Component {
       {
         title: "Name",
         dataIndex: "name",
-        key: "name"
+        key: "name",
       },
       {
         title: "Probability",
         dataIndex: "probability",
-        key: "probability"
-      }
+        key: "probability",
+      },
     ];
 
     let predictContent;
@@ -52,70 +52,61 @@ class InferenceResult extends Component {
         <div>
           {this.props.context.imageUrls.map((url, index) => (
             <div>
-
               <div
                 style={{
                   marginTop: "40px",
                   marginLeft: "20%",
-                  marginRight: "20%"
+                  marginRight: "20%",
                 }}
               >
-                <img
-                  src={url}
-                  style={{ width: "60%", marginLeft: "20%", marginRight: "20%" }}
-                />
+                <img src={url} style={{ width: "60%", marginLeft: "20%", marginRight: "20%" }} />
               </div>
 
-                {this.props.context.result.map(result => {
-                  const traceURL = result.traceId
-                    ? `http://trace.mlmodelscope.org:16686/trace/${
-                        result.traceId
-                      }`
-                    : null;
-                  return (
-                    <div>
-                      <div
+              {this.props.context.result.map(result => {
+                const traceURL = result.traceId
+                  ? `http://trace.mlmodelscope.org:16686/trace/${result.traceId}`
+                  : null;
+                return (
+                  <div>
+                    <div
+                      style={{
+                        marginTop: "40px",
+                        marginLeft: "20%",
+                        marginRight: "20%",
+                      }}
+                    >
+                      <h1 style={{ textAlign: "center" }}>
+                        {result.model.name + " V" + result.model.version}
+                        <Tag style={{ marginLeft: "20px" }} color="#E84A27">
+                          {result.framework.name + " V" + result.framework.version}
+                        </Tag>
+                      </h1>
+                      <Table
+                        dataSource={this.processResponseFeatures(result.response[index].features)}
+                        columns={responseHeader}
+                        showHeader={true}
+                        pagination={false}
                         style={{
-                          marginTop: "40px",
+                          width: "60%",
                           marginLeft: "20%",
-                          marginRight: "20%"
+                          marginRight: "20%",
+                          marginTop: "20px",
                         }}
-                      >
-                        <h1 style={{ textAlign: "center" }}>
-                          {result.model.name + " V" + result.model.version}
-                          <Tag style={{ marginLeft: "20px" }} color="#E84A27">
-                            {result.framework.name +
-                              " V" +
-                              result.framework.version}
-                          </Tag>
-                        </h1>
-                        <Table
-                          dataSource={this.processResponseFeatures(
-                            result.response[index].features
-                          )}
-                          columns={responseHeader}
-                          showHeader={true}
-                          pagination={false}
-                          style={{
-                            width: "60%",
-                            marginLeft: "20%",
-                            marginRight: "20%",
-                            marginTop: "20px"
-                          }}
-                        />
-                      </div>
-
-                      {result.traceId ? (
-                        <div>
-                          <h1 style={{ textAlign: "center" }}>
-                            <a href={traceURL}> Trace </a>
-                          </h1>
-                          <Iframe position="relative" url={traceURL} width="100%" height="500px" />
-                        </div>
-                      ) : null}
+                      />
                     </div>
-                  );
-                })}
+
+                    {result.traceId ? (
+                      <div>
+                        <Divider />
+                        <h1 style={{ textAlign: "center" }}>
+                          <a href={traceURL}> Trace </a>
+                        </h1>
+                        <Iframe position="relative" url={traceURL} width="100%" height="500px" />
+                      </div>
+                    ) : null}
+                  </div>
+                );
+              })}
             </div>
           ))}
         </div>
@@ -130,12 +121,10 @@ class InferenceResult extends Component {
               background: "#1A263A",
               color: "white",
               paddingTop: "30px",
-              paddingBottom: "60px"
+              paddingBottom: "60px",
             }}
           >
-            <h2
-              style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}
-            >
+            <h2 style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}>
               Inference Result
             </h2>
           </div>

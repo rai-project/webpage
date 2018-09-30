@@ -26,8 +26,8 @@ export default class Section3 extends Component {
                 marginTop: "60px",
                 textTransform: "uppercase",
               }}
-              class="buttonSmall"
-              href="#"
+              className="buttonSmall"
+              href="/"
             >
               FRAMEWORK
             </a>
@@ -52,7 +52,7 @@ export default class Section3 extends Component {
                 }}
               >
                 Test Your Frameworks
-                <img style={{ marginLeft: "225px" }} src={arrowblack} />{" "}
+                <img alt="back" style={{ marginLeft: "225px" }} src={arrowblack} />{" "}
               </p>{" "}
             </a>
           </Col>
@@ -74,8 +74,8 @@ export default class Section3 extends Component {
                 marginTop: "60px",
                 textTransform: "uppercase",
               }}
-              class="buttonSmall"
-              href="#"
+              className="buttonSmall"
+              href="/"
             >
               MODELS
             </a>
@@ -127,8 +127,8 @@ export default class Section3 extends Component {
                 marginTop: "60px",
                 textTransform: "uppercase",
               }}
-              class="buttonSmall"
-              href="#"
+              className="buttonSmall"
+              href="/"
             >
               MACHINES
             </a>
@@ -158,7 +158,7 @@ export default class Section3 extends Component {
                 style={{ fontSize: "16pt", marginLeft: "50px", marginTop: "310px", color: "white" }}
               >
                 Test Your Machines
-                <img style={{ marginLeft: "225px" }} src={arrow} />{" "}
+                <img alt="back" style={{ marginLeft: "225px" }} src={arrow} />{" "}
               </p>{" "}
             </a>
           </Col>

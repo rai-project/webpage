@@ -53,6 +53,9 @@ export default class ExperimentPage extends Component {
       case "predict":
         currentPage = <InferenceResult />;
         break;
+      default:
+        throw { error: "route page not found" };
+        break;
     }
 
     return (

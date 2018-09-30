@@ -1,6 +1,7 @@
-import "./Card.css";
-import { Card } from "antd";
 import React, { Component } from "react";
+import { Card } from "antd";
+
+import "./Card.css";
 
 export default class CardWithIcon extends Component {
   constructor(props) {

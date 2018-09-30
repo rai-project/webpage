@@ -14,7 +14,7 @@ export default class GlobalFooter extends Component {
         style={{
           verticalAlign: "middle",
           height: "100px",
-          padding: "0px"
+          padding: "0px",
         }}
       >
         <div style={{ display: "inline", float: "left", paddingTop: "20px" }}>

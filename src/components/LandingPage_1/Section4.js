@@ -1,8 +1,11 @@
-import "./LandingPage.css";
-import { Row, Col, Icon, Menu } from "antd";
 import React, { Component } from "react";
+import { Row, Col, Icon, Menu } from "antd";
+
 import arrow from "../../resources/img/arrow.svg";
 import sec4back from "../../resources/img/sec4back.jpg";
+
+import "./LandingPage.css";
+
 function handleClick(e) {
   console.log("click", e);
 }
@@ -20,8 +23,8 @@ export default class Section4 extends Component {
             <div>
               <a
                 style={{ textDecoration: "none", marginLeft: "50px", marginTop: "50px" }}
-                class="buttonSmall"
-                href="#"
+                className="buttonSmall"
+                href="/"
               >
                 FRAMEWORK
               </a>
@@ -118,6 +121,7 @@ export default class Section4 extends Component {
             span={16}
           >
             <img
+              alt="back"
               style={{ height: "595px", width: "725px", marginLeft: "70px", marginTop: "60px" }}
               src={sec4back}
             />
