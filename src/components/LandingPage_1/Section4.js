@@ -26,7 +26,7 @@ export default class Section4 extends Component {
                 className="buttonSmall"
                 href="/"
               >
-                FRAMEWORK
+                EXPERIMENT
               </a>
             </div>
             <div>
