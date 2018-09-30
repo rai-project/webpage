@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import Markdown from "react-markdown";
-import { Layout, Col, Row } from "antd";
+import { Layout } from "antd";
 import Helmet from "react-helmet";
 
 // eslint-disable-next-line
