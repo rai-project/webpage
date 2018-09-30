@@ -1,7 +1,8 @@
-// import './LandingPage.css';
 import React, { Component } from 'react';
 import { Layout, Input, Button } from 'antd';
-import UserContext from '../context/UserContext'
+import { Redirect } from 'react-router-dom';
+import UserContext from '../context/UserContext';
+import PrimaryButton from '../components/Buttons/PrimaryButton';
 
 export default class ExperimentPage extends Component {
   constructor(props) {
@@ -9,11 +10,13 @@ export default class ExperimentPage extends Component {
     this.state = {
       username: null,
       password: null,
+      loggedIn: false,
     };
   }
 
-  handleClick (context) {
+  handleClick = (context) => {
     context.logIn(this.state.username);
+    this.setState({loggedIn: true});
   }
 
   onChange = (e) => {
@@ -26,36 +29,42 @@ export default class ExperimentPage extends Component {
 
   render() {
     return (
+      this.state.loggedIn ? 
+      <Redirect to="/Experiment"/> :
       <Layout style={{ 
-        padding: '0 24px 24px',
         background: '#fff',
-        minHeight: 500,
-        textAlign: 'center',
+        minHeight: 700,
         }}>
-        <header>
-          <h1> User LogIn </h1>
+        <header className="DarkBlue">
+          <div style={{marginTop: "40px", marginBottom: "40px", textAlign: 'center'}}>
+            <h1 style={{color: "white"}}> Log into ML ModelScope </h1>
+            {/* <p>Didn't have an account </p> */}
+          </div>
         </header>
-        <div>
-          <div>
+
+        <div className="CenterBlock" style={{width: "40%"}}>
+          <div style={{marginTop: "40px"}}>
+            <p>User Name</p>
             <Input
               id="username"
               placeholder="Username"
-              style={{width: '50%'}}
+              style={{width: '100%'}}
               onChange={this.onChange}
             />
           </div>
-          <div>
+          <div style={{marginTop: "40px"}}>
+            <p>Password</p>
             <Input
               id="password"
               placeholder="Password"
-              style={{width: '50%'}}
+              style={{width: '100%'}}
               onChange={this.onChange}
             />
           </div>
-          <div>
+          <div style={{marginTop: "40px", textAlign: "center"}}>
             <UserContext.Consumer>
               {(context) => (
-                <Button onClick={() => this.handleClick(context)}>LogIn</Button>
+                <PrimaryButton text="LOGIN" onClick={() => this.handleClick(context)} style={{width: "100%"}}/>
               )}
             </UserContext.Consumer>
           </div>

@@ -6,7 +6,7 @@ import { ExperimentContext } from "../../../context/ExperimentContext";
 import predict from "../../../helpers/predict";
 import yeast from "yeast";
 
-const { Content, Sider } = Layout;
+const { Sider } = Layout;
 const Option = Select.Option;
 
 const trace_options = [
@@ -147,10 +147,10 @@ export default class ExperimentSetupSider extends Component {
           )}
         </ExperimentContext.Consumer>
 
-        <div style={{ paddingLeft: "24px" }}>
-          <div style={{ display: "inline-block" }}>Batch Size: </div>
-          <div style={{ marginLeft: "40px", display: "inline-block" }}>
-            <InputNumber min={1} max={10} defaultValue={32} />
+        <div style={{paddingLeft: "24px"}}>
+          <div style={{display: "inline-block"}}>Batch Size: </div>
+          <div style={{marginLeft: "40px", display: "inline-block"}}>
+            <InputNumber min={1} max={10} defaultValue={1}/>
           </div>
         </div>
 

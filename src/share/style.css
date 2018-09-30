@@ -47,3 +47,8 @@ p {
 .LightGray {
   background: #E8E9EB;
 }
+
+.CenterBlock {
+  margin-left: auto;
+  margin-right: auto;
+}
