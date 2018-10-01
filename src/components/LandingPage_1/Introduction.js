@@ -34,7 +34,7 @@ function makeSlide({ tag, body, compare }) {
         </Col>
       </Row>
       <Row type="flex">
-        <Col span={4} offset={10}>
+        <Col span={6} offset={9}>
           <div style={{ marginTop: "20px" }} align="center">
             <Link
               to={"/experiment"}
