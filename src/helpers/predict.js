@@ -1,5 +1,5 @@
 import yeast from "yeast";
-import { Open, URLs, Close } from "../swagger/index";
+import { Open, URLs, Close } from "../swagger";
 
 function buildOpenParams(model, framework, batch_size, trace_level) {
   return {
@@ -22,7 +22,7 @@ function buildOpenParams(model, framework, batch_size, trace_level) {
 }
 
 function pFinally(promise, onFinally) {
-  onFinally = onFinally || (() => { });
+  onFinally = onFinally || (() => {});
 
   return promise.then(
     val => Promise.resolve(onFinally()).then(() => val),
@@ -90,9 +90,9 @@ export default function predict(imageUrls, models, frameworks) {
             response: response.responses,
           };
         }),
-      function () {
+      function() {
         if (predictor && predictor.id) {
-          Close({ body: { id: predictor.id } }).catch(function (e) { });
+          Close({ body: { id: predictor.id } }).catch(function(e) {});
         }
       }
     );
@@ -103,7 +103,7 @@ export default function predict(imageUrls, models, frameworks) {
   models.map(model =>
     frameworks.map(framework => pairs.push({ model: model, framework: framework }))
   );
-  return Promise.all(pairs.map(pair => run(imageUrls, pair.model, pair.framework))).then(function (
+  return Promise.all(pairs.map(pair => run(imageUrls, pair.model, pair.framework))).then(function(
     features
   ) {
     console.log(features);

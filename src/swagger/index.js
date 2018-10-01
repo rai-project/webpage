@@ -804,7 +804,6 @@ export function FrameworkManifests(params) {
     {
       method: "GET",
       headers,
-      body: JSON.stringify(body),
     },
     options
   );

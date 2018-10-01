@@ -1,13 +1,31 @@
 import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
 import { Layout, Col, Row } from "antd";
+import { isArray } from "lodash";
 import yeast from "yeast";
-import frameworks from "../../Frameworks/Frameworks";
+import Frameworks from "../../Frameworks/Frameworks";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 const { Content } = Layout;
 
 export default class SelectFramework extends Component {
+  constructor(frameworks = null) {
+    super();
+    this.state = {};
+  }
+
+  async componentDidMount() {
+    try {
+      const req = await Frameworks();
+      this.setState({ frameworks: req.manifests });
+    } catch (err) {
+      console.error(err);
+    }
+  }
   render() {
+    const { frameworks } = this.state;
+    if (!isArray(frameworks)) {
+      return <div />;
+    }
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
         <Content style={{}}>

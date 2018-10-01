@@ -1,3 +1,3 @@
-const json = require("../../docs/frameworks.json");
+import { FrameworkManifests } from "../../swagger";
 
-export default json.manifests;
+export default () => FrameworkManifests({});
