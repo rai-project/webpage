@@ -1,9 +1,27 @@
 import React, { Component } from "react";
 import { Layout, Spin } from "antd";
+import { FrameworkAgents } from "../../../swagger";
 
 const { Content } = Layout;
 
 export default class SelectMachine extends Component {
+  constructor(predictors = null) {
+    super();
+    this.state = {};
+  }
+
+  async componentDidMount() {
+    try {
+      const req = await FrameworkAgents({
+        frameworkName: "*",
+        frameworkVersion: "*",
+      });
+      this.setState({ predictors: req.agents });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   render() {
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
@@ -13,22 +31,17 @@ export default class SelectMachine extends Component {
               background: "#1A263A",
               color: "white",
               paddingTop: "30px",
-              paddingBottom: "60px"
+              paddingBottom: "60px",
             }}
           >
-            <h2
-              style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}
-            >
+            <h2 style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}>
               Select the machine
             </h2>
           </div>
 
           <Spin tip="Coming Soon...">
-            <div style={{ marginTop: "80px", width: "100%", height: "100%" }}>
-
-            </div>
+            <div style={{ marginTop: "80px", width: "100%", height: "100%" }} />
           </Spin>
-
         </Content>
       </Layout>
     );

@@ -734,7 +734,7 @@ export function FrameworkAgents(params) {
     {
       method: "GET",
       headers,
-      body: JSON.stringify(body),
+      // body: JSON.stringify(body),
     },
     options
   );
@@ -884,7 +884,7 @@ export function ModelAgents(params) {
     {
       method: "GET",
       headers,
-      body: JSON.stringify(body),
+      // body: JSON.stringify(body),
     },
     options
   );

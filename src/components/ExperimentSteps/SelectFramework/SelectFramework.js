@@ -3,8 +3,9 @@ import React, { Component } from "react";
 import { Layout, Col, Row } from "antd";
 import { isArray } from "lodash";
 import yeast from "yeast";
-import Frameworks from "../../Frameworks/Frameworks";
+import { FrameworkManifests } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
+
 const { Content } = Layout;
 
 export default class SelectFramework extends Component {
@@ -15,12 +16,16 @@ export default class SelectFramework extends Component {
 
   async componentDidMount() {
     try {
-      const req = await Frameworks();
+      const req = await FrameworkManifests({
+        frameworkName: "*",
+        frameworkVersion: "*",
+      });
       this.setState({ frameworks: req.manifests });
     } catch (err) {
       console.error(err);
     }
   }
+
   render() {
     const { frameworks } = this.state;
     if (!isArray(frameworks)) {

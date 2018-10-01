@@ -1,10 +1,10 @@
 import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
 import { Col, Row, Layout } from "antd";
-import Models from "../../Models/Models";
-import { ExperimentContext } from "../../../context/ExperimentContext";
 import yeast from "yeast";
 import { isArray, keys } from "lodash";
+import { ModelManifests } from "../../../swagger";
+import { ExperimentContext } from "../../../context/ExperimentContext";
 
 const { Content } = Layout;
 
@@ -16,7 +16,12 @@ export default class SelectModel extends Component {
 
   async componentDidMount() {
     try {
-      const req = await Models();
+      const req = await ModelManifests({
+        frameworkName: "*",
+        frameworkVersion: "*",
+        modelName: "*",
+        modelVersion: "*",
+      });
       this.setState({ models: req.manifests });
     } catch (err) {
       console.error(err);
