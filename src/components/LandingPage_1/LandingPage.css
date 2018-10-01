@@ -5,12 +5,9 @@
   text-align: center;
   vertical-align: middle;
   padding: 12px 59px;
-  border: 1px solid #1e89fa;
+  border: 1px solid #2e3f8f;
   border-radius: 0px;
-  background: #1e89fa;
-  background: -webkit-gradient(linear, left top, left bottom, from(#1e89fa), to(#1e89fa));
-  background: -moz-linear-gradient(top, #1e89fa, #1e89fa);
-  background: linear-gradient(to bottom, #1e89fa, #1e89fa);
+  background: linear-gradient(to bottom, #0f70ff, #0f70ff);
   font: normal normal bold 15px arial;
   color: #ffffff;
   text-decoration: none;
@@ -18,22 +15,17 @@
 .button2:hover,
 .button2:focus {
   border: 1px solid #27b2ff;
-  background: #24a4ff;
-  background: -webkit-gradient(linear, left top, left bottom, from(#24a4ff), to(#24a4ff));
-  background: -moz-linear-gradient(top, #24a4ff, #24a4ff);
   background: linear-gradient(to bottom, #24a4ff, #24a4ff);
   color: #ffffff;
   text-decoration: none;
 }
 .button2:active {
-  background: #125296;
-  background: -webkit-gradient(linear, left top, left bottom, from(#125296), to(#1e89fa));
-  background: -moz-linear-gradient(top, #125296, #1e89fa);
   background: linear-gradient(to bottom, #125296, #1e89fa);
 }
 
 .LandingPage-introduction {
-  background: url(../../resources/img/background.jpg);
+  /* from https://mycolor.space/gradient?ori=circle&hex=%23123160&hex2=%23424357&sub=1 */
+  background-image: radial-gradient(circle, #123160, #25355e, #31395b, #3a3e59, #424357);
   height: 475px;
   width: 100%;
   color: white;
@@ -102,32 +94,22 @@
   display: inline-block;
   text-align: left;
   vertical-align: center;
-  padding: 15px 15px;
-  border: 1px solid #006ce0;
   border-radius: 0px;
-  background: #006ce0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#006ce0), to(#006ce0));
-  background: -moz-linear-gradient(top, #006ce0, #006ce0);
   background: linear-gradient(to bottom, #006ce0, #006ce0);
-  font: normal normal bold 14px arial;
+  font: normal normal bold 14px;
   color: #ffffff;
   text-decoration: none;
+  padding: 15px 15px;
   text-transform: uppercase;
 }
 .buttonsec6:hover {
   border: 1px solid #006ce0;
-  background: #006ce0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#006ce0), to(#006ada));
-  background: -moz-linear-gradient(top, #006ce0, #006ada);
   background: linear-gradient(to bottom, #006ce0, #006ada);
   color: #ffffff;
   text-decoration: none;
   text-transform: uppercase;
 }
 .buttonsec6:active {
-  background: #006ce0;
-  background: -webkit-gradient(linear, left top, left bottom, from(#006ce0), to(#006ce0));
-  background: -moz-linear-gradient(top, #006ce0, #006ce0);
   background: linear-gradient(to bottom, #006ce0, #006ce0);
   text-transform: uppercase;
 }

@@ -1,5 +1,5 @@
 import "./LandingPage.css";
-import { Row, Col, Icon } from "antd";
+import { Row, Col, Icon, Button, Divider } from "antd";
 import React, { Component } from "react";
 import Image4 from "../../resources/img/4.jpg";
 
@@ -38,6 +38,22 @@ export default class Section9 extends Component {
             an informed decision on which tools <br />
             to use.
           </h2>
+          {/* <Button
+            type="primary"
+            icon="arrow-right"
+            href="/Experiment"
+            style={{
+              textAlign: "left",
+              position: "absolute",
+              marginLeft: "785px",
+              marginTop: "385px",
+              textDecoration: "none",
+              padding: "15px 15px",
+              textTransform: "uppercase",
+            }}
+          >
+            Compare Models
+          </Button> */}
           <a
             className="buttonsec6"
             style={{
@@ -48,7 +64,7 @@ export default class Section9 extends Component {
             }}
             href="/Experiment"
           >
-            COMPARE STUFF <Icon style={{ fontSize: 20 }} size="large" type="arrow-right" />
+            COMPARE MODELS <Icon style={{ fontSize: 20 }} size="large" type="arrow-right" />
           </a>
         </Row>
       </div>
