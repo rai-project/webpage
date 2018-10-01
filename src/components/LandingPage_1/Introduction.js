@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 
 function makeSlide({ tag, body, compare }) {
   return (
-    <div>
+    <div style={{ minHeight: "50vh", padding: "20px", margin: "20px" }}>
       <Row type="flex">
         <Col span={6} offset={9}>
           <h1
@@ -34,7 +34,7 @@ function makeSlide({ tag, body, compare }) {
         </Col>
       </Row>
       <Row type="flex">
-        <Col span={4} offset={10}>
+        <Col span={6} offset={9}>
           <div style={{ marginTop: "20px" }} align="center">
             <Link
               to={"/experiment"}
@@ -100,8 +100,11 @@ const Message3 = (() => {
 export default class Introduction extends Component {
   render() {
     return (
-      <div className="LandingPage-introduction">
-        <Carousel vertical autoplay>
+      <div
+        className="LandingPage-introduction"
+        style={{ minHeight: "60vh", padding: "100px 0", textAlign: "center" }}
+      >
+        <Carousel autoplay dots={false}>
           {Message1}
           {Message2}
           {Message3}
