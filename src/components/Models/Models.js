@@ -1,5 +1,3 @@
-import { keys } from "lodash";
-import * as models from "./ModelLoader";
+import { ModelManifests } from "../../swagger";
 
-export const modelsKey = keys(models).sort();
-export default models;
+export default () => ModelManifests({});

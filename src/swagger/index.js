@@ -804,6 +804,7 @@ export function FrameworkManifests(params) {
     {
       method: "GET",
       headers,
+      // body: JSON.stringify(body),
     },
     options
   );
@@ -963,7 +964,7 @@ export function ModelManifests(params) {
     {
       method: "GET",
       headers,
-      body: JSON.stringify(body),
+      // body: JSON.stringify(body),
     },
     options
   );

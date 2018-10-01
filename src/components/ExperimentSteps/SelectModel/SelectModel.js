@@ -1,19 +1,42 @@
 import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
 import { Col, Row, Layout } from "antd";
-import models, { modelsKey } from "../../Models/Models";
+import Models from "../../Models/Models";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 import yeast from "yeast";
+import { isArray, keys } from "lodash";
 
 const { Content } = Layout;
 
 export default class SelectModel extends Component {
+  constructor(models = null) {
+    super();
+    this.state = {};
+  }
+
+  async componentDidMount() {
+    try {
+      const req = await Models();
+      this.setState({ models: req.manifests });
+    } catch (err) {
+      console.error(err);
+    }
+  }
+
   handleSelect(context, item) {
     context.addModel(item.model.name, item.model.version);
     console.log(context);
   }
 
   render() {
+    const { models } = this.state;
+    console.log(models);
+    const modelsKey = keys(models).sort();
+
+    if (!isArray(models)) {
+      return <div />;
+    }
+
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
         <Content style={{}}>
