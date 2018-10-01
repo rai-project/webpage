@@ -4,7 +4,7 @@ import React, { Component } from "react";
 
 const Color1 = "#D2F0F7";
 const Color2 = "#2E3F8F";
-const Color3 = "#0F70FF";
+const Color3 = "#1A263A";
 
 const Black = "#464445";
 
@@ -34,7 +34,7 @@ const SmallButton = ({ href, color, backgroundColor, children }) => (
       backgroundColor: backgroundColor,
       textDecoration: "none",
       marginLeft: "50px",
-      marginTop: "60px",
+      marginTop: "120px",
       textTransform: "uppercase",
     }}
     className="buttonSmall"
@@ -82,7 +82,7 @@ const Info = ({ href, color, children }) => (
       style={{
         fontSize: "16pt",
         marginLeft: "50px",
-        marginTop: "100px",
+        marginTop: "140px",
         textTransform: "uppercase",
       }}
     >
@@ -113,7 +113,7 @@ export default class Section3 extends Component {
             </Title>
           </Col>
           <Col backgroundColor={Color3}>
-            <SmallButton href="/">FRAMEWORK</SmallButton>
+            <SmallButton href="/">MACHINE</SmallButton>
             <Title color="white">
               HOW TO CHOOSE RIGHT <br /> MACHINES?{" "}
             </Title>

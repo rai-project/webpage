@@ -24,8 +24,8 @@
 }
 
 .LandingPage-introduction {
-  /* from https://mycolor.space/gradient?ori=circle&hex=%23123160&hex2=%23424357&sub=1 */
-  background-image: radial-gradient(circle, #123160, #25355e, #31395b, #3a3e59, #424357);
+  /* from https://mycolor.space/gradient?ori=circle&hex=%231A263A&hex2=%23424357&sub=1 */
+  background-image: radial-gradient(circle, #1a263a, #242d41, #2e3448, #383b50, #424357);
   height: 475px;
   width: 100%;
   color: white;
