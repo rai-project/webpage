@@ -95,7 +95,7 @@ export function Close(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = parameters['body'];
+        body = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -174,7 +174,7 @@ export function Dataset(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = parameters['body'];
+        body = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -253,7 +253,7 @@ export function Images(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = parameters['body'];
+        body = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -334,7 +334,7 @@ export function Open(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = parameters['body'];
+        body = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -413,7 +413,7 @@ export function Reset(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = parameters['body'];
+        body = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -492,7 +492,7 @@ export function DatasetStream(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = parameters['body'];
+        body = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -571,7 +571,7 @@ export function ImagesStream(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = parameters['body'];
+        body = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -650,7 +650,7 @@ export function URLsStream(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = parameters['body'];
+        body = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -729,7 +729,7 @@ export function URLs(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = parameters['body'];
+        body = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
