@@ -5,8 +5,6 @@
   text-align: center;
   vertical-align: middle;
   padding: 12px 59px;
-  border: 1px solid #2e3f8f;
-  border-radius: 0px;
   background: linear-gradient(to bottom, #0f70ff, #0f70ff);
   font: normal normal bold 15px arial;
   color: #ffffff;
@@ -14,7 +12,6 @@
 }
 .button2:hover,
 .button2:focus {
-  border: 1px solid #27b2ff;
   background: linear-gradient(to bottom, #24a4ff, #24a4ff);
   color: #ffffff;
   text-decoration: none;
@@ -60,18 +57,15 @@
   padding: 8px 16px;
   background-color: rgba(65, 65, 65, 0.178);
   background-repeat: no-repeat;
-  border: none;
   cursor: pointer;
   overflow: hidden;
   outline: none;
-  border-radius: 28px;
   font: normal normal bold 11px arial;
   color: #000000;
   text-decoration: none;
   text-transform: uppercase;
 }
 .buttonSmall:hover {
-  border: 1px solid #d9d9d9;
   color: #00000088;
   text-decoration: none;
 }
@@ -94,7 +88,6 @@
   display: inline-block;
   text-align: left;
   vertical-align: center;
-  border-radius: 0px;
   background: linear-gradient(to bottom, #006ce0, #006ce0);
   font: normal normal bold 14px;
   color: #ffffff;
@@ -103,7 +96,6 @@
   text-transform: uppercase;
 }
 .buttonsec6:hover {
-  border: 1px solid #006ce0;
   background: linear-gradient(to bottom, #006ce0, #006ada);
   color: #ffffff;
   text-decoration: none;

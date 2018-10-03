@@ -44,11 +44,9 @@ export default class Section4 extends Component {
                   }}
                   key="sub1"
                   title={
-                    <span>
+                    <span style={{ textDecoration: "none", fontSize: "15pt" }}>
                       <Icon type="right" />
-                      <span style={{ textDecoration: "none", fontSize: "15pt" }}>
-                        Choose or bring-your-own dataset
-                      </span>
+                      Choose or bring-your-own dataset
                     </span>
                   }
                 />
@@ -74,11 +72,9 @@ export default class Section4 extends Component {
                   }}
                   key="sub2"
                   title={
-                    <span>
+                    <span style={{ textDecoration: "none", fontSize: "15pt" }}>
                       <Icon type="right" />
-                      <span style={{ textDecoration: "none", fontSize: "15pt" }}>
-                        Select or deploy-your-own models
-                      </span>
+                      Select or deploy-your-own models
                     </span>
                   }
                 />
@@ -103,11 +99,9 @@ export default class Section4 extends Component {
                   }}
                   key="sub3"
                   title={
-                    <span>
+                    <span style={{ textDecoration: "none", fontSize: "15pt" }}>
                       <Icon type="right" />
-                      <span style={{ textDecoration: "none", fontSize: "15pt" }}>
-                        Pick or integrate-your-own hardware
-                      </span>
+                      Pick or integrate-your-own hardware
                     </span>
                   }
                 />
@@ -133,13 +127,13 @@ export default class Section4 extends Component {
                     style={{
                       color: "black",
                       fontSize: "16pt",
-                      marginLeft: "20px",
+                      marginLeft: "50px",
                       marginTop: "25px",
                       textTransform: "uppercase",
                     }}
                   >
                     Explore Features
-                    <img style={{ marginLeft: "80px" }} src={arrow} alt="" />{" "}
+                    <Icon style={{ marginLeft: "20px" }} type="arrow-right" theme="outlined" />
                   </p>{" "}
                 </a>
               </Col>
