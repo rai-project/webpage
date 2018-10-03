@@ -127,17 +127,18 @@ export default class Section4 extends Component {
               </Menu>
             </div>
             <Row style={{ marginTop: "486px" }} className="FunctionalOverview-section4">
-              <Col style={{ minHeight: "60px", backgroundColor: "#blue", textAlign: "left" }}>
+              <Col style={{ minHeight: "60px", backgroundColor: "white", textAlign: "left" }}>
                 <a href="/" style={{ textDecoration: "none" }}>
                   <p
                     style={{
-                      color: "white",
+                      color: "black",
                       fontSize: "16pt",
                       marginLeft: "20px",
                       marginTop: "25px",
+                      textTransform: "uppercase",
                     }}
                   >
-                    EXPLORE MORE FEATURES
+                    Explore Features
                     <img style={{ marginLeft: "80px" }} src={arrow} alt="" />{" "}
                   </p>{" "}
                 </a>
@@ -145,12 +146,12 @@ export default class Section4 extends Component {
             </Row>
           </Col>
           <Col
-            style={{ minHeight: "655px", backgroundColor: "#141028", textAlign: "left" }}
+            style={{ minHeight: "50vh", backgroundColor: "#1a263a", textAlign: "left" }}
             span={16}
           >
             <img
               alt="back"
-              style={{ height: "595px", width: "725px", marginLeft: "70px", marginTop: "60px" }}
+              style={{ height: "100%", width: "60%", marginLeft: "70px", marginTop: "60px" }}
               src={sec4back}
             />
           </Col>

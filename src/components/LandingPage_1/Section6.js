@@ -1,7 +1,7 @@
 import "./LandingPage.css";
 import { Row, Col, Icon } from "antd";
 import React, { Component } from "react";
-import Image1 from "../../resources/img/1.jpg";
+import Image1 from "../../resources/landingpage/frontpage_dots.svg";
 
 export default class Section6 extends Component {
   render() {
@@ -39,7 +39,7 @@ export default class Section6 extends Component {
             combinations.
           </h2>
           <a
-            class="buttonsec6"
+            className="buttonsec6"
             style={{
               textAlign: "left",
               position: "absolute",

@@ -1,7 +1,7 @@
 import "./LandingPage.css";
 import { Row, Col, Icon } from "antd";
 import React, { Component } from "react";
-import Image3 from "../../resources/img/3.jpg";
+import Image3 from "../../resources/landingpage/frontpage_grid.svg";
 
 export default class Section8 extends Component {
   render() {
