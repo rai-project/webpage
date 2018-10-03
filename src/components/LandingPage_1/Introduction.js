@@ -7,7 +7,7 @@ function makeSlide({ tag, body, compare }) {
   return (
     <div style={{ minHeight: "50vh", padding: "20px", margin: "20px" }}>
       <Row type="flex" justify="space-around">
-        <Col push={9}>
+        <Col>
           <h1
             style={{
               marginTop: "100px",
@@ -21,7 +21,7 @@ function makeSlide({ tag, body, compare }) {
         </Col>
       </Row>
       <Row type="flex" justify="space-around">
-        <Col push={9}>
+        <Col span={9}>
           <p
             style={{
               fontSize: "10pt",
@@ -34,7 +34,7 @@ function makeSlide({ tag, body, compare }) {
         </Col>
       </Row>
       <Row type="flex" justify="space-around">
-        <Col push={9}>
+        <Col>
           <div style={{ marginTop: "20px" }} align="center">
             <Link
               to={"/experiment"}

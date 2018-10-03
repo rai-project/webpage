@@ -6,7 +6,7 @@ import "./LandingPage.css";
 export default class Section2 extends Component {
   render() {
     return (
-      <Row type="flex" justify="space-around">
+      <div>
         <Row type="flex" justify="space-around" align="middle">
           <Col span={9}>
             <p
@@ -36,7 +36,7 @@ export default class Section2 extends Component {
             <p style={{ fontSize: "8pt", marginTop: "10px", color: "#0FACAC" }}>LEARN MORE</p>
           </Col>
         </Row>
-      </Row>
+      </div>
     );
   }
 }

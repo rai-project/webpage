@@ -9,7 +9,7 @@ import Section7 from "../components/LandingPage_1/Section7";
 import Section8 from "../components/LandingPage_1/Section8";
 import Section9 from "../components/LandingPage_1/Section9";
 import Section10 from "../components/LandingPage_1/Section10";
-import { Layout } from "antd";
+import { Layout, Divider } from "antd";
 const { Content } = Layout;
 
 export default class LandingPage extends Component {
