@@ -6,8 +6,8 @@ import { Link } from "react-router-dom";
 function makeSlide({ tag, body, compare }) {
   return (
     <div style={{ minHeight: "50vh", padding: "20px", margin: "20px" }}>
-      <Row type="flex">
-        <Col span={6} offset={9}>
+      <Row type="flex" justify="space-around">
+        <Col push={9}>
           <h1
             style={{
               marginTop: "100px",
@@ -20,8 +20,8 @@ function makeSlide({ tag, body, compare }) {
           </h1>
         </Col>
       </Row>
-      <Row type="flex">
-        <Col span={6} offset={9}>
+      <Row type="flex" justify="space-around">
+        <Col push={9}>
           <p
             style={{
               fontSize: "10pt",
@@ -33,8 +33,8 @@ function makeSlide({ tag, body, compare }) {
           </p>
         </Col>
       </Row>
-      <Row type="flex">
-        <Col span={6} offset={9}>
+      <Row type="flex" justify="space-around">
+        <Col push={9}>
           <div style={{ marginTop: "20px" }} align="center">
             <Link
               to={"/experiment"}
