@@ -52,5 +52,6 @@
   "flow.useNPMPackagedFlow": true,
   // Enable/disable JavaScript validation. (For Flow)
   "javascript.validate.enable": false,
-  "deepscan.enable": true
+  "deepscan.enable": true,
+  "eslint.enable": false
 }

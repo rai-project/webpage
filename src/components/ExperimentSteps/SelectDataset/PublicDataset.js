@@ -5,17 +5,26 @@ import SelectableCard from "../SelectableCard/SelectableCard";
 const menu = (
   <Menu>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer">
+      <a // eslint-disable-line
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Image
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer">
+      <a // eslint-disable-line
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Video
       </a>
     </Menu.Item>
     <Menu.Item>
-      <a target="_blank" rel="noopener noreferrer">
+      <a // eslint-disable-line
+        target="_blank"
+        rel="noopener noreferrer"
+      >
         Text
       </a>
     </Menu.Item>
@@ -37,7 +46,9 @@ export default class PublicDataset extends Component {
         >
           <div style={{ display: "inline-block" }}>
             <Dropdown overlay={menu}>
-              <a style={{ color: "white" }}>
+              <a // eslint-disable-line
+                style={{ color: "white" }}
+              >
                 Data Format <Icon type="caret-down" theme="outlined" />
               </a>
             </Dropdown>
@@ -45,7 +56,9 @@ export default class PublicDataset extends Component {
 
           <div style={{ marginLeft: "40px", display: "inline-block" }}>
             <Dropdown overlay={menu}>
-              <a style={{ color: "white" }}>
+              <a // eslint-disable-line
+                style={{ color: "white" }}
+              >
                 Technique <Icon type="caret-down" theme="outlined" />
               </a>
             </Dropdown>
@@ -53,7 +66,9 @@ export default class PublicDataset extends Component {
 
           <div style={{ marginLeft: "40px", display: "inline-block" }}>
             <Dropdown overlay={menu}>
-              <a style={{ color: "white" }}>
+              <a // eslint-disable-line
+                style={{ color: "white" }}
+              >
                 Number of Instances <Icon type="caret-down" theme="outlined" />
               </a>
             </Dropdown>

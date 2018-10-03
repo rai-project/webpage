@@ -1,5 +1,5 @@
 import "./LandingPage.css";
-import { Row, Col, Icon, Button, Divider } from "antd";
+import { Row, Col, Icon } from "antd";
 import React, { Component } from "react";
 import Image4 from "../../resources/img/4.jpg";
 

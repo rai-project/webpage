@@ -2,7 +2,6 @@ import React, { Component } from "react";
 import { Layout } from "antd";
 import PublicDataset from "./PublicDataset";
 import ImportImgFromURL from "./ImportImgFromURL";
-import yeast from "yeast";
 
 const { Content } = Layout;
 
@@ -68,18 +67,17 @@ export default class ExperimentPage extends Component {
           >
             <div>
               {dataSources.map((source, index) => (
-                <a key={yeast()}>
-                  <div
-                    style={{
-                      display: "inline-block",
-                      marginLeft: "40px",
-                      color: this.state.dataSource === index ? "#E84A27" : "white",
-                    }}
-                    onClick={() => this.setState({ dataSource: index })}
-                  >
-                    {source}
-                  </div>
-                </a>
+                <div
+                  key={`exp-dataSource-${index}`}
+                  style={{
+                    display: "inline-block",
+                    marginLeft: "40px",
+                    color: this.state.dataSource === index ? "#E84A27" : "white",
+                  }}
+                  onClick={() => this.setState({ dataSource: index })}
+                >
+                  {source}
+                </div>
               ))}
             </div>
             <h2 style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}>

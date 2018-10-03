@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Row, Col, Icon, Menu, Divider } from "antd";
+import { Row, Col, Icon, Menu } from "antd";
 
 import arrow from "../../resources/img/arrow.svg";
 import sec4back from "../../resources/img/sec4back.jpg";
