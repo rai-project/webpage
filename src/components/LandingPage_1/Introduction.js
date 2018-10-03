@@ -62,36 +62,36 @@ function makeSlide({ tag, body, compare }) {
 }
 
 const Message1 = (() => {
-  const tag = <div>Find the most effective machine learning model</div>;
+  const tag = <React.Fragment>Find the most effective machine learning model</React.Fragment>;
   const body = (
-    <div>
+    <React.Fragment>
       Find exactly what you need by exploring and reviewing results of different AI experiment
       configurations; without the hassle of installation.
-    </div>
+    </React.Fragment>
   );
   const compare = "Compare Models";
   return makeSlide({ tag, body, compare });
 })();
 
 const Message2 = (() => {
-  const tag = <div>Find the most effective machine learning framework</div>;
+  const tag = <React.Fragment>Find the most effective machine learning framework</React.Fragment>;
   const body = (
-    <div>
+    <React.Fragment>
       Find the framework to use for your model by uploading your model and evaluating its accuracy
       and performance across frameworks.
-    </div>
+    </React.Fragment>
   );
   const compare = "Compare Frameworks";
   return makeSlide({ tag, body, compare });
 })();
 
 const Message3 = (() => {
-  const tag = <div>Find the most effective machine learning setup</div>;
+  const tag = <React.Fragment>Find the most effective machine learning setup</React.Fragment>;
   const body = (
-    <div>
+    <React.Fragment>
       Find exactly what you need by exploring and reviewing results of different AI experiment
       configurations; without the hassle of installation.
-    </div>
+    </React.Fragment>
   );
   const compare = "Compare Machines";
   return makeSlide({ tag, body, compare });
