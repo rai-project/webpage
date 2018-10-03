@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import { Layout } from "antd";
 import PublicDataset from "./PublicDataset";
 import ImportImgFromURL from "./ImportImgFromURL";
-import models from "../../Models/Models";
-import frameworks from "../../Frameworks/Frameworks";
 import yeast from "yeast";
 
 const { Content } = Layout;
+
+const frameworks = [];
+const models = [];
 
 const datasetOptions = [
   { key: 0, name: "ilsvrc2012", description: "vision/ilsvrc2012" },
