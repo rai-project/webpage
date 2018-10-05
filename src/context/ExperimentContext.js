@@ -6,6 +6,7 @@ export default class ExperimentProvider extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      batchSize: 1,
       traceLevel: "NO_TRACE",
       isPredicting: true,
       imageUrls: [],
@@ -13,6 +14,8 @@ export default class ExperimentProvider extends Component {
       frameworks: [],
       machines: [],
       result: null,
+      modelManifests: null,
+      frameworkManifests: null,
       addUrl: url =>
         this.setState({
           imageUrls: this.state.imageUrls.concat(url),
@@ -38,6 +41,10 @@ export default class ExperimentProvider extends Component {
         this.setState({
           traceLevel: newLevel,
         }),
+      setBatchSize: batchSize =>
+        this.setState({
+          batchSize: batchSize,
+        }),
       startPredicting: () =>
         this.setState({
           isPredicting: true,
@@ -49,6 +56,14 @@ export default class ExperimentProvider extends Component {
       setPredictResult: result =>
         this.setState({
           result: result,
+        }),
+      setModelManifests: modelManifests =>
+        this.setState({
+          modelManifests: modelManifests,
+        }),
+      setFrameworkManifests: frameworkManifests =>
+        this.setState({
+          frameworkManifests: frameworkManifests,
         }),
     };
   }

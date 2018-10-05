@@ -8,33 +8,30 @@ import { ExperimentContext } from "../../../context/ExperimentContext";
 
 const { Content } = Layout;
 
-export default class SelectModel extends Component {
-  constructor(models = null) {
-    super();
-    this.state = {};
-  }
-
+class SelectModel extends Component {
   async componentDidMount() {
-    try {
-      const req = await ModelManifests({
-        frameworkName: "*",
-        frameworkVersion: "*",
-        modelName: "*",
-        modelVersion: "*",
-      });
-      this.setState({ models: req.manifests });
-    } catch (err) {
-      console.error(err);
+    if (this.props.context.modelManifests == null) {
+      try {
+        const req = await ModelManifests({
+          frameworkName: "*",
+          frameworkVersion: "*",
+          modelName: "*",
+          modelVersion: "*",
+        });
+        this.props.context.setModelManifests(req.manifests);
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
 
-  handleSelect(context, item) {
-    context.addModel(item.model.name, item.model.version);
-    console.log(context);
+  handleSelect(item) {
+    this.props.context.addModel(item.name, item.version);
+    console.log(this.props.context);
   }
 
   render() {
-    const { models } = this.state;
+    const models = this.props.context.modelManifests;
     console.log(models);
     const modelsKey = keys(models).sort();
 
@@ -62,24 +59,20 @@ export default class SelectModel extends Component {
             <Row gutter={16}>
               {modelsKey.map(key => (
                 <Col key={yeast()} span={8} style={{ padding: "10px" }}>
-                  <ExperimentContext.Consumer>
-                    {context => (
-                      <SelectableCard
-                        item={models[key].model}
-                        content={
-                          models[key].description
-                            .split(" ")
-                            .slice(0, 10)
-                            .join(" ") + " ..."
-                        }
-                        description={models[key].description}
-                        height="300px"
-                        tooltip={true}
-                        onClick={() => this.handleSelect(context, models[key])}
-                        // selected={this.props.selected[item.id]}
-                      />
-                    )}
-                  </ExperimentContext.Consumer>
+                  <SelectableCard
+                    item={models[key]}
+                    content={
+                      models[key].description
+                        .split(" ")
+                        .slice(0, 10)
+                        .join(" ") + " ..."
+                    }
+                    description={models[key].description}
+                    height="300px"
+                    tooltip={true}
+                    onClick={() => this.handleSelect(models[key])}
+                  // selected={this.props.selected[item.id]}
+                  />
                 </Col>
               ))}
             </Row>
@@ -89,3 +82,9 @@ export default class SelectModel extends Component {
     );
   }
 }
+
+export default props => (
+  <ExperimentContext.Consumer>
+    {context => <SelectModel {...props} context={context} />}
+  </ExperimentContext.Consumer>
+);

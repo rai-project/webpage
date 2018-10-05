@@ -8,26 +8,23 @@ import { ExperimentContext } from "../../../context/ExperimentContext";
 
 const { Content } = Layout;
 
-export default class SelectFramework extends Component {
-  constructor(frameworks = null) {
-    super();
-    this.state = {};
-  }
-
+class SelectFramework extends Component {
   async componentDidMount() {
-    try {
-      const req = await FrameworkManifests({
-        frameworkName: "*",
-        frameworkVersion: "*",
-      });
-      this.setState({ frameworks: req.manifests });
-    } catch (err) {
-      console.error(err);
+    if (this.props.context.frameworkManifests === null) {
+      try {
+        const req = await FrameworkManifests({
+          frameworkName: "*",
+          frameworkVersion: "*",
+        });
+        this.props.context.setFrameworkManifests(req.manifests);
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
 
   render() {
-    const { frameworks } = this.state;
+    const frameworks = this.props.context.frameworkManifests;
     if (!isArray(frameworks)) {
       return <div />;
     }
@@ -51,17 +48,13 @@ export default class SelectFramework extends Component {
             <Row gutter={16}>
               {frameworks.map((item, index) => (
                 <Col key={yeast()} span={8} style={{ padding: "10px" }}>
-                  <ExperimentContext.Consumer>
-                    {context => (
-                      <SelectableCard
-                        item={item}
-                        content={"Descriptions"}
-                        tooltip={true}
-                        onClick={() => context.addFramework(item.name, item.version)}
-                        // selected={this.props.selected[item.id]}
-                      />
-                    )}
-                  </ExperimentContext.Consumer>
+                  <SelectableCard
+                    item={item}
+                    content={"Descriptions"}
+                    tooltip={true}
+                    onClick={() => this.props.context.addFramework(item.name, item.version)}
+                  // selected={this.props.selected[item.id]}
+                  />
                 </Col>
               ))}
             </Row>
@@ -71,3 +64,9 @@ export default class SelectFramework extends Component {
     );
   }
 }
+
+export default props => (
+  <ExperimentContext.Consumer>
+    {context => <SelectFramework {...props} context={context} />}
+  </ExperimentContext.Consumer>
+);

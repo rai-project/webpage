@@ -26,7 +26,7 @@ export default class ExperimentSetupSider extends Component {
 
   handleClick(context, key) {
     if (key === "predict") {
-      predict(context.imageUrls, context.models, context.frameworks).then(result =>
+      predict(context.imageUrls, context.models, context.frameworks, context.batchSize, context.traceLevel).then(result =>
         context.setPredictResult(result)
       );
       console.log(context);
@@ -60,7 +60,6 @@ export default class ExperimentSetupSider extends Component {
                 }}
               >
                 <div>DATASETS</div>
-                {/* <div># {item} available</div> */}
                 {context.imageUrls.length !== 0 && <Tag closable>Import from URLs</Tag>}
               </Menu.Item>
 
@@ -75,7 +74,6 @@ export default class ExperimentSetupSider extends Component {
                 }}
               >
                 <div>MODELS</div>
-                {/* <div># {item} available</div> */}
                 {context.models.map((model, index) => (
                   <div key={yeast()}>
                     <Tag
@@ -111,7 +109,6 @@ export default class ExperimentSetupSider extends Component {
                     </Tag>
                   </div>
                 ))}
-                {/* <div># {item} available</div> */}
               </Menu.Item>
 
               <Menu.Item
@@ -125,17 +122,7 @@ export default class ExperimentSetupSider extends Component {
                 }}
               >
                 <div>MACHINES</div>
-                {/* <div># {item} available</div> */}
               </Menu.Item>
-              {/* {
-                Object.keys(this.props.siderMenuNextStep).map(
-                  (item) =>
-                  <Menu.Item key={item} className="Experiment-setup-sider-bar">
-                    <div>{item.toUpperCase()}</div>
-                    <div># {item} available</div>
-                  </Menu.Item>
-                )
-              } */}
             </Menu>
           )}
         </ExperimentContext.Consumer>
@@ -143,7 +130,11 @@ export default class ExperimentSetupSider extends Component {
         <div style={{ paddingLeft: "24px" }}>
           <div style={{ display: "inline-block" }}>Batch Size: </div>
           <div style={{ marginLeft: "40px", display: "inline-block" }}>
-            <InputNumber min={1} max={10} defaultValue={1} />
+            <ExperimentContext.Consumer>
+              {context => (
+                <InputNumber min={1} max={10} value={context.batchSize} onChange={(value) => context.setBatchSize(value)} />
+              )}
+            </ExperimentContext.Consumer>
           </div>
         </div>
 
@@ -155,7 +146,7 @@ export default class ExperimentSetupSider extends Component {
                 <Select
                   showSearch
                   style={{ width: 100 }}
-                  defaultValue={trace_options[0].value}
+                  value={context.traceLevel}
                   optionFilterProp="children"
                   onChange={value => context.changeTraceLevel(value)}
                   filterOption={(input, option) =>

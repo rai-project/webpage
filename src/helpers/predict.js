@@ -1,5 +1,5 @@
 import yeast from "yeast";
-import { Open, URLs, Close } from "../swagger";
+import { Open, URLs, Close } from "../swagger/index";
 
 function buildOpenParams(model, framework, batch_size, trace_level) {
   return {
@@ -22,7 +22,7 @@ function buildOpenParams(model, framework, batch_size, trace_level) {
 }
 
 function pFinally(promise, onFinally) {
-  onFinally = onFinally || (() => {});
+  onFinally = onFinally || (() => { });
 
   return promise.then(
     val => Promise.resolve(onFinally()).then(() => val),
@@ -33,31 +33,13 @@ function pFinally(promise, onFinally) {
   );
 }
 
-// function makeSpanHeaders(headers) {
-//   let res = {};
-//   headers = headers || {};
-//   if (has(headers, "x-b3-flags")) {
-//     res["x-b3-flags"] = headers["x-b3-flags"];
-//   }
-//   if (has(headers, "x-b3-sampled")) {
-//     res["x-b3-sampled"] = headers["x-b3-sampled"];
-//   }
-//   if (has(headers, "x-b3-spanid")) {
-//     res["x-b3-spanid"] = headers["x-b3-spanid"];
-//   }
-//   if (has(headers, "x-b3-traceid")) {
-//     res["x-b3-traceid"] = headers["x-b3-traceid"];
-//   }
-//   return res;
-// };
-
-export default function predict(imageUrls, models, frameworks) {
+export default function predict(imageUrls, models, frameworks, batch_size, trace_level) {
   let spanHeaders = {};
 
-  // const requestId = uuid();
   const run = (imageUrls, model, framework) => {
     let predictor = null;
-    let openParams = buildOpenParams(model, framework, 1, "FULL_TRACE");
+    let openParams = buildOpenParams(model, framework, batch_size, trace_level);
+    console.log(openParams);
 
     const res = pFinally(
       Open(openParams)
@@ -90,9 +72,9 @@ export default function predict(imageUrls, models, frameworks) {
             response: response.responses,
           };
         }),
-      function() {
+      function () {
         if (predictor && predictor.id) {
-          Close({ body: { id: predictor.id } }).catch(function(e) {});
+          Close({ body: { id: predictor.id } }).catch(function (e) { });
         }
       }
     );
@@ -103,7 +85,7 @@ export default function predict(imageUrls, models, frameworks) {
   models.map(model =>
     frameworks.map(framework => pairs.push({ model: model, framework: framework }))
   );
-  return Promise.all(pairs.map(pair => run(imageUrls, pair.model, pair.framework))).then(function(
+  return Promise.all(pairs.map(pair => run(imageUrls, pair.model, pair.framework))).then(function (
     features
   ) {
     console.log(features);
