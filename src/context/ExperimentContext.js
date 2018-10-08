@@ -10,6 +10,7 @@ export default class ExperimentProvider extends Component {
       traceLevel: "NO_TRACE",
       isPredicting: true,
       imageUrls: [],
+      dataset: [],
       models: [],
       frameworks: [],
       machines: [],
@@ -19,6 +20,10 @@ export default class ExperimentProvider extends Component {
       addUrl: url =>
         this.setState({
           imageUrls: this.state.imageUrls.concat(url),
+        }),
+      addDataset: dataset =>
+        this.setState({
+          dataset: this.state.dataset.concat(dataset)
         }),
       addModel: (name, version) =>
         this.setState({

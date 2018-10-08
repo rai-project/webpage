@@ -61,6 +61,7 @@ export default class ExperimentSetupSider extends Component {
               >
                 <div>DATASETS</div>
                 {context.imageUrls.length !== 0 && <Tag closable>Import from URLs</Tag>}
+                {context.dataset.length !== 0 && <Tag closable>{context.dataset[0].name}</Tag>}
               </Menu.Item>
 
               <Menu.Item

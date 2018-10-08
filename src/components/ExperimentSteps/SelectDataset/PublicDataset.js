@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Icon, Dropdown, Menu, Tag, Spin } from "antd";
 import SelectableCard from "../SelectableCard/SelectableCard";
+import { ExperimentContext } from "../../../context/ExperimentContext";
 
 const menu = (
   <Menu>
@@ -96,23 +97,38 @@ export default class PublicDataset extends Component {
           </Tag>
         </div>
 
-        <Spin tip="Comming Soon...">
-          <div>
-            <Row gutter={1}>
-              {this.props.datasetOptions.map((item, index) => (
+        <div>
+          <Row gutter={1}>
+            {this.props.datasetOptions.map((item, index) => (
+              item.name === "ilsvrc2012" ?
                 <Col span={8} style={{ padding: "10px" }}>
-                  <SelectableCard
-                    item={item}
-                    content={item.description}
-                    height="auto"
-                    // onClick={() => this.props.onSelect('data', index)}
-                    selected={false}
-                  />
+                  <ExperimentContext.Consumer>
+                    {context =>
+                      <SelectableCard
+                        item={item}
+                        content={item.description}
+                        height="200px"
+                        onClick={() => context.addDataset(item)}
+                        selected={false}
+                      />
+                    }
+                  </ExperimentContext.Consumer>
                 </Col>
-              ))}
-            </Row>
-          </div>
-        </Spin>
+                :
+                <Col span={8} style={{ padding: "10px" }}>
+                  <Spin tip="Comming Soon...">
+                    <SelectableCard
+                      item={item}
+                      content={item.description}
+                      height="200px"
+                      // onClick={() => this.props.onSelect('data', index)}
+                      selected={false}
+                    />
+                  </Spin>
+                </Col>
+            ))}
+          </Row>
+        </div>
       </div>
     );
   }
