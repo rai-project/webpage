@@ -3,6 +3,7 @@ import _ from "lodash";
 import { ExperimentContext } from "../../context/ExperimentContext";
 import { Table } from "antd";
 import { accuracy as accuracyData } from "../../docs";
+import LatencyGraph from "./LatencyGraph";
 
 class DatasetInferenceResult extends Component {
   modelFullName(model) {
@@ -59,6 +60,10 @@ class DatasetInferenceResult extends Component {
     return (
       <div style={{ marginTop: "40px" }}>
         <Table columns={overviewData.columns} dataSource={overviewData.dataSource} />
+        {
+          models.map((model) =>
+            <LatencyGraph model={this.modelFullName(model)} />
+          )}
       </div>
     )
   }

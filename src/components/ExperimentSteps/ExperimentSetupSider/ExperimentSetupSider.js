@@ -25,7 +25,7 @@ export default class ExperimentSetupSider extends Component {
   }
 
   handleClick(context, key) {
-    if (key === "predict") {
+    if (key === "predict" && context.imageUrls.length !== 0) {
       predict(context.imageUrls, context.models, context.frameworks, context.batchSize, context.traceLevel).then(result =>
         context.setPredictResult(result)
       );

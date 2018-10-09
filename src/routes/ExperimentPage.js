@@ -8,8 +8,7 @@ import SelectModel from "../components/ExperimentSteps/SelectModel/SelectModel";
 import SelectFramework from "../components/ExperimentSteps/SelectFramework/SelectFramework";
 import SelectMachine from "../components/ExperimentSteps/SelectMachine/SelectMachine";
 import InferenceResult from "../components/InferenceResult/InferenceResult";
-import ExperimentProvider, { ExperimentContext } from "../context/ExperimentContext";
-import DatasetInferenceResult from "../components/InferenceResult/DatasetInferenceResult";
+import ExperimentProvider from "../context/ExperimentContext";
 
 const siderMenuNextStep = {
   dataset: "model",
@@ -39,7 +38,7 @@ export default class ExperimentPage extends Component {
 
   render() {
     var currentPage;
-    // currentPage = <SelectDataset />;
+    // currentPage = <InferenceResult />;
     switch (this.state.current) {
       case "dataset":
         currentPage = <SelectDataset />;
