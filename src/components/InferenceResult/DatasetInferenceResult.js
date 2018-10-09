@@ -4,6 +4,7 @@ import { ExperimentContext } from "../../context/ExperimentContext";
 import { Table } from "antd";
 import { accuracy as accuracyData } from "../../docs";
 import LatencyGraph from "./LatencyGraph";
+import LayersDurationGraph from "./LayersDurationGraph";
 
 class DatasetInferenceResult extends Component {
   modelFullName(model) {
@@ -64,6 +65,11 @@ class DatasetInferenceResult extends Component {
           models.map((model) =>
             <LatencyGraph model={this.modelFullName(model)} />
           )}
+          {
+          models.map((model) =>
+            <LayersDurationGraph model={this.modelFullName(model)} />
+          )
+        }
       </div>
     )
   }
