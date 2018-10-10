@@ -2,7 +2,7 @@ import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
 import { Col, Row, Layout } from "antd";
 import yeast from "yeast";
-import { isArray, keys } from "lodash";
+import { isArray, keys, uniqBy } from "lodash";
 import { ModelManifests } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
@@ -31,7 +31,7 @@ class SelectModel extends Component {
   }
 
   render() {
-    const models = this.props.context.modelManifests;
+    const models = uniqBy(this.props.context.modelManifests, e => e.name + e.version);
     console.log(models);
     const modelsKey = keys(models).sort();
 
