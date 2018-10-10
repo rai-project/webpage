@@ -1,18 +1,15 @@
 import "./InferenceResult.css";
 import React, { Component } from "react";
-import { Layout } from "antd";
 import { ExperimentContext } from "../../context/ExperimentContext";
 import ImageInferenceResult from "./ImageInferenceResult";
 import DatasetInferenceResult from "./DatasetInferenceResult";
 
-const { Content } = Layout;
 
 class InferenceResult extends Component {
   render() {
     let resultContent = this.props.context.imageUrls.length === 0 ? <DatasetInferenceResult /> : <ImageInferenceResult />;
     return (
-      <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
-        <Content style={{}}>
+      <div style={{ width: "100%", background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
           <div
             style={{
               background: "#1A263A",
@@ -27,8 +24,7 @@ class InferenceResult extends Component {
           </div>
 
           {resultContent}
-        </Content>
-      </Layout>
+      </div>
     );
   }
 }
