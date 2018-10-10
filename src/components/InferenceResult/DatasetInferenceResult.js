@@ -39,7 +39,7 @@ class DatasetInferenceResult extends Component {
       frameworks.map(framework => pairs.push({ model: model, framework: framework }))
     );
 
-    pairs.map((pair) => {
+    pairs.forEach((pair) => {
       let modelFrameworkFullName = this.modelFrameworkFullName(pair.model, pair.framework);
       let data = _.find(
         accuracyData[this.modelFullName(pair.model)],

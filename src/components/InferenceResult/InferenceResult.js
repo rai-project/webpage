@@ -9,7 +9,7 @@ const { Content } = Layout;
 
 class InferenceResult extends Component {
   render() {
-    let resultContent = this.props.context.imageUrls.length == 0 ? <DatasetInferenceResult /> : <ImageInferenceResult />;
+    let resultContent = this.props.context.imageUrls.length === 0 ? <DatasetInferenceResult /> : <ImageInferenceResult />;
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
         <Content style={{}}>

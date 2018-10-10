@@ -12,10 +12,6 @@ import {
 } from "bizcharts";
 import DataSet from "@antv/data-set";
 
-function modelFullName(model) {
-  return model.name.replace("-", "_") + "_" + model.version.replace(".", "_");
-}
-
 class LatencyGraph extends Component {
   constructor() {
     super();
@@ -38,9 +34,8 @@ class LatencyGraph extends Component {
           data = await data.json();
         }
       }
-      let groupedData = [];
-      this.props.context.frameworks.map((framework) => {
-        let temp = _.filter(
+      var groupedData = this.props.context.frameworks.map((framework) => {
+        return _.filter(
           data,
           e =>
             _.toLower(e.framework_name).replace(/-/g, '_') ===
@@ -48,7 +43,6 @@ class LatencyGraph extends Component {
             e.machine_architecture === "amd64" &&
             e.host_name === "ip-172-31-42-188"
         )
-        groupedData.push(temp);
       })
       console.log(groupedData);
       this.setState({ data: groupedData });
@@ -61,13 +55,12 @@ class LatencyGraph extends Component {
     if (this.state.data === null) {
       return (<div></div>)
     }
-    let latencyData = [];
-    this.state.data.map((group) => {
+    var latencyData = this.state.data.map((group) => {
       let groupedData = { name: group[0].framework_name };
-      group.map((item) => {
+      group.forEach((item) => {
         groupedData[item.batch_size.toString()] = item.latency;
       })
-      latencyData.push(groupedData);
+      return (groupedData);
     });
     console.log(latencyData);
     const ds = new DataSet();

@@ -8,10 +8,8 @@ import {
   Geom,
   Axis,
   Tooltip,
-  Legend,
   Coord,
 } from "bizcharts";
-import DataSet from "@antv/data-set";
 
 class LayersDurationGraph extends Component {
   constructor() {
@@ -35,18 +33,16 @@ class LayersDurationGraph extends Component {
           data = await data.json();
         }
       }
-      let groupedData = [];
-      this.props.context.frameworks.map((framework) => {
-        let temp = _.find(
+      var groupedData = this.props.context.frameworks.map((framework) => {
+        return _.find(
           data,
           e =>
             _.toLower(e.framework_name).replace(/-/g, '_') ===
             _.toLower(framework.name).replace(/-/g, '_') &&
             e.machine_architecture === "amd64" &&
             e.host_name === "whatever" &&
-            e.batch_size == 16
+            e.batch_size === 16
         )
-        groupedData.push(temp);
       })
       console.log(groupedData);
       this.setState({ data: groupedData });
@@ -55,19 +51,22 @@ class LayersDurationGraph extends Component {
     }
   }
 
+  uniqueLayerName(layersData, name) {
+    return _.find(layersData, e => e.layer === name) === undefined
+  }
+
   render() {
     if (this.state.data === null) {
       return (<div></div>)
     }
-    let frameworksLayersData = [];
-    this.state.data.map((group) => {
+    var frameworksLayersData = this.state.data.map((group) => {
       let layersData = [];
-      group.layer_informations.map((item) => {
+      group.layer_informations.forEach((item) => {
         let name = item.name;
-        if (_.find(layersData, e => e.layer === name) !== undefined) {
+        if (!this.uniqueLayerName(layersData, name)) {
           let num = 1;
           while(true) {
-            if (_.find(layersData, e => e.layer === name+num.toString()) === undefined) {
+            if (this.uniqueLayerName(layersData, name + num.toString())) {
               name = name + num.toString();
               break;
             }
@@ -76,36 +75,26 @@ class LayersDurationGraph extends Component {
         }
         layersData.unshift({ layer: name, duration: _.mean(item.durations) });
       })
-      frameworksLayersData.push({ framework_name: group.framework_name, layers_informations: layersData });
+      return({ framework_name: group.framework_name, layers_informations: layersData });
     });
     console.log(frameworksLayersData);
 
     return (
       <div>
-        {frameworksLayersData.map((frameworkLayer) => {
-          const scale = {
-            layer: {
-              type: "cat",
-              tickCount: frameworkLayer.layers_informations.length,
-            },
-          }
-          console.log(frameworkLayer.layers_informations.length * 20);
-          return (
-            <div>
-              <h1>Layer durations for {this.props.model} using {frameworkLayer.framework_name}</h1>
-              <Chart padding="auto" height={frameworkLayer.layers_informations.length * 20} data={frameworkLayer.layers_informations} forceFit>
-                <Coord transpose />
-                <Axis
-                  name="layer"
-                  labelOffset={10}
-                />
-                <Axis name="duration" />
-                <Tooltip />
-                <Geom type="interval" position="layer*duration" />
-              </Chart>
-            </div>
-          )
-        }
+        {frameworksLayersData.map((frameworkLayer) => 
+          <div>
+            <h1>Layer durations for {this.props.model} using {frameworkLayer.framework_name}</h1>
+            <Chart padding="auto" height={frameworkLayer.layers_informations.length * 20} data={frameworkLayer.layers_informations} forceFit>
+              <Coord transpose />
+              <Axis
+                name="layer"
+                labelOffset={10}
+              />
+              <Axis name="duration" />
+              <Tooltip />
+              <Geom type="interval" position="layer*duration" />
+            </Chart>
+          </div>
         )}
       </div>
     );
