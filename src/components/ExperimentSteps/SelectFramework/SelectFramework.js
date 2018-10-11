@@ -1,7 +1,7 @@
 import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
 import { Layout, Col, Row } from "antd";
-import { isArray } from "lodash";
+import { isArray, find } from "lodash";
 import yeast from "yeast";
 import { FrameworkManifests } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
@@ -53,7 +53,10 @@ class SelectFramework extends Component {
                     content={"Descriptions"}
                     tooltip={true}
                     onClick={() => this.props.context.addFramework(item.name, item.version)}
-                  // selected={this.props.selected[item.id]}
+                    selected={find(
+                      this.props.context.frameworks,
+                      e => e.name === item.name && e.version === item.version
+                      )}
                   />
                 </Col>
               ))}

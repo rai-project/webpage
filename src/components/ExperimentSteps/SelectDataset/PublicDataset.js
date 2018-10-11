@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Icon, Dropdown, Menu, Tag, Spin } from "antd";
+import {find} from "lodash";
 import SelectableCard from "../SelectableCard/SelectableCard";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
@@ -109,7 +110,7 @@ export default class PublicDataset extends Component {
                         content={item.description}
                         height="200px"
                         onClick={() => context.addDataset(item)}
-                        selected={false}
+                        selected={find(context.dataset, e => e.name === item.name)}
                       />
                     }
                   </ExperimentContext.Consumer>

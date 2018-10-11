@@ -2,7 +2,7 @@ import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
 import { Col, Row, Layout } from "antd";
 import yeast from "yeast";
-import { isArray, keys, uniqBy } from "lodash";
+import { isArray, keys, uniqBy, find } from "lodash";
 import { ModelManifests } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
@@ -71,7 +71,10 @@ class SelectModel extends Component {
                     height="300px"
                     tooltip={true}
                     onClick={() => this.handleSelect(models[key])}
-                  // selected={this.props.selected[item.id]}
+                    selected={find(
+                      this.props.context.models,
+                      e => e.name === models[key].name && e.version === models[key].version
+                      )}
                   />
                 </Col>
               ))}

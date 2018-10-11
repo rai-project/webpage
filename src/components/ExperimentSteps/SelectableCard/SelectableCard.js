@@ -23,7 +23,7 @@ export default class SelectableCard extends Component {
         hoverable
         onClick={this.handleClick.bind(this)}
         bordered={this.state.selected}
-        style={{ height: this.props.height || '200px', borderColor: '#707070' }}
+        style={{ height: this.props.height || '200px', borderColor: '#e84a27' }}
       >
         <div style={{ position: "relative", paddingTop: "40px", paddingLeft: "40px", paddingRight: "40px", paddingBottom: "40px" }}>
           <div>
