@@ -2,6 +2,7 @@
   "name": "webpage",
   "version": "0.1.0",
   "private": true,
+  "homepage": "mlmodelscope.org",
   "dependencies": {
     "@antv/data-set": "^0.9.6",
     "@ibm/plex": "^1.1.6",
@@ -42,6 +43,7 @@
     "clean:swagger": "rimraf src/swagger"
   },
   "devDependencies": {
+    "customize-cra": "^0.1.1",
     "image-webpack-loader": "^4.3.1",
     "npm-run-all": "^4.1.3",
     "raw-loader": "^0.5.1",
