@@ -84,7 +84,7 @@ export function {{&methodName}}(params){
 
         {{#isBodyParameter}}
             if(parameters['{{&camelCaseName}}'] !== undefined){
-                body = JSON.stringify(parameters['{{&camelCaseName}}']);
+                parameters['body'] = JSON.stringify(parameters['{{&camelCaseName}}']);
             }
         {{/isBodyParameter}}
 

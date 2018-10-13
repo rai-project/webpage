@@ -95,7 +95,7 @@ export function Close(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = JSON.stringify(parameters['body']);
+        parameters['body'] = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -174,7 +174,7 @@ export function Dataset(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = JSON.stringify(parameters['body']);
+        parameters['body'] = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -253,7 +253,7 @@ export function Images(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = JSON.stringify(parameters['body']);
+        parameters['body'] = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -334,7 +334,7 @@ export function Open(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = JSON.stringify(parameters['body']);
+        parameters['body'] = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -413,7 +413,7 @@ export function Reset(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = JSON.stringify(parameters['body']);
+        parameters['body'] = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -492,7 +492,7 @@ export function DatasetStream(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = JSON.stringify(parameters['body']);
+        parameters['body'] = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -571,7 +571,7 @@ export function ImagesStream(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = JSON.stringify(parameters['body']);
+        parameters['body'] = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -650,7 +650,7 @@ export function URLsStream(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = JSON.stringify(parameters['body']);
+        parameters['body'] = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -729,7 +729,7 @@ export function URLs(params) {
     }
 
     if (parameters['body'] !== undefined) {
-        body = JSON.stringify(parameters['body']);
+        parameters['body'] = JSON.stringify(parameters['body']);
     }
 
     if (parameters['body'] === undefined) {
@@ -1093,6 +1093,164 @@ export function ModelManifests(params) {
 
     options = assign({
             method: 'GET',
+            headers,
+        },
+        options
+    );
+    return fetch(urlPath + queryParams,
+        options
+    ).then(response =>
+        response.json().then(json =>
+            assign(
+                processHeaders(response.headers),
+                json
+            )
+        ));
+};
+
+/**
+ * Login to MLModelScope platform
+ * @method
+ * @name DLFramework#Login
+ * @param {object} parameters - method options and parameters
+ * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
+ */
+export function Login(params) {
+    let urlPath = baseURL + '/api/login';
+    let body = {},
+        queryParameters = {},
+        headers = {},
+        form = {};
+
+    if (params && params.headers) {
+        headers = params.headers;
+    }
+
+    headers['Accept'] = 'application/json';
+    headers['Content-Type'] = 'application/json';
+
+    if (has(params, "requestId")) {
+        headers['X-Request-ID'] = params.requestId;
+    } else if (has(params, "X-Request-ID")) {
+        headers['X-Request-ID'] = params["X-Request-ID"];
+    } else {
+        headers['X-Request-ID'] = uuid();
+    }
+
+    if (!has(headers, "Content-Type")) {
+        headers["Content-Type"] = "application/json; charset=utf-8";
+    }
+
+    let parameters = params;
+
+    if (parameters === undefined) {
+        parameters = {};
+    }
+
+    if (parameters['body'] !== undefined) {
+        parameters['body'] = JSON.stringify(parameters['body']);
+    }
+
+    if (parameters['body'] === undefined) {
+        throw new Error('Missing required  parameter: body');
+    }
+
+    queryParameters = mergeQueryParams(parameters, queryParameters);
+
+    const queryParams =
+        queryParameters && Object.keys(queryParameters).length ?
+        "?" + serializeQueryParams(queryParameters) :
+        "";
+
+    let options = {
+        credentials: 'include',
+        cache: 'no-cache',
+        mode: 'cors'
+    }
+
+    options = assign(parameters, options);
+
+    options = assign({
+            method: 'POST',
+            headers,
+        },
+        options
+    );
+    return fetch(urlPath + queryParams,
+        options
+    ).then(response =>
+        response.json().then(json =>
+            assign(
+                processHeaders(response.headers),
+                json
+            )
+        ));
+};
+
+/**
+ * Signup to MLModelScope platform
+ * @method
+ * @name DLFramework#Signup
+ * @param {object} parameters - method options and parameters
+ * @param {} parameters.body - CarML (Cognitive ARtifacts for Machine Learning) is a framework allowing people to develop and deploy machine learning models. It allows machine learning (ML) developers to publish and evaluate their models, users to experiment with different models and frameworks through a web user interface or a REST api, and system architects to capture system resource usage to inform future system and hardware configuration.
+ */
+export function Signup(params) {
+    let urlPath = baseURL + '/api/signup';
+    let body = {},
+        queryParameters = {},
+        headers = {},
+        form = {};
+
+    if (params && params.headers) {
+        headers = params.headers;
+    }
+
+    headers['Accept'] = 'application/json';
+    headers['Content-Type'] = 'application/json';
+
+    if (has(params, "requestId")) {
+        headers['X-Request-ID'] = params.requestId;
+    } else if (has(params, "X-Request-ID")) {
+        headers['X-Request-ID'] = params["X-Request-ID"];
+    } else {
+        headers['X-Request-ID'] = uuid();
+    }
+
+    if (!has(headers, "Content-Type")) {
+        headers["Content-Type"] = "application/json; charset=utf-8";
+    }
+
+    let parameters = params;
+
+    if (parameters === undefined) {
+        parameters = {};
+    }
+
+    if (parameters['body'] !== undefined) {
+        parameters['body'] = JSON.stringify(parameters['body']);
+    }
+
+    if (parameters['body'] === undefined) {
+        throw new Error('Missing required  parameter: body');
+    }
+
+    queryParameters = mergeQueryParams(parameters, queryParameters);
+
+    const queryParams =
+        queryParameters && Object.keys(queryParameters).length ?
+        "?" + serializeQueryParams(queryParameters) :
+        "";
+
+    let options = {
+        credentials: 'include',
+        cache: 'no-cache',
+        mode: 'cors'
+    }
+
+    options = assign(parameters, options);
+
+    options = assign({
+            method: 'POST',
             headers,
         },
         options

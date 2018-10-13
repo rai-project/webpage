@@ -3,6 +3,7 @@ import _ from "lodash";
 import isPromise from "is-promise";
 import { layers as layersData } from "../../docs";
 import { ExperimentContext } from "../../context/ExperimentContext";
+import idx from "idx"
 import {
   Chart,
   Geom,
@@ -10,6 +11,7 @@ import {
   Tooltip,
   Coord,
 } from "bizcharts";
+import { isNullOrUndefined } from "util";
 
 class LayersDurationGraph extends Component {
   constructor() {
@@ -61,7 +63,11 @@ class LayersDurationGraph extends Component {
     }
     var frameworksLayersData = this.state.data.map((group) => {
       let layersData = [];
-      group.layer_informations.forEach((item) => {
+      const layer_informations = idx(group, _ => _.layer_informations);
+      if (isNullOrUndefined(layer_informations)) {
+        return null
+      }
+      layer_informations.forEach((item) => {
         let name = item.name;
         if (!this.uniqueLayerName(layersData, name)) {
           let num = 1;
@@ -80,9 +86,10 @@ class LayersDurationGraph extends Component {
     console.log(frameworksLayersData);
 
     return (
-      <div>
+      <React.Fragment>
         {frameworksLayersData.map((frameworkLayer) => 
-          <div>
+          isNullOrUndefined(frameworkLayer) ?  null :
+          <React.Fragment>
             <h1>Layer durations for {this.props.model} using {frameworkLayer.framework_name}</h1>
             <Chart padding="auto" height={frameworkLayer.layers_informations.length * 20} data={frameworkLayer.layers_informations} forceFit>
               <Coord transpose />
@@ -94,9 +101,9 @@ class LayersDurationGraph extends Component {
               <Tooltip />
               <Geom type="interval" position="layer*duration" />
             </Chart>
-          </div>
+          </React.Fragment>
         )}
-      </div>
+      </React.Fragment>
     );
   }
 }
