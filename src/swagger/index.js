@@ -104,21 +104,19 @@ export function Close(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -178,21 +176,19 @@ export function Dataset(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -252,21 +248,19 @@ export function Images(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -328,21 +322,19 @@ export function Open(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -402,21 +394,19 @@ export function Reset(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -476,21 +466,19 @@ export function DatasetStream(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -550,21 +538,19 @@ export function ImagesStream(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -624,21 +610,19 @@ export function URLsStream(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -698,20 +682,17 @@ export function URLs(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
 
   return fetch(urlPath + queryParams, options).then(response =>
@@ -774,21 +755,19 @@ export function FrameworkAgents(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "GET",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -849,21 +828,19 @@ export function FrameworkManifests(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "GET",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -934,21 +911,19 @@ export function ModelAgents(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "GET",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -1019,21 +994,19 @@ export function ModelManifests(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "GET",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -1093,21 +1066,19 @@ export function Login(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );
@@ -1167,21 +1138,19 @@ export function Signup(params) {
       ? "?" + serializeQueryParams(queryParameters)
       : "";
 
-  let options = {
-    credentials: "include",
-    cache: "no-cache",
-    mode: "cors",
-  };
-
-  options = assign(parameters, options);
-
-  options = assign(
+  const options = assign(
     {
       method: "POST",
       headers,
     },
-    options
+    parameters,
+    {
+      credentials: "include",
+      cache: "no-cache",
+      mode: "cors",
+    }
   );
+
   return fetch(urlPath + queryParams, options).then(response =>
     response.json().then(json => assign(processHeaders(response.headers), json))
   );

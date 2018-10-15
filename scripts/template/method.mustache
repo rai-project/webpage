@@ -115,20 +115,19 @@ export function {{&methodName}}(params){
         ? "?" + serializeQueryParams(queryParameters)
         : "";
 
-    let options = {
-        credentials: 'include',
-        cache: 'no-cache',
-        mode :'cors'
-    }
-
-    options = assign(parameters, options);
-
-    options = assign({
-        method: '{{method}}',
-        headers,
-     },
-     options 
+    const options = assign(
+        {
+            method: '{{method}}',
+            headers,
+        },
+        parameters,
+        {
+            credentials: 'include',
+            cache: 'no-cache',
+            mode :'cors'
+        }
     );
+    
     return fetch(urlPath + queryParams,
      options
     ).then(response => 
