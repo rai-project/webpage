@@ -1,9 +1,9 @@
 import "./InferenceResult.css";
 import React, { Component } from "react";
 import _ from "lodash";
-import Iframe from "react-iframe";
-import { Table, Tag, Spin, Divider } from "antd";
+import { Table, Tag, Spin } from "antd";
 import { ExperimentContext } from "../../context/ExperimentContext";
+import TraceInfo from "./TraceInfo";
 
 function processName(str) {
   var lower = str
@@ -91,13 +91,7 @@ class ImageInferenceResult extends Component {
                     </div>
 
                     {result.traceId ? (
-                      <div>
-                        <Divider />
-                        <h1 style={{ textAlign: "center" }}>
-                          <a href={traceURL}> Trace </a>
-                        </h1>
-                        <Iframe position="relative" url={traceURL} width="100%" height="500px" />
-                      </div>
+                      <TraceInfo traceURL={traceURL} traceID={result.traceId}/>
                     ) : null}
                   </div>
                 );

@@ -54,7 +54,7 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
           return URLs({
             headers: spanHeaders,
             body: {
-              predictor,
+              predictor: {id: predictor.id},
               urls: imageUrls.map(url => {
                 return {
                   id: yeast(),

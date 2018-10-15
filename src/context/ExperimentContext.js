@@ -7,7 +7,7 @@ export default class ExperimentProvider extends Component {
     super(props);
     this.state = {
       batchSize: 1,
-      traceLevel: "NO_TRACE",
+      traceLevel: "FULL_TRACE",
       isPredicting: true,
       imageUrls: [],
       dataset: [],
