@@ -28,15 +28,15 @@ export default class ImportImgFromURL extends Component {
             />
           )}
         </ExperimentContext.Consumer>
-        <div>
-          <ExperimentContext.Consumer>
-            {context =>
-              context.imageUrls.map(url => (
-                <div style={{ width: "100%", textAlign: "center" }}>{url}</div>
-              ))
-            }
-          </ExperimentContext.Consumer>
-        </div>
+        <ExperimentContext.Consumer>
+          {context =>
+            context.imageUrls.map(url => (
+              <div key={`url-${url}`} style={{ width: "100%", textAlign: "center" }}>
+                {url}
+              </div>
+            ))
+          }
+        </ExperimentContext.Consumer>
       </div>
     );
   }

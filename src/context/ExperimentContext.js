@@ -7,7 +7,7 @@ export default class ExperimentProvider extends Component {
     super(props);
     this.state = {
       batchSize: 1,
-      traceLevel: "FULL_TRACE",
+      traceLevel: "STEP_TRACE",
       isPredicting: true,
       imageUrls: [],
       dataset: [],
@@ -23,7 +23,7 @@ export default class ExperimentProvider extends Component {
         }),
       addDataset: dataset =>
         this.setState({
-          dataset: this.state.dataset.concat(dataset)
+          dataset: this.state.dataset.concat(dataset),
         }),
       addModel: (name, version) =>
         this.setState({
