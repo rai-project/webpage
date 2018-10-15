@@ -7,7 +7,7 @@
     {{^isSingleton}} * @param {{=<% %>=}}{<%&type%>}<%={{ }}=%> parameters.{{&camelCaseName}} - {{&description}}{{/isSingleton}}
 {{/parameters}}
  */
-export function {{&methodName}}(params){
+export async function {{&methodName}}(params){
     {{#isES6}}let{{/isES6}}{{^isES6}}var{{/isES6}} urlPath = baseURL + '/api{{&path}}';
     {{#isES6}}let{{/isES6}}{{^isES6}}var{{/isES6}} body = {}, queryParameters = {}, headers = {}, form = {};
 
@@ -115,27 +115,25 @@ export function {{&methodName}}(params){
         ? "?" + serializeQueryParams(queryParameters)
         : "";
 
-    const options = assign(
-        {
-            method: '{{method}}',
-            headers,
-        },
-        parameters,
-        {
-            credentials: 'include',
-            cache: 'no-cache',
-            mode :'cors'
-        }
-    );
+    const creds = {
+        credentials: 'include',
+        cache: 'no-cache',
+        mode :'cors'
+    };
+    const options = {
+        method: '{{method}}',
+        headers,
+        ...parameters,
+        ...creds,
+    };
     
-    return fetch(urlPath + queryParams,
-     options
-    ).then(response => 
-        response.json().then(json =>
-            assign(
-                processHeaders(response.headers),
-                json
-            )
-        ));
+    const response =  await fetch(urlPath + queryParams, options);
+    const json = await response.json()
+
+
+    return {
+        ...processHeaders(response.headers),
+        ...json
+    }
  };
 
