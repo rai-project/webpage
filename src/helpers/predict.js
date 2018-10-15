@@ -87,7 +87,11 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
         }),
       function() {
         if (predictor && predictor.id) {
-          Close({ body: { id: predictor.id } }).catch(function(e) {});
+          Close({
+            requestId,
+            headers: spanHeaders,
+            body: { id: predictor.id },
+          }).catch(function(e) {});
         }
       }
     );
