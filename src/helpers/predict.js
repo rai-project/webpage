@@ -92,6 +92,7 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
             headers: spanHeaders,
             body: { id: predictor.id },
           }).catch(function(e) {});
+          predictor = null;
         }
       }
     );
