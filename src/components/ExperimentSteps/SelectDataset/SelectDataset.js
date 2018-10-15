@@ -65,21 +65,19 @@ export default class ExperimentPage extends Component {
               paddingBottom: "60px",
             }}
           >
-            <div>
-              {dataSources.map((source, index) => (
-                <div
-                  key={`exp-dataSource-${index}`}
-                  style={{
-                    display: "inline-block",
-                    marginLeft: "40px",
-                    color: this.state.dataSource === index ? "#E84A27" : "white",
-                  }}
-                  onClick={() => this.setState({ dataSource: index })}
-                >
-                  {source}
-                </div>
-              ))}
-            </div>
+            {dataSources.map((source, index) => (
+              <div
+                key={`exp-dataSource-${index}`}
+                style={{
+                  display: "inline-block",
+                  marginLeft: "40px",
+                  color: this.state.dataSource === index ? "#E84A27" : "white",
+                }}
+                onClick={() => this.setState({ dataSource: index })}
+              >
+                {source}
+              </div>
+            ))}
             <h2 style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}>
               Select the dataset that is most similar to your own
             </h2>

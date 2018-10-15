@@ -1,8 +1,10 @@
 import yeast from "yeast";
+import uuid from "uuid/v4";
 import { Open, URLs, Close } from "../swagger/index";
 
-function buildOpenParams(model, framework, batch_size, trace_level) {
+function buildOpenParams(requestId, model, framework, batch_size, trace_level) {
   return {
+    requestId,
     body: {
       framework_name: framework.name,
       framework_version: framework.version,
@@ -22,7 +24,7 @@ function buildOpenParams(model, framework, batch_size, trace_level) {
 }
 
 function pFinally(promise, onFinally) {
-  onFinally = onFinally || (() => { });
+  onFinally = onFinally || (() => {});
 
   return promise.then(
     val => Promise.resolve(onFinally()).then(() => val),
@@ -38,7 +40,8 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
 
   const run = (imageUrls, model, framework) => {
     let predictor = null;
-    let openParams = buildOpenParams(model, framework, batch_size, trace_level);
+    const requestId = uuid();
+    let openParams = buildOpenParams(requestId, model, framework, batch_size, trace_level);
     console.log(openParams);
 
     const res = pFinally(
@@ -47,20 +50,30 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
           throw error;
         })
         .then(response => {
-          console.log("URLs");
+          console.log("URLs", { response });
           console.log({ urls: imageUrls });
           predictor = response;
           spanHeaders = predictor.headers;
           return URLs({
+            requestId,
             headers: spanHeaders,
             body: {
-              predictor,
+              predictor: {
+                id: predictor.id,
+                trace_id: {
+                  id: spanHeaders["x-b3-traceid"],
+                },
+              },
               urls: imageUrls.map(url => {
                 return {
                   id: yeast(),
                   data: url,
                 };
               }),
+              options: {
+                request_id: requestId,
+                feature_limit: 0,
+              },
             },
           });
         })
@@ -72,9 +85,9 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
             response: response.responses,
           };
         }),
-      function () {
+      function() {
         if (predictor && predictor.id) {
-          Close({ body: { id: predictor.id } }).catch(function (e) { });
+          Close({ body: { id: predictor.id } }).catch(function(e) {});
         }
       }
     );
@@ -85,7 +98,7 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
   models.map(model =>
     frameworks.map(framework => pairs.push({ model: model, framework: framework }))
   );
-  return Promise.all(pairs.map(pair => run(imageUrls, pair.model, pair.framework))).then(function (
+  return Promise.all(pairs.map(pair => run(imageUrls, pair.model, pair.framework))).then(function(
     features
   ) {
     console.log(features);
