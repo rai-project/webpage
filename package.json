@@ -2,7 +2,6 @@
   "name": "webpage",
   "version": "0.1.0",
   "private": true,
-  "homepage": "mlmodelscope.org",
   "dependencies": {
     "@antv/data-set": "^0.9.6",
     "@ibm/plex": "^1.2.1",
