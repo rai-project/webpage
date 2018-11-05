@@ -10,15 +10,24 @@ export default class GlobalHeader extends Component {
   renderUser(username) {
     if (username == null) {
       return (
+        <React.Fragment>
+        <div className="GlobalHeader-right-block">
+          <h3>SIGN UP</h3>
+        </div>
         <Link to="/login">
           <div className="GlobalHeader-right-block">
             <h3>Login</h3>
           </div>
         </Link>
+      </React.Fragment>
       );
     } else {
       return (
-        <Link to="/login">
+        <React.Fragment>
+        <div className="GlobalHeader-right-block">
+          <h3>Log Out</h3>
+        </div>
+        <Link to="/my">
           <div className="GlobalHeader-right-block">
             <h3>
               <Icon type="user" />
@@ -26,6 +35,7 @@ export default class GlobalHeader extends Component {
             </h3>
           </div>
         </Link>
+      </React.Fragment>
       );
     }
   }
@@ -46,12 +56,7 @@ export default class GlobalHeader extends Component {
           </Link>
         </div>
         <div className="GlobalHeader-left-block">
-          <Link to={"/About"}>
-            <h3>About</h3>
-          </Link>
-        </div>
-        <div className="GlobalHeader-right-block">
-          <h3>SIGN UP</h3>
+            <a href="https://docs.mlmodelscope.org/"><h3>About</h3></a>
         </div>
         <UserContext.Consumer>{context => this.renderUser(context.username)}</UserContext.Consumer>
       </Header>
