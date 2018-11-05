@@ -4,6 +4,7 @@ import ExperimentPage from "../routes/ExperimentPage";
 import LogInPage from "../routes/LogInPage";
 import InitialSetupPage from "../routes/InitialSetupPage";
 import AboutPage from "../routes/AboutPage";
+import UserPage from "../routes/UserPage";
 
 const routes = [
   {
@@ -26,6 +27,10 @@ const routes = [
     path: "/About",
     component: AboutPage,
   },
+  {
+    path: "/my",
+    component: UserPage,
+  }
 ];
 
 export default routes;
