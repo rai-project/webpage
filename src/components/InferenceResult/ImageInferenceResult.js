@@ -1,5 +1,6 @@
 import "./InferenceResult.css";
 import React, { Component } from "react";
+import idx from "idx";
 import _ from "lodash";
 import { Table, Tag, Spin } from "antd";
 import { ExperimentContext } from "../../context/ExperimentContext";
@@ -58,6 +59,9 @@ class ImageInferenceResult extends Component {
               </div>
 
               {this.props.context.result.map(result => {
+                if (_.isNil(result)) {
+                    return null
+                }
                 const traceURL = result.traceId
                   ? `http://trace.mlmodelscope.org:16686/trace/${result.traceId}`
                   : null;
@@ -77,7 +81,7 @@ class ImageInferenceResult extends Component {
                         </Tag>
                       </h1>
                       <Table
-                        dataSource={this.processResponseFeatures(result.response[index].features)}
+                        dataSource={this.processResponseFeatures(idx(result, _ => _.response[index].features))}
                         columns={responseHeader}
                         showHeader={true}
                         pagination={false}
