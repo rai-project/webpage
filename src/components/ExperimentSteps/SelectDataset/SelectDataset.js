@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Layout } from "antd";
 import PublicDataset from "./PublicDataset";
 import ImportImgFromURL from "./ImportImgFromURL";
+import UploadArea from "./UploadArea";
 
 const { Content } = Layout;
 
@@ -53,6 +54,8 @@ export default class ExperimentPage extends Component {
       dataSourceComponent = <PublicDataset datasetOptions={datasetOptions} />;
     } else if (this.state.dataSource === 1) {
       dataSourceComponent = <ImportImgFromURL />;
+    } else {
+      dataSourceComponent = <UploadArea />;
     }
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
