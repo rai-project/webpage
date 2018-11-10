@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { Layout } from "antd";
 import SelectDataset from "../components/ExperimentSteps/SelectDataset/SelectDataset";
-import ExperimentSetupSider from "../components/ExperimentSteps/ExperimentSetupSider/ExperimentSetupSider";
+import ExperimentSetupSider from "../components/ExperimentSteps/ExperimentSetupSider";
 import SelectModel from "../components/ExperimentSteps/SelectModel/SelectModel";
 import SelectFramework from "../components/ExperimentSteps/SelectFramework/SelectFramework";
 import SelectMachine from "../components/ExperimentSteps/SelectMachine/SelectMachine";

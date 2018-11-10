@@ -28,16 +28,13 @@ function typeRender({ type }) {
 class SelectModel extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      models: [],
-      modelKey: [],
-    };
     this.handleSelect = this.handleSelect.bind(this);
   }
 
   async componentDidMount() {
     if (this.props.context.modelManifests == null) {
       try {
+        // todo: need to filter based on what is selected
         const req = await ModelManifests({
           frameworkName: "*",
           frameworkVersion: "*",
@@ -47,7 +44,8 @@ class SelectModel extends Component {
         this.props.context.setModelManifests(req.manifests);
         const models = uniqBy(this.props.context.modelManifests, e => e.name + e.version);
         const modelsKey = keys(models).sort();
-        this.setState({ models, modelsKey });
+        this.models = models;
+        this.modelsKey = modelsKey;
       } catch (err) {
         console.error(err);
       }
@@ -55,7 +53,7 @@ class SelectModel extends Component {
   }
 
   handleSelect(isSelected, key) {
-    const { models } = this.state;
+    const models = this.models;
     const model = models[key];
     if (isSelected) {
       const index = findIndex(
@@ -69,14 +67,16 @@ class SelectModel extends Component {
   }
 
   render() {
-    const { models, modelsKey } = this.state;
+    const models = this.models;
+    const modelsKey = this.modelsKey;
+
     if (!isArray(models) || models.length === 0) {
       return <div />;
     }
 
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
-        <Content style={{}}>
+        <Content>
           <div
             style={{
               background: "#1A263A",

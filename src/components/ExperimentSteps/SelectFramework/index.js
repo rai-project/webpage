@@ -13,6 +13,7 @@ class SelectFramework extends Component {
   async componentDidMount() {
     if (this.props.context.frameworkManifests === null) {
       try {
+        // todo: need to filter based on what is selected
         const req = await FrameworkManifests({
           frameworkName: "*",
           frameworkVersion: "*",

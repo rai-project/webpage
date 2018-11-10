@@ -90,7 +90,11 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
           Close({
             requestId,
             headers: spanHeaders,
-            body: { id: predictor.id },
+            body: {
+              predictor: {
+                id: predictor.id,
+              },
+            },
           }).catch(function(e) {});
           predictor = null;
         }

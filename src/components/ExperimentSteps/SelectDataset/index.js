@@ -11,12 +11,12 @@ const frameworks = [];
 const models = [];
 
 const datasetOptions = [
-  { key: 0, name: "ilsvrc2012", description: "vision/ilsvrc2012" },
-  { key: 1, name: "cifar10", description: "vision/cifar10" },
-  { key: 2, name: "cifar100", description: "vision/cifar100" },
-  { key: 3, name: "caltech256", description: "vision/caltech256" },
-  { key: 4, name: "mnist", description: "vision/mnist" },
-  { key: 5, name: "custom", description: "vision/custom" },
+  { key: 0, name: "ilsvrc2012", description: "vision/ilsvrc2012", type: "image/classification" },
+  { key: 1, name: "cifar10", description: "vision/cifar10", type: "image/classification" },
+  { key: 2, name: "cifar100", description: "vision/cifar100", type: "image/classification" },
+  { key: 3, name: "caltech256", description: "vision/caltech256", type: "image/classification" },
+  { key: 4, name: "mnist", description: "vision/mnist", type: "image/classification" },
+  { key: 5, name: "custom", description: "vision/custom", type: "image/classification" },
 ];
 
 const dataSources = ["Public Dataset", "Import From URL", "Upload From Device"];
@@ -51,15 +51,18 @@ class ExperimentPage extends Component {
 
   render() {
     let dataSourceComponent;
-    if (this.state.dataSource === 0) {
-      dataSourceComponent = <PublicDataset datasetOptions={datasetOptions} />;
-    } else if (this.state.dataSource === 1) {
-      dataSourceComponent = <ImportImgFromURL />;
-    } else {
-      dataSourceComponent = <UploadArea />;
+    switch (this.state.dataSource) {
+      case 0:
+        dataSourceComponent = <PublicDataset datasetOptions={datasetOptions} />;
+        break;
+      case 1:
+        dataSourceComponent = <ImportImgFromURL />;
+        break;
+      default:
+        dataSourceComponent = <UploadArea />;
+        break;
     }
 
-    console.log("Fda");
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
         <Content style={{}}>

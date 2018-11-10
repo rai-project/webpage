@@ -10,14 +10,15 @@ import { ExperimentContext } from "../../../context/ExperimentContext";
 const { Content } = Layout;
 
 class SelectMachine extends Component {
-  constructor(predictors = null) {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {};
   }
 
   async componentDidMount() {
     if (this.props.context.machineManifests === null) {
       try {
+        // todo: need to filter based on what is selected
         const req = await FrameworkAgents({
           frameworkName: "*",
           frameworkVersion: "*",
@@ -30,7 +31,6 @@ class SelectMachine extends Component {
   }
 
   render() {
-    console.log(this.props.context);
     const machineManifests = this.props.context.machineManifests;
     if (!isArray(machineManifests)) {
       return <div />;
