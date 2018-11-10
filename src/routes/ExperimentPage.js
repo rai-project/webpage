@@ -8,7 +8,6 @@ import SelectFramework from "../components/ExperimentSteps/SelectFramework";
 import SelectMachine from "../components/ExperimentSteps/SelectMachine";
 import InferenceResult from "../components/InferenceResult";
 import ExperimentProvider from "../context/ExperimentContext";
-import { Route, Switch, Redirect } from "react-router-dom";
 
 const siderMenuNextStep = {
   dataset: "model",
@@ -37,6 +36,28 @@ export default class ExperimentPage extends Component {
   }
 
   render() {
+    var currentPage = null;
+    switch (this.state.current) {
+      case "dataset":
+        currentPage = <SelectDataset />;
+        break;
+      case "model":
+        currentPage = <SelectModel />;
+        break;
+      case "framework":
+        currentPage = <SelectFramework />;
+        break;
+      case "machine":
+        currentPage = <SelectMachine />;
+        break;
+      case "predict":
+        currentPage = <InferenceResult />;
+        break;
+      default:
+        console.log({ error: "route page not found" });
+        break;
+    }
+
     return (
       <Layout style={{ background: "#E8E9EB" }}>
         <Helmet title="Experiment" meta={[{ property: "og:title", content: "Experiment" }]} />
@@ -47,14 +68,7 @@ export default class ExperimentPage extends Component {
             future={this.state.future}
             siderMenuNextStep={siderMenuNextStep}
           />
-          <Switch>
-            <Route exact path={"dataset"} component={SelectDataset} />
-            <Route exact path={"model"} component={SelectModel} />
-            <Route exact path={"framework"} component={SelectFramework} />
-            <Route exact path={"machine"} component={SelectMachine} />
-            <Route exact path={"predict"} component={InferenceResult} />
-            <Redirect exact from="/experiment" to="/experiment/dataset" />
-          </Switch>
+          {currentPage}
         </ExperimentProvider>
       </Layout>
     );

@@ -29,6 +29,9 @@ class SelectModel extends Component {
   constructor(props) {
     super(props);
     this.handleSelect = this.handleSelect.bind(this);
+    this.state = {
+      loaded: false,
+    };
   }
 
   async componentDidMount() {
@@ -46,6 +49,7 @@ class SelectModel extends Component {
         const modelsKey = keys(models).sort();
         this.models = models;
         this.modelsKey = modelsKey;
+        this.setState({ loaded: true });
       } catch (err) {
         console.error(err);
       }
@@ -92,6 +96,7 @@ class SelectModel extends Component {
           <Row gutter={16} type="flex" justify="space-around" align="middle">
             {modelsKey.map(key => {
               const model = models[key];
+              console.log(model);
               const isSelected = !isNil(
                 find(
                   this.props.context.models,
@@ -132,11 +137,16 @@ class SelectModel extends Component {
                     })}
                     descriptionTitle={`${model.name} Information`}
                     description={model.description}
-                    height="100%"
+                    minHeight="200px"
                     onClick={() => this.handleSelect(isSelected, key)}
                     selected={isSelected}
                   >
-                    <Row type="flex" justify="end" align="bottom">
+                    <Row
+                      type="flex"
+                      justify="end"
+                      align="bottom"
+                      style={{ color: "#aaa", fontSize: "10pt" }}
+                    >
                       <Divider orientation="right">
                         <div style={{ color: "#aaa", fontSize: "10pt" }}>Options</div>
                       </Divider>
@@ -147,7 +157,9 @@ class SelectModel extends Component {
 
                       <Col span={8}>
                         <Dropdown overlay={menu}>
-                          data type <Icon type="down" />
+                          <>
+                            data type <Icon type="down" />
+                          </>
                         </Dropdown>
                       </Col>
                     </Row>

@@ -7,7 +7,7 @@ import predict from "../../../helpers/predict";
 import yeast from "yeast";
 
 const { Sider } = Layout;
-const Option = Select.Option;
+const { Option } = Select;
 
 const trace_options = [
   { key: 0, text: "None", value: "NO_TRACE" },
