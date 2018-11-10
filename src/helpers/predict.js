@@ -2,7 +2,7 @@ import yeast from "yeast";
 import uuid from "uuid/v4";
 import { Open, URLs, Close } from "../swagger/index";
 
-function buildOpenParams(requestId, model, framework, batch_size, trace_level) {
+function buildOpenParams({ requestId, model, framework, batch_size, trace_level }) {
   return {
     requestId,
     body: {
@@ -41,7 +41,7 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
   const run = (imageUrls, model, framework) => {
     let predictor = null;
     const requestId = uuid();
-    let openParams = buildOpenParams(requestId, model, framework, batch_size, trace_level);
+    let openParams = buildOpenParams({ requestId, model, framework, batch_size, trace_level });
     console.log(openParams);
 
     const res = pFinally(
@@ -96,7 +96,6 @@ export default function predict(imageUrls, models, frameworks, batch_size, trace
         }
       }
     );
-    console.log(res);
     return res;
   };
   let pairs = [];
