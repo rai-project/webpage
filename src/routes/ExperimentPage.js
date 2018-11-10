@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import yeast from "yeast";
 import Helmet from "react-helmet";
 import { Layout } from "antd";
 import SelectDataset from "../components/ExperimentSteps/SelectDataset/SelectDataset";
