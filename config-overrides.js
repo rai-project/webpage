@@ -17,6 +17,14 @@ module.exports = function override(config, env) {
     ["import", { libraryName: "antd-mobile", libraryDirectory: "lib" }, "antd-mobile"],
     config
   );
+  config = injectBabelPlugin(
+    ["import", {
+      "libraryName": "lodash",
+      "libraryDirectory": "",
+      "camel2DashComponentName": false,  // default: true
+    }],
+    config
+  );
   config = rewireLess.withLoaderOptions({
     modifyVars: {
       // "@primary-color": "#1a263a",
