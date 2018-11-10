@@ -2,7 +2,7 @@ import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
 import { Col, Row, Layout, Card, Avatar, Icon } from "antd";
 import yeast from "yeast";
-import { isArray, keys, uniqBy, find, findIndex, isNil } from "lodash";
+import { isArray, keys, uniqBy, find, findIndex, isNil, truncate } from "lodash";
 import { ModelManifests } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
@@ -86,15 +86,13 @@ class SelectModel extends Component {
                 <Col key={`model-${key}`} span={6} style={{ paddingBottom: "10px" }}>
                   <SelectableCard
                     title={models[key].name}
-                    content={
-                      models[key].description
-                        .split(" ")
-                        .slice(0, 40)
-                        .join(" ") + " ..."
-                    }
+                    content={truncate(models[key].description, {
+                      length: 140,
+                      separator: " ",
+                    })}
                     descriptionTitle={`${model.name} Information`}
                     description={model.description}
-                    height="300px"
+                    height="150px"
                     onClick={() => this.handleSelect(isSelected, key)}
                     selected={isSelected}
                   />
