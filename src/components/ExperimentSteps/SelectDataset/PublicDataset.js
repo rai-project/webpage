@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Col, Row, Icon, Dropdown, Menu, Tag, Spin } from "antd";
-import {find} from "lodash";
+import { find } from "lodash";
 import SelectableCard from "../SelectableCard/SelectableCard";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
@@ -100,11 +100,11 @@ export default class PublicDataset extends Component {
 
         <div>
           <Row gutter={1}>
-            {this.props.datasetOptions.map((item, index) => (
-              item.name === "ilsvrc2012" ?
-                <Col span={8} style={{ padding: "10px" }}>
+            {this.props.datasetOptions.map((item, index) =>
+              item.name === "ilsvrc2012" ? (
+                <Col span={8} key={`dataset-${index}`} style={{ padding: "10px" }}>
                   <ExperimentContext.Consumer>
-                    {context =>
+                    {context => (
                       <SelectableCard
                         title={item.name}
                         content={item.description}
@@ -112,10 +112,10 @@ export default class PublicDataset extends Component {
                         onClick={() => context.addDataset(item)}
                         selected={find(context.dataset, e => e.name === item.name)}
                       />
-                    }
+                    )}
                   </ExperimentContext.Consumer>
                 </Col>
-                :
+              ) : (
                 <Col span={8} style={{ padding: "10px" }}>
                   <Spin tip="Comming Soon...">
                     <SelectableCard
@@ -127,7 +127,8 @@ export default class PublicDataset extends Component {
                     />
                   </Spin>
                 </Col>
-            ))}
+              )
+            )}
           </Row>
         </div>
       </div>

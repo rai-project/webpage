@@ -109,7 +109,7 @@ export default class ExperimentSetupSider extends Component {
                       style={{ zIndex: 1 }}
                       onClose={() => context.removeFramework(index)}
                     >
-                      {framework.name + " V" + framework.version}
+                      {framework.name + " v" + framework.version}
                     </Tag>
                   </div>
                 ))}

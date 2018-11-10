@@ -2,11 +2,11 @@ import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
 import { Col, Row, Layout, Card, Avatar, Icon } from "antd";
 import yeast from "yeast";
+import { withRouter } from "react-router-dom";
 import { isArray, keys, uniqBy, find, findIndex, isNil, truncate } from "lodash";
 import { ModelManifests } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
-const { Meta } = Card;
 const { Content } = Layout;
 
 class SelectModel extends Component {
@@ -106,8 +106,8 @@ class SelectModel extends Component {
   }
 }
 
-export default props => (
+export default withRouter(props => (
   <ExperimentContext.Consumer>
     {context => <SelectModel {...props} context={context} />}
   </ExperimentContext.Consumer>
-);
+));

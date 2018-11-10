@@ -3,6 +3,7 @@ import React, { Component } from "react";
 import { Layout, Col, Row } from "antd";
 import { isArray, find } from "lodash";
 import yeast from "yeast";
+import { withRouter } from "react-router-dom";
 import { FrameworkManifests } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
@@ -56,7 +57,7 @@ class SelectFramework extends Component {
                     selected={find(
                       this.props.context.frameworks,
                       e => e.name === item.name && e.version === item.version
-                      )}
+                    )}
                   />
                 </Col>
               ))}
@@ -68,8 +69,8 @@ class SelectFramework extends Component {
   }
 }
 
-export default props => (
+export default withRouter(props => (
   <ExperimentContext.Consumer>
     {context => <SelectFramework {...props} context={context} />}
   </ExperimentContext.Consumer>
-);
+));

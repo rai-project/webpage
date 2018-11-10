@@ -1,7 +1,8 @@
 import React, { Component } from "react";
 import { Layout, Col, Row } from "antd";
-import { isArray, find } from "lodash";
+import { isArray, find, upperCase } from "lodash";
 import yeast from "yeast";
+import { withRouter } from "react-router-dom";
 import SelectableCard from "../SelectableCard/SelectableCard";
 import { FrameworkAgents } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
@@ -29,7 +30,7 @@ class SelectMachine extends Component {
   }
 
   render() {
-    console.log(this.props.context)
+    console.log(this.props.context);
     const machineManifests = this.props.context.machineManifests;
     if (!isArray(machineManifests)) {
       return <div />;
@@ -55,14 +56,11 @@ class SelectMachine extends Component {
               {machineManifests.map((item, index) => (
                 <Col key={yeast()} span={8} style={{ padding: "10px" }}>
                   <SelectableCard
-                    title={item.architecture}
+                    title={upperCase(item.architecture)}
                     content={"Descriptions"}
                     tooltip={false}
                     onClick={() => this.props.context.addMachine(item.architecture)}
-                    selected={find(
-                      this.props.context.machines,
-                      e => e.name === item.architecture
-                      )}
+                    selected={find(this.props.context.machines, e => e.name === item.architecture)}
                   />
                 </Col>
               ))}
@@ -74,8 +72,8 @@ class SelectMachine extends Component {
   }
 }
 
-export default props => (
+export default withRouter(props => (
   <ExperimentContext.Consumer>
     {context => <SelectMachine {...props} context={context} />}
   </ExperimentContext.Consumer>
-);
+));

@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Layout } from "antd";
+import { withRouter } from "react-router-dom";
 import PublicDataset from "./PublicDataset";
 import ImportImgFromURL from "./ImportImgFromURL";
 import UploadArea from "./UploadArea";
@@ -20,7 +21,7 @@ const datasetOptions = [
 
 const dataSources = ["Public Dataset", "Import From URL", "Upload From Device"];
 
-export default class ExperimentPage extends Component {
+class ExperimentPage extends Component {
   constructor(props) {
     super(props);
     this.handleSelect = this.handleSelect.bind(this);
@@ -92,3 +93,5 @@ export default class ExperimentPage extends Component {
     );
   }
 }
+
+export default withRouter(ExperimentPage);

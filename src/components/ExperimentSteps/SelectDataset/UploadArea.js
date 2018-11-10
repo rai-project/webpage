@@ -16,7 +16,6 @@ export default class UploadArea extends Component {
   }
 
   render() {
-    console.log("Upload");
     return (
       <div style={{ marginTop: "40px", color: "black", minWidth: 0 }}>
         <Dashboard plugins={["Tus", "Webcam"]} uppy={this.uppy} />

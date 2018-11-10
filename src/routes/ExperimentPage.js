@@ -50,7 +50,7 @@ export default class ExperimentPage extends Component {
         currentPage = <SelectFramework />;
         break;
       case "machine":
-        currentPage = <SelectMachine />
+        currentPage = <SelectMachine />;
         break;
       case "predict":
         currentPage = <InferenceResult />;
@@ -74,7 +74,7 @@ export default class ExperimentPage extends Component {
 
           {currentPage}
         </ExperimentProvider>
-      </ Layout >
+      </Layout>
     );
   }
 }
