@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Col, Row, Icon, Dropdown, Menu, Tag, Spin } from "antd";
 import { find } from "lodash";
-import SelectableCard from "../SelectableCard/SelectableCard";
+import SelectableCard from "../SelectableCard/index";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
 const menu = (
