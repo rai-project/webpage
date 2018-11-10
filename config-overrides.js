@@ -22,7 +22,8 @@ module.exports = function override(config, env) {
       "libraryName": "lodash",
       "libraryDirectory": "",
       "camel2DashComponentName": false,  // default: true
-    }],
+    },
+    "lodash"],
     config
   );
   config = rewireLess.withLoaderOptions({
