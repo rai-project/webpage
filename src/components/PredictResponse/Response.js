@@ -12,7 +12,7 @@ function processName(str) {
   return result;
 }
 
-var response = sortBy(json["responses"][0]["features"], ["probability"]).reverse();
+var response = sortBy(idx(json, _ => _.responses[0]["features"]), ["probability"]).reverse();
 response.forEach(function(item, index) {
   item["name"] = processName(item["name"]);
 });

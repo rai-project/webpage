@@ -31,7 +31,7 @@ export default class Section7 extends Component {
               textAlign: "left",
               textTransform: "uppercase",
             }}
-            href="/"
+            href="/experiment"
           >
             EXPLORE ENVIRONMENT <Icon style={{ fontSize: 20 }} size="large" type="arrow-right" />
           </a>

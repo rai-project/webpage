@@ -27,7 +27,7 @@ export default class Section8 extends Component {
               textAlign: "left",
               textTransform: "uppercase",
             }}
-            href="/Experiment"
+            href="/experiment"
           >
             START EXPERIMENTATION <Icon style={{ fontSize: 20 }} size="large" type="arrow-right" />
           </a>
