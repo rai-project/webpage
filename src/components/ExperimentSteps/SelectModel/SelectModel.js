@@ -1,6 +1,6 @@
 import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
-import { Col, Row, Layout } from "antd";
+import { Col, Row, Layout, Affix } from "antd";
 import yeast from "yeast";
 import { isArray, keys, uniqBy, find } from "lodash";
 import { ModelManifests } from "../../../swagger";
@@ -58,7 +58,7 @@ class SelectModel extends Component {
           <div>
             <Row gutter={16}>
               {modelsKey.map(key => (
-                <Col key={yeast()} span={8} style={{ padding: "10px" }}>
+                <Col key={`model-${key}`} span={8} style={{ padding: "10px" }}>
                   <SelectableCard
                     title={models[key].name}
                     content={
@@ -74,7 +74,7 @@ class SelectModel extends Component {
                     selected={find(
                       this.props.context.models,
                       e => e.name === models[key].name && e.version === models[key].version
-                      )}
+                    )}
                   />
                 </Col>
               ))}
