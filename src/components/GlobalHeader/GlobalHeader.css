@@ -1,6 +1,5 @@
-@import '~antd/dist/antd.css';
 .GlobalHeader-header {
-  background-color: white/*#E8E9EB*/;
+  background-color: white /*#E8E9EB*/;
   height: 60px;
   padding-top: 20px;
 }
