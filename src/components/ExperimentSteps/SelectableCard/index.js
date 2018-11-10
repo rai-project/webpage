@@ -1,4 +1,3 @@
-import "./SelectableCard";
 import React, { Component } from "react";
 import { Card, Icon, Drawer, Row, Col } from "antd";
 import Markdown from "react-markdown";

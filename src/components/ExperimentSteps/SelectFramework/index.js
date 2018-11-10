@@ -1,4 +1,4 @@
-import SelectableCard from "../SelectableCard/SelectableCard";
+import SelectableCard from "../SelectableCard/index";
 import React, { Component } from "react";
 import { Layout, Col, Row } from "antd";
 import { isArray, find } from "lodash";

@@ -1,4 +1,4 @@
-import SelectableCard from "../SelectableCard/SelectableCard";
+import SelectableCard from "../SelectableCard/index";
 import React, { Component } from "react";
 import { Col, Row, Layout, Icon, Divider, Dropdown, Menu } from "antd";
 import yeast from "yeast";

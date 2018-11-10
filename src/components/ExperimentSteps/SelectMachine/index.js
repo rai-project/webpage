@@ -3,7 +3,7 @@ import { Layout, Col, Row } from "antd";
 import { isArray, find, upperCase } from "lodash";
 import yeast from "yeast";
 import { withRouter } from "react-router-dom";
-import SelectableCard from "../SelectableCard/SelectableCard";
+import SelectableCard from "../SelectableCard/index";
 import { FrameworkAgents } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
