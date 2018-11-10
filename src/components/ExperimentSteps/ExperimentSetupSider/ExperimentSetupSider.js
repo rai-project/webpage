@@ -21,14 +21,17 @@ const trace_options = [
 export default class ExperimentSetupSider extends Component {
   handleClose(context, index) {
     context.removeModel(index);
-    console.log(context);
   }
 
   handleClick(context, key) {
     if (key === "predict" && context.imageUrls.length !== 0) {
-      predict(context.imageUrls, context.models, context.frameworks, context.batchSize, context.traceLevel).then(result =>
-        context.setPredictResult(result)
-      );
+      predict(
+        context.imageUrls,
+        context.models,
+        context.frameworks,
+        context.batchSize,
+        context.traceLevel
+      ).then(result => context.setPredictResult(result));
       console.log(context);
     }
     this.props.onPageChange(key);
@@ -82,7 +85,7 @@ export default class ExperimentSetupSider extends Component {
                       style={{ zIndex: 1 }}
                       onClose={() => this.handleClose(context, index)}
                     >
-                      {model.name + " V" + model.version}
+                      {model.name + " v" + model.version}
                     </Tag>
                   </div>
                 ))}
@@ -133,7 +136,12 @@ export default class ExperimentSetupSider extends Component {
           <div style={{ marginLeft: "40px", display: "inline-block" }}>
             <ExperimentContext.Consumer>
               {context => (
-                <InputNumber min={1} max={10} value={context.batchSize} onChange={(value) => context.setBatchSize(value)} />
+                <InputNumber
+                  min={1}
+                  max={10}
+                  value={context.batchSize}
+                  onChange={value => context.setBatchSize(value)}
+                />
               )}
             </ExperimentContext.Consumer>
           </div>

@@ -31,18 +31,25 @@ export default class ExperimentProvider extends Component {
           models: this.state.models.concat({ name: name, version: version }),
         }),
       removeModel: index => {
-        console.log(this.state);
+        if (this.state.models.length === 1) {
+          this.setState({ models: [] });
+          return;
+        }
         this.setState({ models: this.state.models.splice(index, 1) });
-        console.log(this.state);
       },
       addFramework: (name, version) =>
         this.setState({
           frameworks: this.state.frameworks.concat({ name: name, version: version }),
         }),
-      removeFramework: index =>
+      removeFramework: index => {
+        if (this.state.frameworks.length === 1) {
+          this.setState({ frameworks: [] });
+          return;
+        }
         this.setState({
           frameworks: this.state.frameworks.splice(index, 1),
-        }),
+        });
+      },
       addMachine: (name, version) =>
         this.setState({
           machines: this.state.machines.concat({ name: name }),
@@ -77,8 +84,8 @@ export default class ExperimentProvider extends Component {
         }),
       setMachineManifests: machineManifests =>
         this.setState({
-          machineManifests: machineManifests
-        })
+          machineManifests: machineManifests,
+        }),
     };
   }
 

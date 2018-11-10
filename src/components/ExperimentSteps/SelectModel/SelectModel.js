@@ -1,14 +1,24 @@
 import SelectableCard from "../SelectableCard/SelectableCard";
 import React, { Component } from "react";
-import { Col, Row, Layout, Affix } from "antd";
+import { Col, Row, Layout, Card, Avatar, Icon } from "antd";
 import yeast from "yeast";
-import { isArray, keys, uniqBy, find } from "lodash";
+import { isArray, keys, uniqBy, find, findIndex, isNil } from "lodash";
 import { ModelManifests } from "../../../swagger";
 import { ExperimentContext } from "../../../context/ExperimentContext";
 
+const { Meta } = Card;
 const { Content } = Layout;
 
 class SelectModel extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      models: [],
+      modelKey: [],
+    };
+    this.handleSelect = this.handleSelect.bind(this);
+  }
+
   async componentDidMount() {
     if (this.props.context.modelManifests == null) {
       try {
@@ -19,23 +29,32 @@ class SelectModel extends Component {
           modelVersion: "*",
         });
         this.props.context.setModelManifests(req.manifests);
+        const models = uniqBy(this.props.context.modelManifests, e => e.name + e.version);
+        const modelsKey = keys(models).sort();
+        this.setState({ models, modelsKey });
       } catch (err) {
         console.error(err);
       }
     }
   }
 
-  handleSelect(item) {
-    this.props.context.addModel(item.name, item.version);
-    console.log(this.props.context);
+  handleSelect(isSelected, key) {
+    const { models } = this.state;
+    const model = models[key];
+    if (isSelected) {
+      const index = findIndex(
+        this.props.context.models,
+        e => e.name === model.name && e.version === model.version
+      );
+      this.props.context.removeModel(index);
+      return;
+    }
+    this.props.context.addModel(model.name, model.version);
   }
 
   render() {
-    const models = uniqBy(this.props.context.modelManifests, e => e.name + e.version);
-    console.log(models);
-    const modelsKey = keys(models).sort();
-
-    if (!isArray(models)) {
+    const { models, modelsKey } = this.state;
+    if (!isArray(models) || models.length === 0) {
       return <div />;
     }
 
@@ -51,35 +70,38 @@ class SelectModel extends Component {
             }}
           >
             <h2 style={{ marginTop: "60px", marginLeft: "40px", color: "white" }}>
-              Select the model
+              Select a model
             </h2>
           </div>
-
-          <div>
-            <Row gutter={16}>
-              {modelsKey.map(key => (
-                <Col key={`model-${key}`} span={8} style={{ padding: "10px" }}>
+          <Row gutter={16}>
+            {modelsKey.map(key => {
+              const model = models[key];
+              const isSelected = !isNil(
+                find(
+                  this.props.context.models,
+                  e => e.name === model.name && e.version === model.version
+                )
+              );
+              return (
+                <Col key={`model-${key}`} span={6} style={{ paddingBottom: "10px" }}>
                   <SelectableCard
                     title={models[key].name}
                     content={
                       models[key].description
                         .split(" ")
-                        .slice(0, 10)
+                        .slice(0, 40)
                         .join(" ") + " ..."
                     }
-                    description={models[key].description}
+                    descriptionTitle={`${model.name} Information`}
+                    description={model.description}
                     height="300px"
-                    tooltip={true}
-                    onClick={() => this.handleSelect(models[key])}
-                    selected={find(
-                      this.props.context.models,
-                      e => e.name === models[key].name && e.version === models[key].version
-                    )}
+                    onClick={() => this.handleSelect(isSelected, key)}
+                    selected={isSelected}
                   />
                 </Col>
-              ))}
-            </Row>
-          </div>
+              );
+            })}
+          </Row>
         </Content>
       </Layout>
     );
