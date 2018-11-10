@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import "./GlobalHeader.css";
 import { Layout, Icon } from "antd";
 import { NavLink } from "react-router-dom";
-import UserContext from "../../context/UserContext";
+import UserContext from "../../context/UserContext"; // eslint-disable-line
 
 const { Header } = Layout;
 

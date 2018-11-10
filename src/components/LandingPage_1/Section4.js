@@ -22,15 +22,13 @@ export default class Section4 extends Component {
           }}
           span={8}
         >
-          <div>
-            <a
-              style={{ textDecoration: "none", marginLeft: "50px", marginTop: "50px" }}
-              className="buttonSmall"
-              href="/"
-            >
-              EXPERIMENT
-            </a>
-          </div>
+          <a
+            style={{ textDecoration: "none", marginLeft: "50px", marginTop: "50px" }}
+            className="buttonSmall"
+            href="/"
+          >
+            EXPERIMENT
+          </a>
           <div style={{ paddingRight: "0px", marginRight: "30px" }}>
             <Menu onClick={handleClick} style={{ width: "100%" }} mode="vertical">
               <SubMenu
@@ -40,7 +38,6 @@ export default class Section4 extends Component {
                   position: "absolute",
                   height: "145px",
                 }}
-                key="sub1"
                 title={
                   <span style={{ textDecoration: "none", fontSize: "15pt" }}>
                     <Icon type="right" />
@@ -68,7 +65,6 @@ export default class Section4 extends Component {
                   position: "absolute",
                   height: "145px",
                 }}
-                key="sub2"
                 title={
                   <span style={{ textDecoration: "none", fontSize: "15pt" }}>
                     <Icon type="right" />
@@ -95,7 +91,6 @@ export default class Section4 extends Component {
                   position: "absolute",
                   height: "145px",
                 }}
-                key="sub3"
                 title={
                   <span style={{ textDecoration: "none", fontSize: "15pt" }}>
                     <Icon type="right" />
