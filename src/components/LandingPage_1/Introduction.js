@@ -47,7 +47,7 @@ function makeSlide({ tag, body, compare }) {
             </Link>
             {/* <a
               className="button2"
-              href="/Experiment"
+              href="/experiment"
               style={{
                 textTransform: "uppercase",
               }}

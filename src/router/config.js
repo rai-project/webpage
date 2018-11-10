@@ -24,13 +24,13 @@ const routes = [
     component: InitialSetupPage,
   },
   {
-    path: "/About",
+    path: "/about",
     component: AboutPage,
   },
   {
     path: "/my",
     component: UserPage,
-  }
+  },
 ];
 
 export default routes;

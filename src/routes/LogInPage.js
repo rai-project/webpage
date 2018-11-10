@@ -12,32 +12,39 @@ class NormalLoginForm extends React.Component {
     e.preventDefault();
     this.props.form.validateFields((err, values) => {
       if (!err) {
-        console.log('Received values of form: ', values);
+        console.log("Received values of form: ", values);
         context.logIn(values.userName);
         this.props.logIn();
       }
     });
-  }
+  };
 
   render() {
     const { getFieldDecorator } = this.props.form;
 
     return (
       <UserContext.Consumer>
-        {(context) => (
-          <Form onSubmit={(e) => this.handleSubmit(e, context)}>
+        {context => (
+          <Form onSubmit={e => this.handleSubmit(e, context)}>
             <FormItem>
-              {getFieldDecorator('userName', {
-                rules: [{ required: true, message: 'Please input your username!' }],
+              {getFieldDecorator("userName", {
+                rules: [{ required: true, message: "Please input your username!" }],
               })(
-                <Input prefix={<Icon type="user" style={{ color: 'rgba(0,0,0,.25)' }} />} placeholder="Username" />
+                <Input
+                  prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
+                  placeholder="Username"
+                />
               )}
             </FormItem>
             <FormItem>
-              {getFieldDecorator('password', {
-                rules: [{ required: true, message: 'Please input your Password!' }],
+              {getFieldDecorator("password", {
+                rules: [{ required: true, message: "Please input your Password!" }],
               })(
-                <Input prefix={<Icon type="lock" style={{ color: 'rgba(0,0,0,.25)' }} />} type="password" placeholder="Password" />
+                <Input
+                  prefix={<Icon type="lock" style={{ color: "rgba(0,0,0,.25)" }} />}
+                  type="password"
+                  placeholder="Password"
+                />
               )}
             </FormItem>
             <FormItem>
@@ -62,26 +69,24 @@ export default class ExperimentPage extends Component {
 
   logIn = () => {
     this.setState({ loggedIn: true });
-  }
+  };
 
   render() {
     return this.state.loggedIn ? (
-      <Redirect to="/Experiment" />
+      <Redirect to="/experiment" />
     ) : (
-        <Layout
-          className="LightGray"
-          style={{ minHeight: 700 }}>
-          <Helmet title="Login" meta={[{ property: "og:title", content: "Login" }]} />
-          <header className="DarkBlue">
-            <div style={{ marginTop: "40px", marginBottom: "40px", textAlign: "center" }}>
-              <h1 style={{ color: "white" }}> Log into ML ModelScope </h1>
-            </div>
-          </header>
-
-          <div className="CenterBlock" style={{ marginTop: "40px", width: "40%" }}>
-            <WrappedNormalLoginForm logIn={this.logIn} />
+      <Layout className="LightGray" style={{ minHeight: 700 }}>
+        <Helmet title="Login" meta={[{ property: "og:title", content: "Login" }]} />
+        <header className="DarkBlue">
+          <div style={{ marginTop: "40px", marginBottom: "40px", textAlign: "center" }}>
+            <h1 style={{ color: "white" }}> Log into ML ModelScope </h1>
           </div>
-        </Layout>
-      );
+        </header>
+
+        <div className="CenterBlock" style={{ marginTop: "40px", width: "40%" }}>
+          <WrappedNormalLoginForm logIn={this.logIn} />
+        </div>
+      </Layout>
+    );
   }
 }

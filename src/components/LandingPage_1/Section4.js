@@ -120,7 +120,7 @@ export default class Section4 extends Component {
           </div>
           <Row style={{ marginTop: "486px" }} className="FunctionalOverview-section4">
             <Col style={{ minHeight: "60px", backgroundColor: "white", textAlign: "left" }}>
-              <a href="/" style={{ textDecoration: "none" }}>
+              <a href="/experiment" style={{ textDecoration: "none" }}>
                 <p
                   style={{
                     color: "black",

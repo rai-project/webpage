@@ -27,7 +27,7 @@ export default class Section6 extends Component {
               textAlign: "left",
               textTransform: "uppercase",
             }}
-            href="/Experiment"
+            href="/experiment"
           >
             DISCOVER PLATFORM <Icon style={{ fontSize: 20 }} size="large" type="arrow-right" />
           </a>
