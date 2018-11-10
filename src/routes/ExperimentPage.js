@@ -43,7 +43,6 @@ export default class ExperimentPage extends Component {
         <Helmet title="Experiment" meta={[{ property: "og:title", content: "Experiment" }]} />
         <ExperimentProvider>
           <ExperimentSetupSider
-            key={yeast()}
             onPageChange={this.handleChangePage}
             current={this.state.current}
             future={this.state.future}
