@@ -17,6 +17,7 @@ export default class ExperimentProvider extends Component {
       result: null,
       modelManifests: null,
       frameworkManifests: null,
+      machineManifests: null,
       addUrl: url =>
         this.setState({
           imageUrls: this.state.imageUrls.concat(url),
@@ -41,6 +42,10 @@ export default class ExperimentProvider extends Component {
       removeFramework: index =>
         this.setState({
           frameworks: this.state.frameworks.splice(index, 1),
+        }),
+      addMachine: (name, version) =>
+        this.setState({
+          machines: this.state.machines.concat({ name: name }),
         }),
       changeTraceLevel: newLevel =>
         this.setState({
@@ -70,6 +75,10 @@ export default class ExperimentProvider extends Component {
         this.setState({
           frameworkManifests: frameworkManifests,
         }),
+      setMachineManifests: machineManifests =>
+        this.setState({
+          machineManifests: machineManifests
+        })
     };
   }
 

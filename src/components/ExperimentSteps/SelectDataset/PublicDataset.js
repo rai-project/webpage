@@ -106,7 +106,7 @@ export default class PublicDataset extends Component {
                   <ExperimentContext.Consumer>
                     {context =>
                       <SelectableCard
-                        item={item}
+                        title={item.name}
                         content={item.description}
                         height="200px"
                         onClick={() => context.addDataset(item)}
