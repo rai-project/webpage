@@ -147,9 +147,7 @@ class SelectModel extends Component {
 
                       <Col span={8}>
                         <Dropdown overlay={menu}>
-                          <a href="#">
-                            data type <Icon type="down" />
-                          </a>
+                          data type <Icon type="down" />
                         </Dropdown>
                       </Col>
                     </Row>

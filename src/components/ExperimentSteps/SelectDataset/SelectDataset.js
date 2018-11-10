@@ -58,6 +58,8 @@ class ExperimentPage extends Component {
     } else {
       dataSourceComponent = <UploadArea />;
     }
+
+    console.log("Fda");
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
         <Content style={{}}>

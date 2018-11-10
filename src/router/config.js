@@ -16,6 +16,10 @@ const routes = [
     component: ExperimentPage,
   },
   {
+    path: "/experiment/*",
+    component: ExperimentPage,
+  },
+  {
     path: "/login",
     component: LogInPage,
   },
