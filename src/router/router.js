@@ -6,8 +6,10 @@ export default class Router extends Component {
   render() {
     return (
       <Switch>
-        Routes.map((route, i) =>
-        <Route exact key={i} path={route.path} component={route.component} />)
+        {
+          Routes.map((route, i) =>
+            <Route exact key={i} path={route.path} component={route.component} />)
+        }
       </Switch>
     );
   }
