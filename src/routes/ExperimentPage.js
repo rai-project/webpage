@@ -1,12 +1,12 @@
 import React, { Component } from "react";
 import Helmet from "react-helmet";
 import { Layout } from "antd";
-import SelectDataset from "../components/ExperimentSteps/SelectDataset/SelectDataset";
+import SelectDataset from "../components/ExperimentSteps/SelectDataset";
 import ExperimentSetupSider from "../components/ExperimentSteps/ExperimentSetupSider";
-import SelectModel from "../components/ExperimentSteps/SelectModel/SelectModel";
-import SelectFramework from "../components/ExperimentSteps/SelectFramework/SelectFramework";
-import SelectMachine from "../components/ExperimentSteps/SelectMachine/SelectMachine";
-import InferenceResult from "../components/InferenceResult/InferenceResult";
+import SelectModel from "../components/ExperimentSteps/SelectModel";
+import SelectFramework from "../components/ExperimentSteps/SelectFramework";
+import SelectMachine from "../components/ExperimentSteps/SelectMachine";
+import InferenceResult from "../components/InferenceResult";
 import ExperimentProvider from "../context/ExperimentContext";
 import { Route, Switch, Redirect } from "react-router-dom";
 
