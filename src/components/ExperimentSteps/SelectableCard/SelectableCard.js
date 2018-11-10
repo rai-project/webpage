@@ -16,8 +16,6 @@ export default class SelectableCard extends Component {
   }
 
   render() {
-    var item = this.props.item;
-
     return (
       <Card
         hoverable
@@ -33,7 +31,7 @@ export default class SelectableCard extends Component {
               </Tooltip>
             </div>
             <div>
-              <h1>{item.name}</h1>
+              <h1>{this.props.title}</h1>
             </div>
             <div>
               {this.props.content}

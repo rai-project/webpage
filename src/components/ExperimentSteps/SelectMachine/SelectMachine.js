@@ -1,28 +1,39 @@
 import React, { Component } from "react";
-import { Layout, Spin } from "antd";
+import { Layout, Col, Row } from "antd";
+import { isArray, find } from "lodash";
+import yeast from "yeast";
+import SelectableCard from "../SelectableCard/SelectableCard";
 import { FrameworkAgents } from "../../../swagger";
+import { ExperimentContext } from "../../../context/ExperimentContext";
 
 const { Content } = Layout;
 
-export default class SelectMachine extends Component {
+class SelectMachine extends Component {
   constructor(predictors = null) {
     super();
     this.state = {};
   }
 
   async componentDidMount() {
-    try {
-      const req = await FrameworkAgents({
-        frameworkName: "*",
-        frameworkVersion: "*",
-      });
-      this.setState({ predictors: req.agents });
-    } catch (err) {
-      console.error(err);
+    if (this.props.context.machineManifests === null) {
+      try {
+        const req = await FrameworkAgents({
+          frameworkName: "*",
+          frameworkVersion: "*",
+        });
+        this.props.context.setMachineManifests(req.agents);
+      } catch (err) {
+        console.error(err);
+      }
     }
   }
 
   render() {
+    console.log(this.props.context)
+    const machineManifests = this.props.context.machineManifests;
+    if (!isArray(machineManifests)) {
+      return <div />;
+    }
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
         <Content style={{}}>
@@ -39,11 +50,32 @@ export default class SelectMachine extends Component {
             </h2>
           </div>
 
-          <Spin tip="Coming Soon...">
-            <div style={{ marginTop: "80px", width: "100%", height: "100%" }} />
-          </Spin>
+          <div>
+            <Row gutter={16}>
+              {machineManifests.map((item, index) => (
+                <Col key={yeast()} span={8} style={{ padding: "10px" }}>
+                  <SelectableCard
+                    title={item.architecture}
+                    content={"Descriptions"}
+                    tooltip={false}
+                    onClick={() => this.props.context.addMachine(item.architecture)}
+                    selected={find(
+                      this.props.context.machines,
+                      e => e.name === item.architecture
+                      )}
+                  />
+                </Col>
+              ))}
+            </Row>
+          </div>
         </Content>
       </Layout>
     );
   }
 }
+
+export default props => (
+  <ExperimentContext.Consumer>
+    {context => <SelectMachine {...props} context={context} />}
+  </ExperimentContext.Consumer>
+);

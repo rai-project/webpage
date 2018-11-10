@@ -60,7 +60,7 @@ class SelectModel extends Component {
               {modelsKey.map(key => (
                 <Col key={yeast()} span={8} style={{ padding: "10px" }}>
                   <SelectableCard
-                    item={models[key]}
+                    title={models[key].name}
                     content={
                       models[key].description
                         .split(" ")
