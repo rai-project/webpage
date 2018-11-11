@@ -45,10 +45,6 @@ class SelectModel extends Component {
           modelVersion: "*",
         });
         this.props.context.setModelManifests(req.manifests);
-        const models = uniqBy(this.props.context.modelManifests, e => e.name + e.version);
-        const modelsKey = keys(models).sort();
-        this.models = models;
-        this.modelsKey = modelsKey;
         this.setState({ loaded: true });
       } catch (err) {
         console.error(err);
@@ -71,12 +67,14 @@ class SelectModel extends Component {
   }
 
   render() {
-    const models = this.models;
-    const modelsKey = this.modelsKey;
-
-    if (!isArray(models) || models.length === 0) {
+    if (!isArray(this.props.context.modelManifests)) {
       return <div />;
     }
+
+    const models = uniqBy(this.props.context.modelManifests, e => e.name + e.version);
+    const modelsKey = keys(models).sort();
+    this.models = models;
+    this.modelsKey = modelsKey;
 
     return (
       <Layout style={{ background: "#E8E9EB", margin: "0px 20px 120px 20px" }}>
