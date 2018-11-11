@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import _ from "lodash";
+import { isString, find, toLower, mean } from "lodash";
 import isPromise from "is-promise";
 import { layers as layersData } from "../../docs";
 import { ExperimentContext } from "../../context/ExperimentContext";
@@ -31,16 +31,16 @@ class LayersDurationGraph extends Component {
       let data = layersData[this.props.model]();
       if (isPromise(data)) {
         data = await data;
-        if (!_.isString(data)) {
+        if (!isString(data)) {
           data = await data.json();
         }
       }
       var groupedData = this.props.context.frameworks.map((framework) => {
-        return _.find(
+        return find(
           data,
           e =>
-            _.toLower(e.framework_name).replace(/-/g, '_') ===
-            _.toLower(framework.name).replace(/-/g, '_') &&
+            toLower(e.framework_name).replace(/-/g, '_') ===
+            toLower(framework.name).replace(/-/g, '_') &&
             e.machine_architecture === "amd64" &&
             e.host_name === "whatever" &&
             e.batch_size === 16
@@ -54,7 +54,7 @@ class LayersDurationGraph extends Component {
   }
 
   uniqueLayerName(layersData, name) {
-    return _.find(layersData, e => e.layer === name) === undefined
+    return find(layersData, e => e.layer === name) === undefined
   }
 
   render() {
@@ -79,7 +79,7 @@ class LayersDurationGraph extends Component {
             num++;
           }
         }
-        layersData.unshift({ layer: name, duration: _.mean(item.durations) });
+        layersData.unshift({ layer: name, duration: mean(item.durations) });
       })
       return({ framework_name: group.framework_name, layers_informations: layersData });
     });

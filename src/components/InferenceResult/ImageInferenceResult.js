@@ -1,7 +1,7 @@
 import "./InferenceResult.css";
 import React, { Component } from "react";
 import idx from "idx";
-import _ from "lodash";
+import { sortBy, isNil } from "lodash";
 import { Table, Tag, Spin } from "antd";
 import { ExperimentContext } from "../../context/ExperimentContext";
 import TraceInfo from "./TraceInfo";
@@ -18,7 +18,7 @@ function processName(str) {
 
 class ImageInferenceResult extends Component {
   processResponseFeatures(response) {
-    response = _.sortBy(response, ["probability"]).reverse();
+    response = sortBy(response, ["probability"]).reverse();
     response.forEach(function (item, index) {
       item["name"] = processName(item["name"]);
     });
@@ -59,7 +59,7 @@ class ImageInferenceResult extends Component {
               </div>
 
               {this.props.context.result.map(result => {
-                if (_.isNil(result)) {
+                if (isNil(result)) {
                     return null
                 }
                 const traceURL = result.traceId
