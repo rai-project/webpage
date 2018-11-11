@@ -8,6 +8,7 @@ import Router from "./router/router";
 import { Layout, BackTop } from "antd";
 import { BrowserRouter as ReactRouter } from "react-router-dom";
 import { UserProvider } from "./context/UserContext";
+import Error from "./components/Error";
 
 class App extends Component {
   render() {
@@ -31,7 +32,9 @@ class App extends Component {
             <GlobalHeader />
 
             <Layout.Content style={{ flex: 1 }}>
-              <Router />
+              <Error>
+                <Router />
+              </Error>
             </Layout.Content>
 
             <GlobalFooter />

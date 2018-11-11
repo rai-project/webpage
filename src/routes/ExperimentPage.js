@@ -8,6 +8,7 @@ import SelectFramework from "../components/ExperimentSteps/SelectFramework";
 import SelectMachine from "../components/ExperimentSteps/SelectMachine";
 import InferenceResult from "../components/InferenceResult";
 import ExperimentProvider from "../context/ExperimentContext";
+import Error from "../components/Error";
 
 const siderMenuNextStep = {
   dataset: "model",
@@ -68,7 +69,9 @@ export default class ExperimentPage extends Component {
             future={this.state.future}
             siderMenuNextStep={siderMenuNextStep}
           />
-          {currentPage}
+          <Error>
+            {currentPage}
+          </Error>
         </ExperimentProvider>
       </Layout>
     );
